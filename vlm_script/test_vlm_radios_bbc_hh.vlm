@@ -1,0 +1,230 @@
+
+# test_vlm_radios_bbc_hh.vlm
+# 
+# vlc.exe --vlm-conf C:\Users\cnigro\borrar\test_vlm_mosaic5_hh.vlm
+# 
+#vlc -vvv input_stream --sout
+#'#transcode{vcodec=mp4v,acodec=mpga,vb=800,ab=128,deinterlace}:
+#rtp{mux=ts,dst=239.255.12.42,sdp=sap,name="TestStream"}' 
+#setup channel3 output #rtp{mux=ts,dst=127.0.0.1,port=5005,sdp=sap://,name="Channel 3"}
+
+
+del all
+new channel_01 broadcast enabled
+setup channel_01 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1.mp3__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUrHf4aql%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891772441%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=xTJVTlYM5PguepmxztyNXht4K%2FWqnNaHPkm4TzIaoX4%3D&reserved=0
+setup channel_01 output #rtp{mux=ts,dst=127.0.0.1,port=5001,sdp=sap://,name="Channel 1"}
+
+new channel_02 broadcast enabled
+setup channel_02 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.aac__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUnOy1vQd%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891772441%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=On%2FPKw1nCaValXEroI3V8OmCflCuAWP1SM36xmMXY88%3D&reserved=0
+setup channel_02 output #rtp{mux=ts,dst=127.0.0.1,port=5002,sdp=sap://,name="Channel 2"}
+
+new channel_03 broadcast enabled
+setup channel_03 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_03 output #rtp{mux=ts,dst=127.0.0.1,port=5003,sdp=sap://,name="Channel 3"}
+
+
+new channel_04 broadcast enabled
+setup channel_04 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_04 output #rtp{mux=ts,dst=127.0.0.1,port=5004,sdp=sap://,name="Channel 4"}
+
+
+new channel_05 broadcast enabled
+setup channel_05 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.aac__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUnOy1vQd%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891772441%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=On%2FPKw1nCaValXEroI3V8OmCflCuAWP1SM36xmMXY88%3D&reserved=0
+setup channel_05 output #rtp{mux=ts,dst=127.0.0.1,port=5005,sdp=sap://,name="Channel 5"}
+
+
+
+new channel_06 broadcast enabled
+setup channel_06 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_06 output #rtp{mux=ts,dst=127.0.0.1,port=5006,sdp=sap://,name="Channel 6"}
+
+
+
+
+new channel_07 broadcast enabled
+setup channel_07 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1.mp3__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUrHf4aql%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891772441%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=xTJVTlYM5PguepmxztyNXht4K%2FWqnNaHPkm4TzIaoX4%3D&reserved=0
+setup channel_07 output #rtp{mux=ts,dst=127.0.0.1,port=5007,sdp=sap://,name="Channel 7"}
+
+
+new channel_08 broadcast enabled
+setup channel_08 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_08 output #rtp{mux=ts,dst=127.0.0.1,port=5008,sdp=sap://,name="Channel 8"}
+
+
+new channel_09 broadcast enabled
+setup channel_09 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_09 output #rtp{mux=ts,dst=127.0.0.1,port=5009,sdp=sap://,name="Channel 9"}
+
+
+new channel_10 broadcast enabled
+setup channel_10 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_10 output #rtp{mux=ts,dst=127.0.0.1,port=5010,sdp=sap://,name="Channel 10"}
+
+
+
+new channel_11 broadcast enabled
+setup channel_11 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_11 output #rtp{mux=ts,dst=127.0.0.1,port=5011,sdp=sap://,name="Channel 11"}
+
+
+
+new channel_12 broadcast enabled
+setup channel_12 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_12 output #rtp{mux=ts,dst=127.0.0.1,port=5012,sdp=sap://,name="Channel 12"}
+
+
+
+new channel_13 broadcast enabled
+setup channel_13 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_13 output #rtp{mux=ts,dst=127.0.0.1,port=5013,sdp=sap://,name="Channel 13"}
+
+
+new channel_14 broadcast enabled
+setup channel_14 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_14 output #rtp{mux=ts,dst=127.0.0.1,port=50014,sdp=sap://,name="Channel 14"}
+
+
+
+new channel_15 broadcast enabled
+setup channel_15 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_15 output #rtp{mux=ts,dst=127.0.0.1,port=5015,sdp=sap://,name="Channel 15"}
+
+
+
+new channel_16 broadcast enabled
+setup channel_16 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_16 output #rtp{mux=ts,dst=127.0.0.1,port=5016,sdp=sap://,name="Channel 16"}
+
+
+
+new channel_17 broadcast enabled
+setup channel_17 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_17 output #rtp{mux=ts,dst=127.0.0.1,port=5017,sdp=sap://,name="Channel 17"}
+
+
+
+new channel_18 broadcast enabled
+setup channel_18 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_18 output #rtp{mux=ts,dst=127.0.0.1,port=5018,sdp=sap://,name="Channel 18"}
+
+
+
+new channel_19 broadcast enabled
+setup channel_19 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_19 output #rtp{mux=ts,dst=127.0.0.1,port=5019,sdp=sap://,name="Channel 19"}
+
+
+
+new channel_20 broadcast enabled
+setup channel_20 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_20 output #rtp{mux=ts,dst=127.0.0.1,port=5020,sdp=sap://,name="Channel 20"}
+
+
+
+new channel_21 broadcast enabled
+setup channel_21 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_21 output #rtp{mux=ts,dst=127.0.0.1,port=5021,sdp=sap://,name="Channel 21"}
+
+
+
+new channel_22 broadcast enabled
+setup channel_22 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_22 output #rtp{mux=ts,dst=127.0.0.1,port=5022,sdp=sap://,name="Channel 22"}
+
+
+
+new channel_23 broadcast enabled
+setup channel_23 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_23 output #rtp{mux=ts,dst=127.0.0.1,port=5023,sdp=sap://,name="Channel 23"}
+
+
+
+new channel_24 broadcast enabled
+setup channel_24 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_24 output #rtp{mux=ts,dst=127.0.0.1,port=5024,sdp=sap://,name="Channel 24"}
+
+
+
+new channel_25 broadcast enabled
+setup channel_25 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_25 output #rtp{mux=ts,dst=127.0.0.1,port=5025,sdp=sap://,name="Channel 25"}
+
+
+
+
+new channel_26 broadcast enabled
+setup channel_26 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_26 output #rtp{mux=ts,dst=127.0.0.1,port=5026,sdp=sap://,name="Channel 26"}
+
+
+
+new channel_27 broadcast enabled
+setup channel_27 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_27 output #rtp{mux=ts,dst=127.0.0.1,port=5027,sdp=sap://,name="Channel 27"}
+
+
+
+new channel_28 broadcast enabled
+setup channel_28 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_28 output #rtp{mux=ts,dst=127.0.0.1,port=5028,sdp=sap://,name="Channel 28"}
+
+
+
+new channel_29 broadcast enabled
+setup channel_29 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_29 output #rtp{mux=ts,dst=127.0.0.1,port=5029,sdp=sap://,name="Channel 29"}
+
+
+
+new channel_30 broadcast enabled
+setup channel_30 input https://playerservices.streamtheworld.com/api/livestream-redirect/SGR_TEST1AAC.m3u8
+setup channel_30 output #rtp{mux=ts,dst=127.0.0.1,port=5030,sdp=sap://,name="Channel 30"}
+
+
+
+new channel_31 broadcast enabled
+setup channel_31 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_31 output #rtp{mux=ts,dst=127.0.0.1,port=5031,sdp=sap://,name="Channel 31"}
+
+
+
+new channel_32 broadcast enabled
+setup channel_32 input https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Furldefense.com%2Fv3%2F__https%3A%2F%2Fplayerservices.streamtheworld.com%2Fapi%2Flivestream-redirect%2FSGR_TEST1AAC.m3u8__%3B!!ChWRnQ646yhd!WRIecLzEQwRSR0Eo9pC9qs6Q7SGUgVfj5rn5_UCWCcN6C2dQplM3lhf9Jyhx9gGt4ZSqdXpFU9oLpTbwTblFUvYTUOFH%24&data=05%7C01%7C%7C994016a4dd1645cf749808daeff3d3d2%7C4abdf8c891c34c1b9c716266b586ec6b%7C0%7C0%7C638086127891928673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=qJPoC5TQtsdvuFdXb8fph1nTSykBp6cqnHuJ0KBMAF0%3D&reserved=0
+setup channel_32 output #rtp{mux=ts,dst=127.0.0.1,port=5032,sdp=sap://,name="Channel 32"}
+
+
+
+
+
+control channel_01 play
+control channel_02 play
+control channel_03 play
+control channel_04 play
+control channel_05 play
+control channel_06 play
+control channel_07 play
+control channel_08 play
+control channel_09 play
+control channel_10 play
+control channel_11 play
+control channel_12 play
+control channel_13 play
+control channel_14 play
+control channel_15 play
+control channel_16 play
+control channel_17 play
+control channel_18 play
+control channel_19 play
+control channel_20 play
+control channel_21 play
+control channel_22 play
+control channel_23 play
+control channel_24 play
+control channel_25 play
+control channel_26 play
+control channel_27 play
+control channel_28 play
+control channel_29 play
+control channel_30 play
+control channel_31 play
+control channel_32 play
