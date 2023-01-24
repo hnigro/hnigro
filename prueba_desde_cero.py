@@ -74,8 +74,6 @@ class data_model:
     ]
 
 
-# le agrego al principal una funcion timer:
-
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX      comienzo interface swagger       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
@@ -152,6 +150,7 @@ def BW_total(sroutes):
 
 # **********************************************************************************************************************
 # *******************      def Generacion_CSV(SRT_IP):  comienzo    *****************************************************
+# **********************************************************************************************************************
 
 def Generacion_CSV(SRT_IP):
     # **********************************************************************************************************************
@@ -255,7 +254,7 @@ def Generacion_CSV(SRT_IP):
                 #sdest["usedBandwidth"]
                 D_BW = sdest["usedBandwidth"]
             except KeyError:
-                D_BW = ""
+                D_BW = 0
 
             DEST_FORMATTED = f"{DEST_NAME},{D_PROT},{D_PORT},{D_MODE},{D_INT},{D_ADDRESS},{D_BW},{D_STATE}\n"
             # filew.write(f"{DEST_FORMATTED2_EXTRAS}{DEST_FORMATTED_EXTRAS}")
@@ -269,8 +268,9 @@ def Generacion_CSV(SRT_IP):
     filew.close()
 
 
+
 # **********************************************************************************************************************
-# *******************      def procesamiento(SRT_IP):  fin    **********************************************************
+# *******************      def Generacion_CSV(SRT_IP):  fin    *****************************************************
 # **********************************************************************************************************************
 
 
@@ -375,10 +375,6 @@ class ventana_class:
 
         while True:
             event, values = window.read()
-            # print(f"linea 316 _____evento = {event}")
-            # print(f"linea 317 _____valor = {values}")
-            # ar = values["activar_r"]
-            # print(f"linea 320 _____activar al principio antes de refrescar todo  ========", ar)
             print(event, values)
 
             # sg.popup("linea 322 _____este es un mensaje de popup")
@@ -400,9 +396,6 @@ class ventana_class:
                 window["nombre_de_archivo"].Update(texto)
                 break
 
-
-            # ********************************************************************************
-            # ********************************************************************************
 
             elif event == "Update SRTs in Production":
                 # activar_cb = True
@@ -471,13 +464,11 @@ class ventana_class:
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ventana fin     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-#
 
 
 # XXXXXXXXXXXXXXXXXXX     comienzo API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 def API_int(SRT_IP, FUNCION):
     #  FUNCION es para crear el CSV teniendo como dato la ip de mgm del srt.
-    #
 
     import json
     import requests
@@ -507,60 +498,34 @@ def API_int(SRT_IP, FUNCION):
 
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
-
     return INFO
-
-
 # XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
 # XXXXXXXXXXXXXXXXXXX       COMIENZO LAST UPDATE    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def Last_Update():
     import datetime
-    # print (datetime.datetime.now())
     now_month = datetime.datetime.now().month
     now_day = datetime.datetime.now().day
     now_year = datetime.datetime.now().year
 
     last_updated = f"{now_month}/{now_day}/{now_year}"
     return last_updated
-
-
 # XXXXXXXXXXXXXXXXXXX       FIN LAST UPDATE         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 # XXXXXXXXXXXXXXXXXXX       COMIENZO TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 def timer():
     import time
-
     x = time
     print("linea 473 _____antes de time")
     x.sleep(1)
     print("linea 475 _____despues de time")
-
-    # nombre = input()
-    # if nombre == "q":
-    #    break
-    #
     return print("return linea 482")
-
-
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 # este es el device que elijo para trabajar
 # SRT_IP = SRT_ABC_01
-
-
-"""
-xxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
-
-"""
 
 
 # **********************************************************************************************
@@ -605,6 +570,4 @@ def main():
 # **********************************************************************************************
 
 if __name__ == "__main__":
-    print("comienzo del programa")
-
-main()
+    main()
