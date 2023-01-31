@@ -127,6 +127,7 @@ def BW_total(sroutes):
     for svalue in sroutes:
         S_BW = float(svalue["source"]["usedBandwidth"])
         S_BW_total = S_BW_total + S_BW
+        print(f"xxxxxxxxxxxxxxxxxxxxx   S_BW =  {S_BW}")
 
         DESTINATIONS = svalue["destinations"]
         if DESTINATIONS == []:
@@ -143,9 +144,43 @@ def BW_total(sroutes):
 
     return print(f"ancho de banda de entrada = {S_BW_total}   ______ \n ancho de banda salida = {D_BW_total}")
 
+def update_srt_dth():
+    # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
+    # abc01SRT_ABC_01
+    """
+    Generacion_CSV([SRT_ABC_01[1], SRT_ABC_01[2], SRT_ABC_01[3], SRT_ABC_01[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
 
+    # abc02
+    Generacion_CSV([SRT_ABC_02[1], SRT_ABC_02[2], SRT_ABC_02[3], SRT_ABC_02[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
 
+    # abc03
+    Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
 
+    # abc04
+    Generacion_CSV([SRT_ABC_04[1], SRT_ABC_04[2], SRT_ABC_04[3], SRT_ABC_04[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
+
+    # cbc01
+    Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
+
+    # cbc02
+    Generacion_CSV([SRT_CBC_02[1], SRT_CBC_02[2], SRT_CBC_02[3], SRT_CBC_02[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
+
+    # cobc01
+    Generacion_CSV([SRT_COBC_01[1], SRT_COBC_01[2], SRT_COBC_01[3], SRT_COBC_01[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
+
+    # cobc02
+    Generacion_CSV([SRT_COBC_02[1], SRT_COBC_02[2], SRT_COBC_02[3], SRT_COBC_02[4]])
+    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
+    """
+
+    print("linea 384 _____entra en el loop de refresco")
 
 
 # **********************************************************************************************************************
@@ -400,45 +435,8 @@ class ventana_class:
             elif event == "Update SRTs in Production":
                 # activar_cb = True
                 while True:
-                    """
 
-                    #SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
-                    #abc01SRT_ABC_01
-                    Generacion_CSV([SRT_ABC_01[1], SRT_ABC_01[2], SRT_ABC_01[3], SRT_ABC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
-
-                    # abc02
-                    Generacion_CSV([SRT_ABC_02[1], SRT_ABC_02[2], SRT_ABC_02[3], SRT_ABC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
-
-                    # abc03
-                    Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
-
-                    # abc04
-                    Generacion_CSV([SRT_ABC_04[1], SRT_ABC_04[2], SRT_ABC_04[3], SRT_ABC_04[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
-
-                    # cbc01
-                    Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
-
-                    # cbc02
-                    Generacion_CSV([SRT_CBC_02[1], SRT_CBC_02[2], SRT_CBC_02[3], SRT_CBC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
-
-                    # cobc01
-                    Generacion_CSV([SRT_COBC_01[1], SRT_COBC_01[2], SRT_COBC_01[3], SRT_COBC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
-
-                    # cobc02
-                    Generacion_CSV([SRT_COBC_02[1], SRT_COBC_02[2], SRT_COBC_02[3], SRT_COBC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
-                    """
-
-
-                    print("linea 384 _____entra en el loop de refresco")
-
+                    update_srt_dth()
                     # window["activar_r"].update(values)  # show the event and values in the window
                     activar_cb = window["activar_r"].get()
                     print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", activar_cb)
@@ -453,7 +451,7 @@ class ventana_class:
                         break
 
                     elif activar_cb == True:
-                        timer()
+                        timer(1)
 
             # ********************************************************************************
             # ********************************************************************************
@@ -514,11 +512,11 @@ def Last_Update():
 
 
 # XXXXXXXXXXXXXXXXXXX       COMIENZO TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-def timer():
+def timer(segundos):
     import time
     x = time
     print("linea 473 _____antes de time")
-    x.sleep(1)
+    x.sleep(segundos)
     print("linea 475 _____despues de time")
     return print("return linea 482")
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
