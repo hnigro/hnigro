@@ -308,7 +308,7 @@ def ventana(FFlag, filename):
     # print(listbox_texto.__getitem__(10)[1])
 
     layout = [
-        [sg.Text(text=texto, auto_size_text=False, key="nombre_de_archivo")],
+        [sg.Text(text=texto, auto_size_text=True, key="nombre_de_archivo")],
         [sg.Listbox(disabled=not FFlag, values=listbox_texto, default_values=SRT_ABC_03, size=(22, 12),
                     key="listbox_01", enable_events=False)],
         [sg.Button("Generate CSV", disabled=not FFlag), sg.Button("Upload_Swagger", disabled=FFlag), sg.Button("Exit")],
@@ -316,7 +316,7 @@ def ventana(FFlag, filename):
         [sg.Check("Activate refresh", key="activar_r", enable_events=True)]
     ]
 
-    window = sg.Window("SRT Process", layout)
+    window = sg.Window("SRT Process", layout, resizable = True,element_justification = "center")
 
     while True:
         event, values = window.read()
