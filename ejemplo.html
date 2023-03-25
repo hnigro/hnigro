@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejemplo de botones y cajas de texto</title>
+</head>
+<body>
+	<h1>Presione los botones para cambiar el valor de las variables:</h1>
+	<button onclick="boton1()">Botón 1</button>
+	<button onclick="boton2()">Botón 2</button>
+	<button onclick="boton3()">Botón 3</button>
+	<button onclick="boton4()">Botón 4</button>
+	<br><br>
+	<input type="text" id="texto1" value= x1>
+	<input type="text" id="texto2" value="0">
+	<input type="text" id="texto3" value="0">
+	<input type="text" id="texto4" value="0">
+
+	<script>
+		// Funciones para cambiar el valor de las variables
+		function boton1() {
+			document.getElementById("texto1").value = x1;
+		}
+
+		function boton2() {
+			document.getElementById("texto2").value = 1;
+		}
+
+		function boton3() {
+			document.getElementById("texto3").value = 1;
+		}
+
+		function boton4() {
+			document.getElementById("texto4").value = 1;
+		}
+	</script>
+</body>
+</html>
