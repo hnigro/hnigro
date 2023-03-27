@@ -78,7 +78,6 @@ def procesamiento_data(data_raw):
             print(destination["name"])
 
             try:
-                destination["usedBandwidth"]
                 d_bw = destination["usedBandwidth"]
                 #print(f"bw destino >>>>>>>>>>>>>>>>>>>>>>>>>>>> ====   {d_bw}")
 
