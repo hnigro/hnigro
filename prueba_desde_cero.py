@@ -1,472 +1,18 @@
 """
+Este programa es del 25/3/23
 
+comienza desde cero y esta destinado a generar el bw desde el server hacia la web
 
-este archivo es el que tiene agregado el timer- es el ultimo que hice 19/1/23
-le agrego el timer
-le agrego funcion de bw de source y destination
 
 """
 
 
+# XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
-
-
-
-class data_model:
-    SRT_ABC_01 = [".) SRT-ABC-01                   ", "10.177.58.101", "haiadmin", "tnstafl2420", "SRT-ABC-01"]
-    SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
-    SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
-    SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
-    SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
-    SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
-    SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
-    SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
-    SRT_LCF_01 = [".) SRT-LCF-01                   ", "172.22.90.1", "haiadmin", "tnstafl2420", "SRT-LCF-01"]
-    SRT_ABC_OTT_01 = [".) SRT-ABC-OTT-01             ", "10.177.30.134", "haiadmin", "manager", "SRT-ABC-OTT-01"]
-    SRT_ABC_OTT_02 = [".) SRT-ABC-OTT-02             ", "10.177.30.135", "haiadmin", "manager", "SRT-ABC-OTT-02"]
-    SRT_ABC_OTT_03 = [".) SRT-ABC-OTT-03             ", "10.177.30.136", "haiadmin", "manager", "SRT-ABC-OTT-03"]
-    SRT_ABC_OTT_04 = [".) SRT-ABC-OTT-04             ", "10.177.30.137", "haiadmin", "manager", "SRT-ABC-OTT-04"]
-    SRT_ABC_OTT_05 = [".) SRT-ABC-OTT-05             ", "10.177.30.138", "haiadmin", "manager", "SRT-ABC-OTT-05"]
-    SRT_CBC_OTT_06 = [".) SRT-CBC-OTT_06             ", "10.133.30.134", "haiadmin", "manager", "SRT-CBC-OTT-06"]
-    SRT_CBC_OTT_07 = [".) SRT-CBC-OTT-07             ", "10.133.30.135", "haiadmin", "manager", "SRT-CBC-OTT-07"]
-    SRT_CBC_OTT_08 = [".) SRT-CBC-OTT-08             ", "10.133.30.136", "haiadmin", "manager", "SRT-CBC-OTT-08"]
-    SRT_BBC_OTT_09 = [".) SRT-BBC-OTT-09             ", "10.19.197.50", "haiadmin", "manager", "SRT-BBC-OTT-09"]
-    SRT_BBC_OTT_10 = [".) SRT-BBC-OTT-10             ", "10.19.197.51", "haiadmin", "manager", "SRT-BBC-OTT-10"]
-    SRT_BBC_OTT_11 = [".) SRT-BBC-OTT-11             ", "10.19.197.52", "haiadmin", "manager", "SRT-BBC-OTT-11"]
-    SRT_JBC_OTT_12 = [".) SRT-JBC-OTT-12             ", "10.219.69.50", "haiadmin", "manager", "SRT-JBC-OTT-12"]
-    SRT_JBC_OTT_13 = [".) SRT-JBC-OTT-13             ", "10.219.69.51", "haiadmin", "manager", "SRT-JBC-OTT-13"]
-    SRT_JBC_OTT_14 = [".) SRT-JBC-OTT-14             ", "10.219.69.52", "haiadmin", "manager", "SRT-JBC-OTT-14"]
-    SRT_JBC_OTT_15 = [".) SRT-JBC-OTT-15             ", "10.219.69.53", "haiadmin", "manager", "SRT-JBC-OTT-15"]
-    SRT_JBC_OTT_16 = [".) SRT-JBC-OTT-16             ", "10.219.69.54", "haiadmin", "manager", "SRT-JBC-OTT-16"]
-    SRT_JBC_OTT_17 = [".) SRT-JBC-OTT-17             ", "10.219.69.55", "haiadmin", "manager", "SRT-JBC-OTT-17"]
-    SRT_JBC_OTT_18 = [".) SRT-JBC-OTT-18             ", "10.219.69.56", "haiadmin", "manager", "SRT-JBC-OTT-18"]
-
-    # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-    listbox_texto = [
-        SRT_ABC_01
-        , SRT_ABC_02
-        , SRT_ABC_03
-        , SRT_ABC_04
-        , SRT_CBC_01
-        , SRT_CBC_02
-        , SRT_COBC_01
-        , SRT_COBC_02
-        # , SRT_LCF_01
-        , SRT_ABC_OTT_01
-        , SRT_ABC_OTT_02
-        , SRT_ABC_OTT_03
-        , SRT_ABC_OTT_04
-        , SRT_ABC_OTT_05
-        , SRT_CBC_OTT_06
-        , SRT_CBC_OTT_07
-        , SRT_CBC_OTT_08
-        , SRT_BBC_OTT_09
-        , SRT_BBC_OTT_10
-        , SRT_BBC_OTT_11
-        , SRT_JBC_OTT_12
-        , SRT_JBC_OTT_13
-        , SRT_JBC_OTT_14
-        , SRT_JBC_OTT_15
-        , SRT_JBC_OTT_16
-        # ,SRT_JBC_OTT_17
-        # ,SRT_JBC_OTT_18
-    ]
-
-
-
-# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX      comienzo interface swagger       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
-    # MAIN SWAGGER INTERFACE
-    """
-    este programa pasa los archivos csv a swagger
-
-    """
-
-    import os
-    from oauthlib.oauth2 import BackendApplicationClient
-    from requests_oauthlib import OAuth2Session
-
-    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
-
-    """
-    SRTIP       =   "http://10.133.96.78:8081/api/v1/login"      #SRT_IP[0]  # IP DEL DISPOSITIVO= /api/v1/login
-    client_id="SRT"                                      #SRT_IP[1]  # USER
-    client_secret="srtapi2022"                                #SRT_IP[2]  # PASS DEL DISPOSITIVO PARA LA PRIMER CONEXION
-
-    pabloapi
-    pabloapi
-
-    """
-
-    client = BackendApplicationClient(client_id="SRT")
-    oauth = OAuth2Session(client=client)
-    htoken = oauth.fetch_token(token_url="http://10.133.96.78:8081/api/v1/login", client_id="SRT",
-                               client_secret="srtapi2022")
-
-    csv_file = {"file": (CSV_file, open(CSV_file, "rb"), "application/vnd.ms-excel")}
-
-    swagger_cmd = "http://10.133.96.78:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
-
-    swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
-    cod_salida = swagger_response.status_code
-
-    print(f"linea 41 _____respuesta = {swagger_response.text}")
-    print(f"linea 42 _____código = {cod_salida}")
-
-    return
-
-
-# XXXXXXXXXXXXXXXXXXXXX           FIN INTERFACE SWAGGER          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
-def BW_total(sroutes):
-    #determinacion de BW en source
-    S_BW_total=0
-    D_BW_total=0
-    for svalue in sroutes:
-        S_BW = float(svalue["source"]["usedBandwidth"])
-        S_BW_total = S_BW_total + S_BW
-        print(f"xxxxxxxxxxxxxxxxxxxxx   S_BW =  {S_BW}")
-
-        DESTINATIONS = svalue["destinations"]
-        if DESTINATIONS == []:
-            filew.write(f"\n")
-
-
-        for sdest in DESTINATIONS:
-            try:
-                #sdest["usedBandwidth"]
-                D_BW = float(sdest["usedBandwidth"])
-                D_BW_total = D_BW_total + D_BW
-            except KeyError:
-                D_BW = 0
-
-    return print(f"ancho de banda de entrada = {S_BW_total}   ______ \n ancho de banda salida = {D_BW_total}")
-
-def update_srt_dth():
-    # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
-    # abc01SRT_ABC_01
-    """
-    Generacion_CSV([SRT_ABC_01[1], SRT_ABC_01[2], SRT_ABC_01[3], SRT_ABC_01[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
-
-    # abc02
-    Generacion_CSV([SRT_ABC_02[1], SRT_ABC_02[2], SRT_ABC_02[3], SRT_ABC_02[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
-
-    # abc03
-    Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
-
-    # abc04
-    Generacion_CSV([SRT_ABC_04[1], SRT_ABC_04[2], SRT_ABC_04[3], SRT_ABC_04[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
-
-    # cbc01
-    Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
-
-    # cbc02
-    Generacion_CSV([SRT_CBC_02[1], SRT_CBC_02[2], SRT_CBC_02[3], SRT_CBC_02[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
-
-    # cobc01
-    Generacion_CSV([SRT_COBC_01[1], SRT_COBC_01[2], SRT_COBC_01[3], SRT_COBC_01[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
-
-    # cobc02
-    Generacion_CSV([SRT_COBC_02[1], SRT_COBC_02[2], SRT_COBC_02[3], SRT_COBC_02[4]])
-    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
-    """
-
-    print("linea 384 _____entra en el loop de refresco")
-
-
-# **********************************************************************************************************************
-# *******************      def Generacion_CSV(SRT_IP):  comienzo    *****************************************************
-# **********************************************************************************************************************
-
-def Generacion_CSV(SRT_IP):
-    # **********************************************************************************************************************
-
-    filepath = "CSV_FILES\\"
-    global filew
-    filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
-
-    print(f"linea 62 _____nombre del archivo creado = {filew.name}")
-    # me imprime los títulos de las planillas
-
-    filew.write(
-        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
-
-    sroutes = API_int(SRT_IP, "FUNCION")["data"]
-    # print(sroutes)
-
-    BW_total(sroutes)
-
-
-
-    # hace un listado de las rutas con sus fuentes
-    for svalue in sroutes:
-
-        ASSET = SRT_IP[3]
-        Asset_Type = "Broadcast"
-        ROUTE_NAME = svalue["name"]
-        R_STATE_NAME = svalue["state"]
-        SOURCE_NAME = svalue["source"]["name"]
-        DESTINATIONS = svalue["destinations"]
-        ROUTE_ID = svalue["id"]  # lo voy a usar si quiero estadisticas de la ruta
-
-        S_INT = svalue["source"]["networkInterface"]
-        S_MODE = svalue["source"]["mode"]
-        S_ADDRESS = svalue["source"]["address"]
-        S_PROT = svalue["source"]["protocol"].upper()
-        S_PORT = svalue["source"]["port"]
-        S_STATE = svalue["source"]["state"]
-        S_BW = svalue["source"]["usedBandwidth"]
-        LAST_UPDATE = Last_Update()
-
-        try:
-            #svalue["source"]["sourceAddress"]
-            S_SSM = svalue["source"]["sourceAddress"]
-        except KeyError:
-            S_SSM = "0.0.0.0"
-        n = 0
-
-        # generacion de nro de digitos para la fuente (genera 2 digitos para 99 rutas y 3 digitos para mas de 99 en el source)
-        if len(ROUTE_NAME) > 3:
-            if ROUTE_NAME[2] == "_":
-                DIGITS = ROUTE_NAME[0:2]
-            elif ROUTE_NAME[3] == "_":
-                DIGITS = ROUTE_NAME[0:3]
-            else:
-                DIGITS = ROUTE_NAME
-        else:
-            print(f"linea 41 _____", len(ROUTE_NAME))
-            DIGITS = ROUTE_NAME
-
-        DESCRIPTION_SOURCE = f"{ASSET}-{DIGITS}-{n + 1}"
-        # fin generacion de nro de digitos para la fuente (genera 2 digitos para 99 rutas y 3 digitos para mas de 99 en el source)
-
-        # print(DESCRIPTION_SOURCE)
-        # agrego asset y description
-        filew.write(
-            f"{DESCRIPTION_SOURCE},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},{S_MODE},{S_INT},{S_ADDRESS},{S_PROT},{S_PORT},{S_SSM},{S_STATE},{S_BW},{LAST_UPDATE},")
-
-        #   inicializacion de variables de formateo del destino
-
-        DEST_FORMATTED_2 = f""
-
-        # si la fuente no tiene destinos entonces saltea la linea (porque de lo contrario me imprime la ruta siguiente en
-        # el lugar del destino de la ruta anterior
-        if DESTINATIONS == []:
-            filew.write(f"\n")
-
-        #   imprime cada uno de los datos de destino por cada destino
-        n2 = 0
-        for sdest in DESTINATIONS:
-            DEST_NAME = sdest["name"]
-            D_PROT = sdest["protocol"].upper()
-            D_PORT = sdest["port"]
-            D_MODE = sdest["mode"]
-            D_INT = sdest["networkInterface"]
-            D_ADDRESS = sdest["address"]
-            D_STATE = sdest["state"]
-
-            if len(ROUTE_NAME) > 3:
-                if ROUTE_NAME[2] == "_":
-                    DIGITS = ROUTE_NAME[0:2]
-                elif ROUTE_NAME[3] == "_":
-                    DIGITS = ROUTE_NAME[0:3]
-            else:
-                DIGITS = ROUTE_NAME
-
-            DESCRIPTION = f"{ASSET}-{DIGITS}-{n2 + 1}"
-
-            # esta variable me tira error si la fuente no está activada. por eso tratamiento de errores
-            try:
-                #sdest["usedBandwidth"]
-                D_BW = sdest["usedBandwidth"]
-            except KeyError:
-                D_BW = 0
-
-            DEST_FORMATTED = f"{DEST_NAME},{D_PROT},{D_PORT},{D_MODE},{D_INT},{D_ADDRESS},{D_BW},{D_STATE}\n"
-            # filew.write(f"{DEST_FORMATTED2_EXTRAS}{DEST_FORMATTED_EXTRAS}")
-
-            n2 += 1
-
-            DEST_FORMATTED_2 = f"{DESCRIPTION},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},,,,,,,,,{LAST_UPDATE},"
-            if n2 == 1: DEST_FORMATTED_2 = f""
-            filew.write(f"{DEST_FORMATTED_2}{DEST_FORMATTED}")
-
-    filew.close()
-
-
-
-# **********************************************************************************************************************
-# *******************      def Generacion_CSV(SRT_IP):  fin    *****************************************************
-# **********************************************************************************************************************
-
-
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ventana comienzo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-class ventana_class:
-
-    def ventana(FFlag, filename):
-        import PySimpleGUI as sg
-
-        # FFlag es el flag de generación de archivo
-        # FFlag = True (todavía no entró el nombre del SRT
-        # FFlag = False (ya entró el SRT y voy a pasarlo al SWAGGER y al ARYA)
-
-        if FFlag == False:
-            texto = filename
-        else:
-            texto = "nombre del dispositivo"
-
-        sg.theme("GrayGrayGray")
-
-        # listado de todos los mgm de los SRTs
-        SRT_ABC_01 = [".) SRT-ABC-01                   ", "10.177.58.101", "haiadmin", "tnstafl2420", "SRT-ABC-01"]
-        SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
-        SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
-        SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
-        SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
-        SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
-        SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
-        SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
-        SRT_LCF_01 = [".) SRT-LCF-01                   ", "172.22.90.1", "haiadmin", "tnstafl2420", "SRT-LCF-01"]
-        SRT_ABC_OTT_01 = [".) SRT-ABC-OTT-01             ", "10.177.30.134", "haiadmin", "manager", "SRT-ABC-OTT-01"]
-        SRT_ABC_OTT_02 = [".) SRT-ABC-OTT-02             ", "10.177.30.135", "haiadmin", "manager", "SRT-ABC-OTT-02"]
-        SRT_ABC_OTT_03 = [".) SRT-ABC-OTT-03             ", "10.177.30.136", "haiadmin", "manager", "SRT-ABC-OTT-03"]
-        SRT_ABC_OTT_04 = [".) SRT-ABC-OTT-04             ", "10.177.30.137", "haiadmin", "manager", "SRT-ABC-OTT-04"]
-        SRT_ABC_OTT_05 = [".) SRT-ABC-OTT-05             ", "10.177.30.138", "haiadmin", "manager", "SRT-ABC-OTT-05"]
-        SRT_CBC_OTT_06 = [".) SRT-CBC-OTT_06             ", "10.133.30.134", "haiadmin", "manager", "SRT-CBC-OTT-06"]
-        SRT_CBC_OTT_07 = [".) SRT-CBC-OTT-07             ", "10.133.30.135", "haiadmin", "manager", "SRT-CBC-OTT-07"]
-        SRT_CBC_OTT_08 = [".) SRT-CBC-OTT-08             ", "10.133.30.136", "haiadmin", "manager", "SRT-CBC-OTT-08"]
-        SRT_BBC_OTT_09 = [".) SRT-BBC-OTT-09             ", "10.19.197.50", "haiadmin", "manager", "SRT-BBC-OTT-09"]
-        SRT_BBC_OTT_10 = [".) SRT-BBC-OTT-10             ", "10.19.197.51", "haiadmin", "manager", "SRT-BBC-OTT-10"]
-        SRT_BBC_OTT_11 = [".) SRT-BBC-OTT-11             ", "10.19.197.52", "haiadmin", "manager", "SRT-BBC-OTT-11"]
-        SRT_JBC_OTT_12 = [".) SRT-JBC-OTT-12             ", "10.219.69.50", "haiadmin", "manager", "SRT-JBC-OTT-12"]
-        SRT_JBC_OTT_13 = [".) SRT-JBC-OTT-13             ", "10.219.69.51", "haiadmin", "manager", "SRT-JBC-OTT-13"]
-        SRT_JBC_OTT_14 = [".) SRT-JBC-OTT-14             ", "10.219.69.52", "haiadmin", "manager", "SRT-JBC-OTT-14"]
-        SRT_JBC_OTT_15 = [".) SRT-JBC-OTT-15             ", "10.219.69.53", "haiadmin", "manager", "SRT-JBC-OTT-15"]
-        SRT_JBC_OTT_16 = [".) SRT-JBC-OTT-16             ", "10.219.69.54", "haiadmin", "manager", "SRT-JBC-OTT-16"]
-        SRT_JBC_OTT_17 = [".) SRT-JBC-OTT-17             ", "10.219.69.55", "haiadmin", "manager", "SRT-JBC-OTT-17"]
-        SRT_JBC_OTT_18 = [".) SRT-JBC-OTT-18             ", "10.219.69.56", "haiadmin", "manager", "SRT-JBC-OTT-18"]
-
-        # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-        listbox_texto = [
-            SRT_ABC_01
-            , SRT_ABC_02
-            , SRT_ABC_03
-            , SRT_ABC_04
-            , SRT_CBC_01
-            , SRT_CBC_02
-            , SRT_COBC_01
-            , SRT_COBC_02
-            # , SRT_LCF_01
-            , SRT_ABC_OTT_01
-            , SRT_ABC_OTT_02
-            , SRT_ABC_OTT_03
-            , SRT_ABC_OTT_04
-            , SRT_ABC_OTT_05
-            , SRT_CBC_OTT_06
-            , SRT_CBC_OTT_07
-            , SRT_CBC_OTT_08
-            , SRT_BBC_OTT_09
-            , SRT_BBC_OTT_10
-            , SRT_BBC_OTT_11
-            , SRT_JBC_OTT_12
-            , SRT_JBC_OTT_13
-            , SRT_JBC_OTT_14
-            , SRT_JBC_OTT_15
-            , SRT_JBC_OTT_16
-            # ,SRT_JBC_OTT_17
-            # ,SRT_JBC_OTT_18
-        ]
-
-        # print(listbox_texto.index(SRT_JBC_OTT_18))
-        # print(listbox_texto.__getitem__(10)[1])
-
-        layout = [
-            [sg.Text(text=texto, auto_size_text=False, key="nombre_de_archivo")],
-            [sg.Listbox(disabled=not FFlag, values=listbox_texto, default_values=SRT_ABC_03, size=(22, 12),
-                        key="listbox_01", enable_events=False)],
-            [sg.Button("Generate CSV", disabled=not FFlag), sg.Button("Upload_Swagger", disabled=FFlag),
-             sg.Button("Exit")],
-            [sg.Button("Update SRTs in Production", disabled=False)],
-            [sg.Check("Activate refresh", key="activar_r", enable_events=True)]
-
-        ]
-
-        window = sg.Window("SRT Process", layout)
-
-        """event, values = window.read()
-        texto =  values["activar_r"]
-        print("xxxxxxxxxxxxxxxxxxxxxxxxx valor de checkbox linea 312 =============", texto)
-        """
-
-        while True:
-            event, values = window.read()
-            print(event, values)
-
-            # sg.popup("linea 322 _____este es un mensaje de popup")
-            if event in ("Exit", None):
-                try:
-                    x
-                except Exception as e:
-                    print(str(e))
-                    x = "no eligió ningún dispositivo"
-                break
-
-            elif event == "Upload_Swagger":
-                x = ["Swagger"]
-
-
-            elif event == "Generate CSV":
-                x = window["listbox_01"].get()
-                texto = x[0][0:1][0][3:20]
-                window["nombre_de_archivo"].Update(texto)
-                break
-
-
-            elif event == "Update SRTs in Production":
-                # activar_cb = True
-                while True:
-
-                    update_srt_dth()
-                    # window["activar_r"].update(values)  # show the event and values in the window
-                    activar_cb = window["activar_r"].get()
-                    print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", activar_cb)
-                    window.refresh()  # make sure it's shown immediately
-                    print("VALUES", values)
-
-                    # event, values = window.read()
-                    # activar_cb = values["activar_r"]
-                    print("Linea 388 activar_cb ====", activar_cb)
-
-                    if activar_cb == False:
-                        break
-
-                    elif activar_cb == True:
-                        timer(1)
-
-            # ********************************************************************************
-            # ********************************************************************************
-
-        window.close()
-        return x[0]
-
-
-# xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ventana fin     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
-
-# XXXXXXXXXXXXXXXXXXX     comienzo API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 def API_int(SRT_IP, FUNCION):
-    #  FUNCION es para crear el CSV teniendo como dato la ip de mgm del srt.
+    #funcion: leer ruta, ver estadisticas, etc
+
+
 
     import json
     import requests
@@ -496,76 +42,75 @@ def API_int(SRT_IP, FUNCION):
 
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
+
     return INFO
+
+
 # XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
-# XXXXXXXXXXXXXXXXXXX       COMIENZO LAST UPDATE    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-def Last_Update():
-    import datetime
-    now_month = datetime.datetime.now().month
-    now_day = datetime.datetime.now().day
-    now_year = datetime.datetime.now().year
 
-    last_updated = f"{now_month}/{now_day}/{now_year}"
-    return last_updated
-# XXXXXXXXXXXXXXXXXXX       FIN LAST UPDATE         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+"""
+data obtenida despues del llamado de la api
+{'numResults': 39, 'numPages': 1, 'data': [{'name': '01_ABC3_COBC1_TEST', 'elapsedTime': '4042:19:53', 'id': 'aba454e5-a2d5-4f2f-a82e-2fda732e796b', 'label': '284cc369-11bf-d856-f13a-58b32fc5e352', 'state': 'idle', 'source': {'name': 'h1', 'id': '22a819ab-ee3b-4a6e-8392-5f3ab2ca9612', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.170', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.170', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'COBC1', 'id': 'ab4b971b-f940-48a3-9cf6-43c02bdd7404', 'protocol': 'srt', 'port': 14056, 'started': False, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '191.102.238.101', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1002, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '02_Test Haivision Canada', 'elapsedTime': '8274:22:43', 'id': 'b253ec0c-7f61-408f-8dc9-3b509294ffbd', 'label': '6568b65c-fba1-96b6-dc2d-6d8364faba3d', 'state': 'running', 'source': {'name': 'Makito X1 Canada', 'id': '7e066bac-5b97-45cf-a17e-1fc0bbd12546', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10003, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': '02_Test Haivision Canada', 'id': '62ffa83d-16de-44fc-9aba-e1bc810a6224', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.2', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.2', 'shaping': True, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source Makito X1 Canada connecting'}, {'name': '04_ABC_INTER-TV_DTV-SPORTS-2_P', 'elapsedTime': '3138:18:34', 'id': '9011d5de-e145-4bee-a71a-c67142ca7832', 'label': 'e6a50430-a076-ab59-215d-5e1aded77bf7', 'state': 'running', 'source': {'name': 'DTV-SPORTS-2', 'id': '197a02d6-6711-4065-8e9f-738352aa542c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.6', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.6', 'encryption': 'none', 'usedBandwidth': '13.945', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': '82444aef-9d06-4db6-a8cc-2ef7836023df', 'protocol': 'srt', 'port': 10037, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 2, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '13.941', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '05_ABC_INTER-TV_DTV-SPORTS-PLUS_P', 'elapsedTime': '3141:31:27', 'id': '1cf31869-5b98-45d7-81d5-58f0cca78bf1', 'label': 'a6cfa143-4c4c-efd3-54d9-08827eec2b7c', 'state': 'running', 'source': {'name': 'DTVSPORTS-PLUS', 'id': '79a99e00-7ca8-4dd5-9811-7e828769dc8c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.7', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.7', 'encryption': 'none', 'usedBandwidth': '14.145', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': 'f46528b8-6df7-4a53-a753-579f975e5cdc', 'protocol': 'srt', 'port': 10038, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 3, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '14.146', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '06_ABC_INTER-TV_DTV-SPORTS-PAN_P', 'elapsedTime': '3141:29:11', 'id': 'cfb1912f-39a3-4fa0-bac6-312fa3a58150', 'label': '1eed7072-0ddc-b6f0-5822-5521ebabf166', 'state': 'running', 'source': {'name': 'DTV-SPORTS-PAN', 'id': 'e3c59b7e-fe9b-4ad5-98de-dec888eed440', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.5', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.5', 'encryption': 'none', 'usedBandwidth': '14.022', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': '120bb2c4-dd74-4f12-b0b0-70c3a463888a', 'protocol': 'srt', 'port': 10039, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 2, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '14.016', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, {'name': 'RCV MON TOC 3', 'id': '89535f5d-a740-4ca9-8f8b-3e720bda1822', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.23.6', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '14.013', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '11_LaRed-Chile-B_ABC', 'elapsedTime': '00:00:33', 'id': '781612a7-06fe-449d-a7b3-85d47fb97e1d', 'label': 'bea0b4de-e60e-96e0-0cc6-7b8bea3e02ca', 'state': 'idle', 'source': {'name': 'LaRed-Chile-B', 'id': '52990479-4e52-4870-b59e-225ad70806cf', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '200.68.48.203', 'protocol': 'srt', 'port': 9005, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 1000, 'srtRcvBuf': 20240000, 'useFec': False, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV-ABC-1209-B', 'id': 'a5d100b0-7258-468d-a75a-47c932d1a655', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.11', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '31_Campo_Rural_TV_ABC_B', 'elapsedTime': '2573:49:53', 'id': 'ca0240c3-8bb5-44ce-ae6e-d35aa2d63c81', 'label': '92f0b837-0ea2-413a-fe22-8e22372f451a', 'state': 'running', 'source': {'name': 'Campo Rural TV ABC B', 'id': '0c30c14d-0da8-49a7-8938-78a382ab5dcd', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '201.217.149.66', 'protocol': 'srt', 'port': 10028, 'encryption': 'none', 'usedBandwidth': '10.654', 'state': 'connected', 'srtLatency': 6000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV1274B', 'id': '7a80aaff-56ad-48e2-9a8a-ec76fe227967', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.31', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '10.657', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': True, 'maxBitrate': 15000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '40_TELETUYA_GOLDDATA_ABC', 'elapsedTime': '567:06:25', 'id': 'e3530418-f8de-4033-be38-ed9e47ebff68', 'label': '93fc3d93-30e4-9ad1-ae7f-f7245664ba10', 'state': 'running', 'source': {'name': 'TLT-GOLDDATA', 'id': '7f14c813-c9eb-4b2a-9c79-264431064ac0', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '10.202.30.1', 'protocol': 'srt', 'port': 10040, 'encryption': 'none', 'usedBandwidth': '6.157', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'VOS', 'id': '409e8480-337b-4f09-afc4-40f6a4999b77', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.40', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '6.116', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '41_ABC04_CBC02_MTV00_B_TEST', 'elapsedTime': '5999:46:30', 'id': 'f81e690b-7a90-49ba-a4d9-b8312f71477f', 'label': '49bc62a3-f6e2-a9e9-5df5-ebf888c94120', 'state': 'running', 'source': {'name': 'RCV1356_MTV00_B', 'id': '32b3f922-ae9c-4990-bb5c-28a1bd9fe342', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.164', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.164', 'encryption': 'none', 'usedBandwidth': '20.429', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02_MTV00', 'id': 'fd06d0b8-1bcb-4adf-9895-1f860078243a', 'protocol': 'srt', 'port': 10020, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '20.429', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '42_ABC04_CBC02_TeenNick_B_TEST', 'elapsedTime': '5999:38:27', 'id': '550ebe6f-1a8c-4af8-98c8-e05e88ce430c', 'label': '18948d98-c10f-64eb-dced-63a099031fba', 'state': 'running', 'source': {'name': 'rcv1354_TeenNick_B', 'id': '2da7d492-9656-4bb8-b9bf-f229222c2ff1', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.162', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.162', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02-Teen Nick', 'id': 'c5bdb076-1fe8-4734-832e-aa32d94938f9', 'protocol': 'srt', 'port': 10021, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '51_ABC_CBC_U-1574-UNCE_P ', 'elapsedTime': '9066:54:33', 'id': 'd34cd9d2-e9c9-4bbe-a20a-d5fe6be00137', 'label': 'ac6db064-f459-a4fd-6e1b-9d0dd4780a22', 'state': 'running', 'source': {'name': 'CRIME ESTE', 'id': '09a6c3f6-fdf8-4062-8f83-184ec78ab525', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.82.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-01', 'id': '516375ed-0571-4b4e-ac71-d72646b00e91', 'protocol': 'srt', 'port': 10051, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '52_ABC_CBC_U-1575-UNRE_B', 'elapsedTime': '9066:53:43', 'id': '7350f3b1-364b-4390-a54a-1217bf17eab3', 'label': '6da4723a-afb4-9355-3204-09267b29fbf5', 'state': 'running', 'source': {'name': 'REALITY', 'id': '092764e0-2e59-4849-a1a3-17cbd3de453c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.80.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': '606dfba9-79e8-439f-9315-8cf9688de291', 'protocol': 'srt', 'port': 10052, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '53_ABC_CBC_U-1576-UPRO_P ', 'elapsedTime': '4173:32:10', 'id': '28e9abe8-80cb-469c-8baf-b76717ec26ee', 'label': 'f4d120a3-f05c-10ad-1ee9-c36682c528d5', 'state': 'running', 'source': {'name': 'PREMIERE OESTE', 'id': '85aaf033-dcfa-4406-b052-3f47a50f388a', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.88.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': '3bb3b385-3891-49e8-adb7-972c895f9aa2', 'protocol': 'srt', 'port': 10053, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '54_ABC_CBC_U-1577 -UNCO_P ', 'elapsedTime': '9050:53:09', 'id': 'e4a390c3-0ccb-4fd8-a48b-8bfcd913bbbc', 'label': '4af790e1-88df-b5d0-2f3a-f28312f08460', 'state': 'running', 'source': {'name': 'U-CRIME-LA-T2_P', 'id': 'b9c412bd-95cb-4a47-a338-1bb6ac1c4828', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.92.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': 'babde300-e7bc-4104-9076-b827b8813eb1', 'protocol': 'srt', 'port': 10054, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'AES128', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'retainHeader': False, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'started (waiting for data)'}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Destination CBC-02 started (waiting for data)'}, {'name': '55_CANELA_ABC_Pri', 'elapsedTime': '1716:56:53', 'id': '931141d0-0139-4c9d-bf13-69a9b1cdeffc', 'label': 'cebe166a-642f-db3d-41ee-eb3c16e911b2', 'state': 'running', 'source': {'name': 'CANELA', 'id': '73ed6c6d-a8ed-4db1-af82-a5242b058b69', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.12.54.171', 'protocol': 'srt', 'port': 1021, 'encryption': 'none', 'usedBandwidth': '10.255', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CANELA', 'id': '0f9b690b-248a-45a3-85f3-0864efb49ee8', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.55', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '9.673', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 15000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '56_CARACOL_OTT_ABC_Bck', 'elapsedTime': '2856:27:46', 'id': '4499d374-25af-4f53-95ed-ea16626f7880', 'label': 'e603a35b-5632-e33f-b3d2-a7ff8335a9ea', 'state': 'running', 'source': {'name': 'CARACOL', 'id': 'cb63053a-5f13-40eb-bb95-8760766c80f8', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.217.16.156', 'protocol': 'srt', 'port': 3002, 'encryption': 'none', 'usedBandwidth': '5.533', 'state': 'connected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV', 'id': 'c15e111c-4df1-4dd7-8de3-5212e555d2d8', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.56', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '5.533', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '60_Test_CS:GO-ABC', 'elapsedTime': '00:00:41', 'id': '87587ab5-3bdc-4469-a20a-afa8a1f2ca66', 'label': 'a03fad04-666e-fe3c-f153-8375544ec1f7', 'state': 'idle', 'source': {'name': 'Test CS:Go', 'id': '76f32162-d3ee-45d0-91b0-e15f6b4ab7f6', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.104.233.219', 'protocol': 'srt', 'port': 10000, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV 21', 'id': '9a4c4302-e968-48dd-9034-dee2b9ef1b16', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.60', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '61_CBC02_ABC04_TEST', 'elapsedTime': '3644:05:56', 'id': 'a1143c9b-ed29-4f4f-9976-cdf63065867e', 'label': '264efaab-2b59-ab8f-5b82-c0b34d7d2d2e', 'state': 'running', 'source': {'name': 'CBC02', 'id': '9df8eefa-d0a9-4866-a5a9-e84a6f71d4a9', 'networkInterface': '', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10044, 'encryption': 'srt', 'usedBandwidth': '8.174', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV 24B', 'id': '272f3946-b361-4966-b86b-9cada93c5da6', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.61', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '8.173', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '62_COBC02-ABC04_EVC01-P3', 'elapsedTime': '3524:40:34', 'id': '4c5463b1-7656-474b-addd-479859b66716', 'label': '768a2a62-94aa-950e-8fe9-1de9c3f4552a', 'state': 'running', 'source': {'name': 'COBC02', 'id': 'f7d4582a-ebb8-42b6-bd26-ac5ef7df4e3e', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10050, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'lan', 'id': '7ada3062-1f84-4c4a-b829-452982338616', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.62', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.62', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source COBC02 connecting'}, {'name': '63_PRG_ABC04_NEWS', 'elapsedTime': '1394:35:08', 'id': '09bf40a2-786a-4cee-9dbc-d8c25128f34a', 'label': 'cb2c22b1-55eb-d7b7-423f-c8083b4a7084', 'state': 'idle', 'source': {'name': 'PRG', 'id': '88228dd3-9522-4335-aa3e-c17687c14f2d', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.104.242.106', 'protocol': 'srt', 'port': 10063, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': 'prg.2022!!!!!', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV', 'id': 'd017d544-af60-41c5-8e21-e6db2fc3e2bb', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.63', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '64_ABC_PRG_CONTRIB', 'elapsedTime': '189:10:15', 'id': '23d71324-1452-4991-a03d-31d12996e5e8', 'label': '60c1c2c3-d299-fde7-4634-3c8402504ed9', 'state': 'running', 'source': {'name': 'ABC', 'id': 'f2f5065c-e904-43b1-bb44-c7c830c7a4db', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.8', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.8', 'encryption': 'none', 'usedBandwidth': '12.254', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'PRG-CONTRIB', 'id': '9a9671e7-d658-4342-95c2-3e5bbe6a1348', 'protocol': 'srt', 'port': 9090, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '181.12.151.123', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES128', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': 'Directv.2022', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '12.261', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '65_LAN-TOOLBOX_POC', 'elapsedTime': '3162:50:03', 'id': 'f1dc171c-b871-48ed-aa33-38a6bcecd66d', 'label': '737af6dc-0df2-bd82-15eb-af0f92545cd1', 'state': 'running', 'source': {'name': 'LAN-CHANNEL', 'id': '12d5c330-d286-4263-a022-86350952c994', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.16.61', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.22.61', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'TOOLBOX', 'id': '66dc75c7-98b6-445a-b774-c2e118784f2f', 'protocol': 'udp', 'port': 8999, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.16.61', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}, {'name': 'bbc-caller-test', 'id': '1994e751-7d88-4b65-943e-dea754aaae9c', 'protocol': 'srt', 'port': 14018, 'started': False, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '189.28.24.97', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': True, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, {'name': 'bbc-test', 'id': '768b976c-cbc5-4312-8996-5ef759e308f0', 'protocol': 'srt', 'port': 14018, 'started': False, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': True, 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '66_BBC_ABC-MUX-16-B', 'elapsedTime': '328:42:22', 'id': '1abfc2bc-ac03-46b0-81f1-3f4895b36679', 'label': '39f383b7-cb9c-a085-2d1e-9fbf4945e22e', 'state': 'running', 'source': {'name': 'BBC-MUX-03', 'id': 'c8031cf7-97e3-464d-b6b2-6d393a7176c9', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14016, 'encryption': 'srt', 'usedBandwidth': '36.091', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'MUX-16-B', 'id': '4e4f8808-4439-4583-b097-398a62ab8079', 'protocol': 'rtp', 'port': 5090, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '239.77.24.16', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.000', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '67_BBC_ABC-MUX-18-B', 'elapsedTime': '2539:13:38', 'id': '8333ac62-34a1-46d5-acd5-2419036e77ca', 'label': '45dd235e-bdbd-fd3d-0c49-138f1324eb29', 'state': 'running', 'source': {'name': 'BBC-MUX-04', 'id': 'f87c738c-d7da-4981-af9f-c763f215f11d', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14015, 'encryption': 'srt', 'usedBandwidth': '36.073', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'MUX-18-B', 'id': '71a1e6d1-1b55-41fa-8046-a9ae1518f497', 'protocol': 'rtp', 'port': 5090, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '239.77.24.18', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.001', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '68_LOVE_NATURE_4K_BACKUP_ABC', 'elapsedTime': '790:38:11', 'id': '4bc7d1bf-b6f1-4732-bf52-327e958ab9f5', 'label': '42896c76-bb2d-d9df-fe62-41c62e96f8ce', 'state': 'running', 'source': {'name': 'LOVE_NATURE_4K', 'id': '4307fa81-3fc6-47b2-9b7f-7c510eb62acf', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '213.215.151.52', 'protocol': 'srt', 'port': 12033, 'encryption': 'none', 'usedBandwidth': '18.393', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 20480000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'NATURE2-RCV', 'id': '982eba5f-46c3-4f0c-af15-d4db356eed6a', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.68', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '18.391', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 30000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '69_UNION_RADIO_EXITOS_BU-ABC', 'elapsedTime': '68:38:49', 'id': '5975ddfc-316e-43db-8c3c-c8b956a03702', 'label': '77e0837d-f975-1538-7264-2f29b0f99e5d', 'state': 'running', 'source': {'name': 'CNUR-RCV', 'id': '05f4ffb1-c29a-4576-a63b-4746ee014b7c', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.94.215.14', 'protocol': 'srt', 'port': 20006, 'encryption': 'none', 'usedBandwidth': '0.409', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CNUR-RCV', 'id': '45a46832-d9c2-4218-8764-a6602e065839', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.69', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.408', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '72_TLMX_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '68ce229c-6d87-4122-9687-636f04533ce0', 'label': '1d00e517-43c9-40da-2b5a-4d68e7a9fdba', 'state': 'idle', 'source': {'name': 'TLMX-B', 'id': '142d271a-05be-4018-8834-6dff2a50b7ad', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10072, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '73_MUSICTOP_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '2c83397f-a896-4398-b23b-a7157bb51d01', 'label': '2cf69648-6bad-be26-3493-2e70fc521606', 'state': 'idle', 'source': {'name': 'MUSICTOP', 'id': '38111adb-a1f4-409a-a06a-97e0529e8263', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10073, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '74_TIERRAMIATV_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '6bc29052-61df-4b15-853c-166ef5a07499', 'label': 'bfdf0002-1050-1b0f-1188-7015c81d8af0', 'state': 'idle', 'source': {'name': 'TIERRAMIATV', 'id': '850d5954-fe55-426d-962d-a267bfd4b94d', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10074, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '75_FM_CANDELA_y_ROMANTICA_BU_VENEZUELA-ABC', 'elapsedTime': '1818:44:18', 'id': '3bd04725-3455-4775-9a53-43fc8d70a1cb', 'label': 'd310aacc-3f05-afe9-b87b-0137b8e09f04', 'state': 'running', 'source': {'name': 'FM_CANDELA_y_ROMANTICA', 'id': '88d9970d-f6ae-4df4-aad1-db8674bae3d5', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.216.227.102', 'protocol': 'srt', 'port': 20003, 'encryption': 'none', 'usedBandwidth': '0.307', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'FM_CANDELA_y_ROMANTICA_BU_MUX', 'id': 'db98f2bb-87d5-434f-a554-0beaa1e5f7ca', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.75', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.306', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '76_FM_FIESTA_BU_VENEZUELA-ABC', 'elapsedTime': '1818:45:21', 'id': '8c740d61-8018-4136-8568-0ef99cfcb5ee', 'label': '35a6a321-f90c-8a48-8054-a732da40ee17', 'state': 'running', 'source': {'name': 'FM_FIESTA_BU', 'id': '9db98e2f-1da2-47f1-a58c-4a4897fe1b6d', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.216.227.102', 'protocol': 'srt', 'port': 20004, 'encryption': 'none', 'usedBandwidth': '0.204', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'FM_FIESTA_BU_MUX', 'id': 'd4287f0d-1c22-4603-b266-627eaf2f7680', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.76', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.204', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '78_BBC_BAND_PIRATA', 'elapsedTime': '1455:59:27', 'id': 'efcd840c-3e3b-4b63-a5de-b95127dfb6f0', 'label': 'c04d2116-4a3a-c2aa-b817-b35ef721ba8f', 'state': 'running', 'source': {'name': 'BBC_BAND_DNEWS', 'id': '64b685b4-b417-424d-b4b4-3271a659103b', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14018, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'OCA21B', 'id': '37e43fa4-0dc1-42f2-8aac-cc730c0564dd', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.16.78', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source BBC_BAND_DNEWS connecting'}, {'name': '79_hhh_test', 'elapsedTime': '1153:32:43', 'id': 'da695bb1-f9c5-434a-9b58-cdc45fa9966d', 'label': '27a8344d-52ec-e92a-85dc-9548f79a84ac', 'state': 'running', 'source': {'name': 'kyrion-1.1p-udp', 'id': '105e61d1-be60-45c6-9b03-499f5c72cf05', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.106.1', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.1', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connection established', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connection established'}, 'destinations': [], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source kyrion-1.1p-udp connection established'}, {'name': '80_JBC17_ABC04_TX16', 'elapsedTime': '690:47:44', 'id': 'e07f2c5e-fb1e-45eb-a740-699ca27ba3fc', 'label': '3d873f7f-5bd2-0b8e-a64d-1927e76d8b36', 'state': 'running', 'source': {'name': 'JBC-TX16-SRT_JBC_OTT_17', 'id': 'b1a30c49-647d-493d-b966-860d88764db9', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10041, 'encryption': 'srt', 'usedBandwidth': '36.091', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'lan', 'id': '8ddd2b82-3360-43cf-81e6-cfb19edc1678', 'protocol': 'rtp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.80', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.001', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '81_JBC17_ABC04_TX18', 'elapsedTime': '958:00:34', 'id': '03100926-626e-4916-bfb7-8cdac9f7cf5f', 'label': 'b91b8c6f-2e4e-ad24-033e-bfacb6019019', 'state': 'running', 'source': {'name': 'JBC-TX18-SRT_JBC_OTT_17', 'id': 'a8bebd2b-f50c-4228-89fd-937f200c5467', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10042, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'lan', 'id': '3cfa3389-27e6-40bb-ae7a-d821f6291648', 'protocol': 'rtp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.81', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.81', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source JBC-TX18-SRT_JBC_OTT_17 connecting'}, {'name': '83_ABC_MTVL_Backup-CBC02', 'elapsedTime': '817:14:23', 'id': '9bc62a75-d8ea-4de6-a7fb-87874556bced', 'label': 'b231b9b8-600e-e475-4437-311b795016f5', 'state': 'running', 'source': {'name': 'RCV-ABC-1353-B', 'id': '38283fd4-b715-4d08-ad11-9f3c68b7280b', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.161', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.161', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02_MTVL-Backup', 'id': 'edcf974d-643b-46ad-820d-197ab1f46603', 'protocol': 'srt', 'port': 10083, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '84_DNEWS_BU-TELECENTRO', 'elapsedTime': '498:07:35', 'id': '163f0ef7-1470-44c6-8407-73831f1ada35', 'label': 'c46e0a99-ab75-ba4e-0c78-f1fcc2118e3c', 'state': 'running', 'source': {'name': 'ENC-9008-B', 'id': 'ba1ae6d5-1cf8-4eb8-935b-9ea1d65a7225', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.43.190', 'protocol': 'rtp', 'port': 8000, 'sourceAddress': '10.77.54.71', 'fec': 'none', 'retainHeader': False, 'encryption': 'none', 'usedBandwidth': '10.307', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'Test', 'id': '8e7e3f8a-7df0-4451-b1d6-f1525d8bb874', 'protocol': 'srt', 'port': 10084, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.212', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '85_TELEVEN_BU-ABC', 'elapsedTime': '479:55:46', 'id': 'd463aaf8-0edb-4853-b540-e887baae0deb', 'label': '33ebef53-61b8-1fff-8919-6e7ee67c5d86', 'state': 'running', 'source': {'name': 'TELEVEN_BU', 'id': 'ce5f5419-842e-499f-8f67-a2877edc53d8', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.94.209.139', 'protocol': 'srt', 'port': 11002, 'encryption': 'none', 'usedBandwidth': '6.546', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'TELEVEN', 'id': '48ceabaa-8904-4cf1-adb9-a27fbb918f03', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.85', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '6.539', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': 'CANELA_LAREDONDA_TEST', 'elapsedTime': '1717:26:54', 'id': '8b73671b-3556-4ed0-b732-48fb23405ec4', 'label': 'ba1ac7ce-7086-cee0-921e-dc6796d80d72', 'state': 'running', 'source': {'name': 'Canela_Test', 'id': '493cbfda-d288-47ef-ace1-88a2ed9c9cd5', 'networkInterface': 'ens33', 'mode': 'unicast', 'address': '0.0.0.0', 'protocol': 'udp', 'port': 10021, 'sourceAddress': '', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connection established', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connection established'}, 'destinations': [], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source Canela_Test connection established'}], 'numActiveOutputConnections': 34}
+"""
+
+data_test = {'numResults': 39, 'numPages': 1, 'data': [{'name': '01_ABC3_COBC1_TEST', 'elapsedTime': '4042:19:53', 'id': 'aba454e5-a2d5-4f2f-a82e-2fda732e796b', 'label': '284cc369-11bf-d856-f13a-58b32fc5e352', 'state': 'idle', 'source': {'name': 'h1', 'id': '22a819ab-ee3b-4a6e-8392-5f3ab2ca9612', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.170', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.170', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'COBC1', 'id': 'ab4b971b-f940-48a3-9cf6-43c02bdd7404', 'protocol': 'srt', 'port': 14056, 'started': False, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '191.102.238.101', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1002, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '02_Test Haivision Canada', 'elapsedTime': '8274:22:43', 'id': 'b253ec0c-7f61-408f-8dc9-3b509294ffbd', 'label': '6568b65c-fba1-96b6-dc2d-6d8364faba3d', 'state': 'running', 'source': {'name': 'Makito X1 Canada', 'id': '7e066bac-5b97-45cf-a17e-1fc0bbd12546', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10003, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': '02_Test Haivision Canada', 'id': '62ffa83d-16de-44fc-9aba-e1bc810a6224', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.2', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.2', 'shaping': True, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source Makito X1 Canada connecting'}, {'name': '04_ABC_INTER-TV_DTV-SPORTS-2_P', 'elapsedTime': '3138:18:34', 'id': '9011d5de-e145-4bee-a71a-c67142ca7832', 'label': 'e6a50430-a076-ab59-215d-5e1aded77bf7', 'state': 'running', 'source': {'name': 'DTV-SPORTS-2', 'id': '197a02d6-6711-4065-8e9f-738352aa542c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.6', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.6', 'encryption': 'none', 'usedBandwidth': '13.945', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': '82444aef-9d06-4db6-a8cc-2ef7836023df', 'protocol': 'srt', 'port': 10037, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 2, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '13.941', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '05_ABC_INTER-TV_DTV-SPORTS-PLUS_P', 'elapsedTime': '3141:31:27', 'id': '1cf31869-5b98-45d7-81d5-58f0cca78bf1', 'label': 'a6cfa143-4c4c-efd3-54d9-08827eec2b7c', 'state': 'running', 'source': {'name': 'DTVSPORTS-PLUS', 'id': '79a99e00-7ca8-4dd5-9811-7e828769dc8c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.7', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.7', 'encryption': 'none', 'usedBandwidth': '14.145', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': 'f46528b8-6df7-4a53-a753-579f975e5cdc', 'protocol': 'srt', 'port': 10038, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 3, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '14.146', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '06_ABC_INTER-TV_DTV-SPORTS-PAN_P', 'elapsedTime': '3141:29:11', 'id': 'cfb1912f-39a3-4fa0-bac6-312fa3a58150', 'label': '1eed7072-0ddc-b6f0-5822-5521ebabf166', 'state': 'running', 'source': {'name': 'DTV-SPORTS-PAN', 'id': 'e3c59b7e-fe9b-4ad5-98de-dec888eed440', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.5', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.5', 'encryption': 'none', 'usedBandwidth': '14.022', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'INTER-TV', 'id': '120bb2c4-dd74-4f12-b0b0-70c3a463888a', 'protocol': 'srt', 'port': 10039, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 2000, 'srtConnectionLimit': 5, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 2, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '14.016', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, {'name': 'RCV MON TOC 3', 'id': '89535f5d-a740-4ca9-8f8b-3e720bda1822', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.23.6', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '14.013', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '11_LaRed-Chile-B_ABC', 'elapsedTime': '00:00:33', 'id': '781612a7-06fe-449d-a7b3-85d47fb97e1d', 'label': 'bea0b4de-e60e-96e0-0cc6-7b8bea3e02ca', 'state': 'idle', 'source': {'name': 'LaRed-Chile-B', 'id': '52990479-4e52-4870-b59e-225ad70806cf', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '200.68.48.203', 'protocol': 'srt', 'port': 9005, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 1000, 'srtRcvBuf': 20240000, 'useFec': False, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV-ABC-1209-B', 'id': 'a5d100b0-7258-468d-a75a-47c932d1a655', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.11', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '31_Campo_Rural_TV_ABC_B', 'elapsedTime': '2573:49:53', 'id': 'ca0240c3-8bb5-44ce-ae6e-d35aa2d63c81', 'label': '92f0b837-0ea2-413a-fe22-8e22372f451a', 'state': 'running', 'source': {'name': 'Campo Rural TV ABC B', 'id': '0c30c14d-0da8-49a7-8938-78a382ab5dcd', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '201.217.149.66', 'protocol': 'srt', 'port': 10028, 'encryption': 'none', 'usedBandwidth': '10.654', 'state': 'connected', 'srtLatency': 6000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV1274B', 'id': '7a80aaff-56ad-48e2-9a8a-ec76fe227967', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.31', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '10.657', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': True, 'maxBitrate': 15000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '40_TELETUYA_GOLDDATA_ABC', 'elapsedTime': '567:06:25', 'id': 'e3530418-f8de-4033-be38-ed9e47ebff68', 'label': '93fc3d93-30e4-9ad1-ae7f-f7245664ba10', 'state': 'running', 'source': {'name': 'TLT-GOLDDATA', 'id': '7f14c813-c9eb-4b2a-9c79-264431064ac0', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '10.202.30.1', 'protocol': 'srt', 'port': 10040, 'encryption': 'none', 'usedBandwidth': '6.157', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'VOS', 'id': '409e8480-337b-4f09-afc4-40f6a4999b77', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.40', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '6.116', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '41_ABC04_CBC02_MTV00_B_TEST', 'elapsedTime': '5999:46:30', 'id': 'f81e690b-7a90-49ba-a4d9-b8312f71477f', 'label': '49bc62a3-f6e2-a9e9-5df5-ebf888c94120', 'state': 'running', 'source': {'name': 'RCV1356_MTV00_B', 'id': '32b3f922-ae9c-4990-bb5c-28a1bd9fe342', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.164', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.164', 'encryption': 'none', 'usedBandwidth': '20.429', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02_MTV00', 'id': 'fd06d0b8-1bcb-4adf-9895-1f860078243a', 'protocol': 'srt', 'port': 10020, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '20.429', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '42_ABC04_CBC02_TeenNick_B_TEST', 'elapsedTime': '5999:38:27', 'id': '550ebe6f-1a8c-4af8-98c8-e05e88ce430c', 'label': '18948d98-c10f-64eb-dced-63a099031fba', 'state': 'running', 'source': {'name': 'rcv1354_TeenNick_B', 'id': '2da7d492-9656-4bb8-b9bf-f229222c2ff1', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.162', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.162', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02-Teen Nick', 'id': 'c5bdb076-1fe8-4734-832e-aa32d94938f9', 'protocol': 'srt', 'port': 10021, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '51_ABC_CBC_U-1574-UNCE_P ', 'elapsedTime': '9066:54:33', 'id': 'd34cd9d2-e9c9-4bbe-a20a-d5fe6be00137', 'label': 'ac6db064-f459-a4fd-6e1b-9d0dd4780a22', 'state': 'running', 'source': {'name': 'CRIME ESTE', 'id': '09a6c3f6-fdf8-4062-8f83-184ec78ab525', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.82.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-01', 'id': '516375ed-0571-4b4e-ac71-d72646b00e91', 'protocol': 'srt', 'port': 10051, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '52_ABC_CBC_U-1575-UNRE_B', 'elapsedTime': '9066:53:43', 'id': '7350f3b1-364b-4390-a54a-1217bf17eab3', 'label': '6da4723a-afb4-9355-3204-09267b29fbf5', 'state': 'running', 'source': {'name': 'REALITY', 'id': '092764e0-2e59-4849-a1a3-17cbd3de453c', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.80.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': '606dfba9-79e8-439f-9315-8cf9688de291', 'protocol': 'srt', 'port': 10052, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '53_ABC_CBC_U-1576-UPRO_P ', 'elapsedTime': '4173:32:10', 'id': '28e9abe8-80cb-469c-8baf-b76717ec26ee', 'label': 'f4d120a3-f05c-10ad-1ee9-c36682c528d5', 'state': 'running', 'source': {'name': 'PREMIERE OESTE', 'id': '85aaf033-dcfa-4406-b052-3f47a50f388a', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.88.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': '3bb3b385-3891-49e8-adb7-972c895f9aa2', 'protocol': 'srt', 'port': 10053, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES256', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.216', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '54_ABC_CBC_U-1577 -UNCO_P ', 'elapsedTime': '9050:53:09', 'id': 'e4a390c3-0ccb-4fd8-a48b-8bfcd913bbbc', 'label': '4af790e1-88df-b5d0-2f3a-f28312f08460', 'state': 'running', 'source': {'name': 'U-CRIME-LA-T2_P', 'id': 'b9c412bd-95cb-4a47-a338-1bb6ac1c4828', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.92.17.35', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.35', 'encryption': 'none', 'usedBandwidth': '10.216', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC-02', 'id': 'babde300-e7bc-4104-9076-b827b8813eb1', 'protocol': 'srt', 'port': 10054, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'AES128', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'retainHeader': False, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'started (waiting for data)'}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Destination CBC-02 started (waiting for data)'}, {'name': '55_CANELA_ABC_Pri', 'elapsedTime': '1716:56:53', 'id': '931141d0-0139-4c9d-bf13-69a9b1cdeffc', 'label': 'cebe166a-642f-db3d-41ee-eb3c16e911b2', 'state': 'running', 'source': {'name': 'CANELA', 'id': '73ed6c6d-a8ed-4db1-af82-a5242b058b69', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.12.54.171', 'protocol': 'srt', 'port': 1021, 'encryption': 'none', 'usedBandwidth': '10.255', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CANELA', 'id': '0f9b690b-248a-45a3-85f3-0864efb49ee8', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.55', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '9.673', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 15000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '56_CARACOL_OTT_ABC_Bck', 'elapsedTime': '2856:27:46', 'id': '4499d374-25af-4f53-95ed-ea16626f7880', 'label': 'e603a35b-5632-e33f-b3d2-a7ff8335a9ea', 'state': 'running', 'source': {'name': 'CARACOL', 'id': 'cb63053a-5f13-40eb-bb95-8760766c80f8', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.217.16.156', 'protocol': 'srt', 'port': 3002, 'encryption': 'none', 'usedBandwidth': '5.533', 'state': 'connected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV', 'id': 'c15e111c-4df1-4dd7-8de3-5212e555d2d8', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.56', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '5.533', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '60_Test_CS:GO-ABC', 'elapsedTime': '00:00:41', 'id': '87587ab5-3bdc-4469-a20a-afa8a1f2ca66', 'label': 'a03fad04-666e-fe3c-f153-8375544ec1f7', 'state': 'idle', 'source': {'name': 'Test CS:Go', 'id': '76f32162-d3ee-45d0-91b0-e15f6b4ab7f6', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.104.233.219', 'protocol': 'srt', 'port': 10000, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV 21', 'id': '9a4c4302-e968-48dd-9034-dee2b9ef1b16', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.60', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '61_CBC02_ABC04_TEST', 'elapsedTime': '3644:05:56', 'id': 'a1143c9b-ed29-4f4f-9976-cdf63065867e', 'label': '264efaab-2b59-ab8f-5b82-c0b34d7d2d2e', 'state': 'running', 'source': {'name': 'CBC02', 'id': '9df8eefa-d0a9-4866-a5a9-e84a6f71d4a9', 'networkInterface': '', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10044, 'encryption': 'srt', 'usedBandwidth': '8.174', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'RCV 24B', 'id': '272f3946-b361-4966-b86b-9cada93c5da6', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.61', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '8.173', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '62_COBC02-ABC04_EVC01-P3', 'elapsedTime': '3524:40:34', 'id': '4c5463b1-7656-474b-addd-479859b66716', 'label': '768a2a62-94aa-950e-8fe9-1de9c3f4552a', 'state': 'running', 'source': {'name': 'COBC02', 'id': 'f7d4582a-ebb8-42b6-bd26-ac5ef7df4e3e', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10050, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'lan', 'id': '7ada3062-1f84-4c4a-b829-452982338616', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.62', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.62', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source COBC02 connecting'}, {'name': '63_PRG_ABC04_NEWS', 'elapsedTime': '1394:35:08', 'id': '09bf40a2-786a-4cee-9dbc-d8c25128f34a', 'label': 'cb2c22b1-55eb-d7b7-423f-c8083b4a7084', 'state': 'idle', 'source': {'name': 'PRG', 'id': '88228dd3-9522-4335-aa3e-c17687c14f2d', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.104.242.106', 'protocol': 'srt', 'port': 10063, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': 'prg.2022!!!!!', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [{'name': 'RCV', 'id': 'd017d544-af60-41c5-8e21-e6db2fc3e2bb', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.63', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '64_ABC_PRG_CONTRIB', 'elapsedTime': '189:10:15', 'id': '23d71324-1452-4991-a03d-31d12996e5e8', 'label': '60c1c2c3-d299-fde7-4634-3c8402504ed9', 'state': 'running', 'source': {'name': 'ABC', 'id': 'f2f5065c-e904-43b1-bb44-c7c830c7a4db', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.6.8', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.8', 'encryption': 'none', 'usedBandwidth': '12.254', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'PRG-CONTRIB', 'id': '9a9671e7-d658-4342-95c2-3e5bbe6a1348', 'protocol': 'srt', 'port': 9090, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '181.12.151.123', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'AES128', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': 'Directv.2022', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '12.261', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '65_LAN-TOOLBOX_POC', 'elapsedTime': '3162:50:03', 'id': 'f1dc171c-b871-48ed-aa33-38a6bcecd66d', 'label': '737af6dc-0df2-bd82-15eb-af0f92545cd1', 'state': 'running', 'source': {'name': 'LAN-CHANNEL', 'id': '12d5c330-d286-4263-a022-86350952c994', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.16.61', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.22.61', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'TOOLBOX', 'id': '66dc75c7-98b6-445a-b774-c2e118784f2f', 'protocol': 'udp', 'port': 8999, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.16.61', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}, {'name': 'bbc-caller-test', 'id': '1994e751-7d88-4b65-943e-dea754aaae9c', 'protocol': 'srt', 'port': 14018, 'started': False, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '189.28.24.97', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': True, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, {'name': 'bbc-test', 'id': '768b976c-cbc5-4312-8996-5ef759e308f0', 'protocol': 'srt', 'port': 14018, 'started': False, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': True, 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '66_BBC_ABC-MUX-16-B', 'elapsedTime': '328:42:22', 'id': '1abfc2bc-ac03-46b0-81f1-3f4895b36679', 'label': '39f383b7-cb9c-a085-2d1e-9fbf4945e22e', 'state': 'running', 'source': {'name': 'BBC-MUX-03', 'id': 'c8031cf7-97e3-464d-b6b2-6d393a7176c9', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14016, 'encryption': 'srt', 'usedBandwidth': '36.091', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'MUX-16-B', 'id': '4e4f8808-4439-4583-b097-398a62ab8079', 'protocol': 'rtp', 'port': 5090, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '239.77.24.16', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.000', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '67_BBC_ABC-MUX-18-B', 'elapsedTime': '2539:13:38', 'id': '8333ac62-34a1-46d5-acd5-2419036e77ca', 'label': '45dd235e-bdbd-fd3d-0c49-138f1324eb29', 'state': 'running', 'source': {'name': 'BBC-MUX-04', 'id': 'f87c738c-d7da-4981-af9f-c763f215f11d', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14015, 'encryption': 'srt', 'usedBandwidth': '36.073', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'MUX-18-B', 'id': '71a1e6d1-1b55-41fa-8046-a9ae1518f497', 'protocol': 'rtp', 'port': 5090, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '239.77.24.18', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.001', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '68_LOVE_NATURE_4K_BACKUP_ABC', 'elapsedTime': '790:38:11', 'id': '4bc7d1bf-b6f1-4732-bf52-327e958ab9f5', 'label': '42896c76-bb2d-d9df-fe62-41c62e96f8ce', 'state': 'running', 'source': {'name': 'LOVE_NATURE_4K', 'id': '4307fa81-3fc6-47b2-9b7f-7c510eb62acf', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '213.215.151.52', 'protocol': 'srt', 'port': 12033, 'encryption': 'none', 'usedBandwidth': '18.393', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 20480000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'NATURE2-RCV', 'id': '982eba5f-46c3-4f0c-af15-d4db356eed6a', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.68', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '18.391', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 30000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '69_UNION_RADIO_EXITOS_BU-ABC', 'elapsedTime': '68:38:49', 'id': '5975ddfc-316e-43db-8c3c-c8b956a03702', 'label': '77e0837d-f975-1538-7264-2f29b0f99e5d', 'state': 'running', 'source': {'name': 'CNUR-RCV', 'id': '05f4ffb1-c29a-4576-a63b-4746ee014b7c', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.94.215.14', 'protocol': 'srt', 'port': 20006, 'encryption': 'none', 'usedBandwidth': '0.409', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CNUR-RCV', 'id': '45a46832-d9c2-4218-8764-a6602e065839', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.69', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.408', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '72_TLMX_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '68ce229c-6d87-4122-9687-636f04533ce0', 'label': '1d00e517-43c9-40da-2b5a-4d68e7a9fdba', 'state': 'idle', 'source': {'name': 'TLMX-B', 'id': '142d271a-05be-4018-8834-6dff2a50b7ad', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10072, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '73_MUSICTOP_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '2c83397f-a896-4398-b23b-a7157bb51d01', 'label': '2cf69648-6bad-be26-3493-2e70fc521606', 'state': 'idle', 'source': {'name': 'MUSICTOP', 'id': '38111adb-a1f4-409a-a06a-97e0529e8263', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10073, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '74_TIERRAMIATV_BACKUP-ABC', 'elapsedTime': '00:00:00', 'id': '6bc29052-61df-4b15-853c-166ef5a07499', 'label': 'bfdf0002-1050-1b0f-1188-7015c81d8af0', 'state': 'idle', 'source': {'name': 'TIERRAMIATV', 'id': '850d5954-fe55-426d-962d-a267bfd4b94d', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10074, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'disconnected', 'srtLatency': 125, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}, 'destinations': [], 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'idle'}, {'name': '75_FM_CANDELA_y_ROMANTICA_BU_VENEZUELA-ABC', 'elapsedTime': '1818:44:18', 'id': '3bd04725-3455-4775-9a53-43fc8d70a1cb', 'label': 'd310aacc-3f05-afe9-b87b-0137b8e09f04', 'state': 'running', 'source': {'name': 'FM_CANDELA_y_ROMANTICA', 'id': '88d9970d-f6ae-4df4-aad1-db8674bae3d5', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.216.227.102', 'protocol': 'srt', 'port': 20003, 'encryption': 'none', 'usedBandwidth': '0.307', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'FM_CANDELA_y_ROMANTICA_BU_MUX', 'id': 'db98f2bb-87d5-434f-a554-0beaa1e5f7ca', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.75', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.306', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '76_FM_FIESTA_BU_VENEZUELA-ABC', 'elapsedTime': '1818:45:21', 'id': '8c740d61-8018-4136-8568-0ef99cfcb5ee', 'label': '35a6a321-f90c-8a48-8054-a732da40ee17', 'state': 'running', 'source': {'name': 'FM_FIESTA_BU', 'id': '9db98e2f-1da2-47f1-a58c-4a4897fe1b6d', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.216.227.102', 'protocol': 'srt', 'port': 20004, 'encryption': 'none', 'usedBandwidth': '0.204', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'FM_FIESTA_BU_MUX', 'id': 'd4287f0d-1c22-4603-b266-627eaf2f7680', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.76', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.204', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '78_BBC_BAND_PIRATA', 'elapsedTime': '1455:59:27', 'id': 'efcd840c-3e3b-4b63-a5de-b95127dfb6f0', 'label': 'c04d2116-4a3a-c2aa-b817-b35ef721ba8f', 'state': 'running', 'source': {'name': 'BBC_BAND_DNEWS', 'id': '64b685b4-b417-424d-b4b4-3271a659103b', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 14018, 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'OCA21B', 'id': '37e43fa4-0dc1-42f2-8aac-cc730c0564dd', 'protocol': 'udp', 'port': 10000, 'started': False, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.16.78', 'ttl': 64, 'mtu': 1496, 'tos': 128, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source BBC_BAND_DNEWS connecting'}, {'name': '79_hhh_test', 'elapsedTime': '1153:32:43', 'id': 'da695bb1-f9c5-434a-9b58-cdc45fa9966d', 'label': '27a8344d-52ec-e92a-85dc-9548f79a84ac', 'state': 'running', 'source': {'name': 'kyrion-1.1p-udp', 'id': '105e61d1-be60-45c6-9b03-499f5c72cf05', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.195.106.1', 'protocol': 'udp', 'port': 8000, 'sourceAddress': '10.77.6.1', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connection established', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connection established'}, 'destinations': [], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source kyrion-1.1p-udp connection established'}, {'name': '80_JBC17_ABC04_TX16', 'elapsedTime': '690:47:44', 'id': 'e07f2c5e-fb1e-45eb-a740-699ca27ba3fc', 'label': '3d873f7f-5bd2-0b8e-a64d-1927e76d8b36', 'state': 'running', 'source': {'name': 'JBC-TX16-SRT_JBC_OTT_17', 'id': 'b1a30c49-647d-493d-b966-860d88764db9', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10041, 'encryption': 'srt', 'usedBandwidth': '36.091', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'lan', 'id': '8ddd2b82-3360-43cf-81e6-cfb19edc1678', 'protocol': 'rtp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.80', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '36.001', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '81_JBC17_ABC04_TX18', 'elapsedTime': '958:00:34', 'id': '03100926-626e-4916-bfb7-8cdac9f7cf5f', 'label': 'b91b8c6f-2e4e-ad24-033e-bfacb6019019', 'state': 'running', 'source': {'name': 'JBC-TX18-SRT_JBC_OTT_17', 'id': 'a8bebd2b-f50c-4228-89fd-937f200c5467', 'networkInterface': 'ens33', 'mode': 'listener', 'address': '0.0.0.0', 'protocol': 'srt', 'port': 10042, 'encryption': 'srt', 'usedBandwidth': '0.0', 'state': 'connecting', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'srtPassPhrase': 'directv2420', 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connecting'}, 'destinations': [{'name': 'lan', 'id': '3cfa3389-27e6-40bb-ae7a-d821f6291648', 'protocol': 'rtp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.81', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'disconnected', 'encryption': 'none', 'fec': 'none', 'retainHeader': True, 'usedBandwidth': '0.000', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'disconnected from stream 238.77.24.81', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source JBC-TX18-SRT_JBC_OTT_17 connecting'}, {'name': '83_ABC_MTVL_Backup-CBC02', 'elapsedTime': '817:14:23', 'id': '9bc62a75-d8ea-4de6-a7fb-87874556bced', 'label': 'b231b9b8-600e-e475-4437-311b795016f5', 'state': 'running', 'source': {'name': 'RCV-ABC-1353-B', 'id': '38283fd4-b715-4d08-ad11-9f3c68b7280b', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.17.161', 'protocol': 'udp', 'port': 8999, 'sourceAddress': '10.77.23.161', 'encryption': 'none', 'usedBandwidth': '15.324', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'CBC02_MTVL-Backup', 'id': 'edcf974d-643b-46ad-820d-197ab1f46603', 'protocol': 'srt', 'port': 10083, 'started': True, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '99.193.236.205', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '15.324', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '84_DNEWS_BU-TELECENTRO', 'elapsedTime': '498:07:35', 'id': '163f0ef7-1470-44c6-8407-73831f1ada35', 'label': 'c46e0a99-ab75-ba4e-0c78-f1fcc2118e3c', 'state': 'running', 'source': {'name': 'ENC-9008-B', 'id': 'ba1ae6d5-1cf8-4eb8-935b-9ea1d65a7225', 'networkInterface': 'ens34', 'mode': 'multicast', 'address': '239.77.43.190', 'protocol': 'rtp', 'port': 8000, 'sourceAddress': '10.77.54.71', 'fec': 'none', 'retainHeader': False, 'encryption': 'none', 'usedBandwidth': '10.307', 'state': 'connected', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'Test', 'id': '8e7e3f8a-7df0-4451-b1d6-f1525d8bb874', 'protocol': 'srt', 'port': 10084, 'started': True, 'mode': 'listener', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '0.0.0.0', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'connected', 'srtEncryption': 'None', 'srtLatency': 1000, 'srtConnectionLimit': 0, 'srtOverhead': '25', 'srtPassPhrase': 'directv2420', 'clientConnections': 1, 'retainHeader': False, 'srtGroupMode': 'none', 'usedBandwidth': '10.212', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': '85_TELEVEN_BU-ABC', 'elapsedTime': '479:55:46', 'id': 'd463aaf8-0edb-4853-b540-e887baae0deb', 'label': '33ebef53-61b8-1fff-8919-6e7ee67c5d86', 'state': 'running', 'source': {'name': 'TELEVEN_BU', 'id': 'ce5f5419-842e-499f-8f67-a2877edc53d8', 'networkInterface': 'ens33', 'mode': 'caller', 'address': '190.94.209.139', 'protocol': 'srt', 'port': 11002, 'encryption': 'none', 'usedBandwidth': '6.546', 'state': 'connected', 'srtLatency': 1000, 'srtRcvBuf': 10240000, 'useFec': False, 'srtPassPhrase': '', 'srtGroupMode': 'none', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected'}, 'destinations': [{'name': 'TELEVEN', 'id': '48ceabaa-8904-4cf1-adb9-a27fbb918f03', 'protocol': 'udp', 'port': 10000, 'started': True, 'mode': 'multicast', 'networkAddress': None, 'networkInterface': 'ens34', 'address': '238.77.24.85', 'ttl': 64, 'mtu': 1496, 'tos': 136, 'state': 'connected', 'encryption': 'none', 'fec': 'none', 'usedBandwidth': '6.539', 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'connected', 'shaping': False, 'maxBitrate': 10000}], 'summaryStatusCode': 'ok', 'summaryStatusDetails': 'running'}, {'name': 'CANELA_LAREDONDA_TEST', 'elapsedTime': '1717:26:54', 'id': '8b73671b-3556-4ed0-b732-48fb23405ec4', 'label': 'ba1ac7ce-7086-cee0-921e-dc6796d80d72', 'state': 'running', 'source': {'name': 'Canela_Test', 'id': '493cbfda-d288-47ef-ace1-88a2ed9c9cd5', 'networkInterface': 'ens33', 'mode': 'unicast', 'address': '0.0.0.0', 'protocol': 'udp', 'port': 10021, 'sourceAddress': '', 'encryption': 'none', 'usedBandwidth': '0.0', 'state': 'connection established', 'srtRcvBuf': 10240000, 'srtPassPhrase': None, 'srtGroupMode': 'none', 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'connection established'}, 'destinations': [], 'summaryStatusCode': 'warn', 'summaryStatusDetails': 'Source Canela_Test connection established'}], 'numActiveOutputConnections': 34}
 
 
-# XXXXXXXXXXXXXXXXXXX       COMIENZO TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-def timer(segundos):
-    import time
-    x = time
-    print("linea 473 _____antes de time")
-    x.sleep(segundos)
-    print("linea 475 _____despues de time")
-    return print("return linea 482")
-# XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+def procesamiento_data(data_raw):
+    data = data_raw["data"]
+    #diccionario = dict(data)
+    lista_tuplas = list(data_raw.items())
+    print(data_raw)
+    print(data)
+    print(data)
+    #print(len(data))
+    s_bw2 = 0.0
+    d_bw2 = 0.0
+
+    for value in data:
+        print(value["name"],float(value["source"]["usedBandwidth"]))
+        s_bw = float(value["source"]["usedBandwidth"])
 
 
-# este es el device que elijo para trabajar
-# SRT_IP = SRT_ABC_01
+        DESTINATIONS = value["destinations"]
+        for destination in DESTINATIONS:
+            print(destination["name"])
+
+            try:
+                destination["usedBandwidth"]
+                d_bw = destination["usedBandwidth"]
+                #print(f"bw destino >>>>>>>>>>>>>>>>>>>>>>>>>>>> ====   {d_bw}")
+
+            except KeyError:
+                d_bw = "0.0"
+
+            print(f"bw destino >>>>>>>>>>>>>>>>>>>>>>>>>>>> ====   {d_bw}")
+            d_bw2 = d_bw2 + float(d_bw)
 
 
-# **********************************************************************************************
-# ******************       COMIENZO PROGRAMA        ********************************************
-# **********************************************************************************************
+
+
+
+
+        print("____")
+        print(value["destinations"])
+        s_bw2 = s_bw2 + s_bw
+
+    print(f"bw total de la fuente = {s_bw2}")
+    print(f"bw total deadestino = {d_bw2}")
+
+    return
+
+
 
 
 def main():
-    import PySimpleGUI as sg2
-    v = ventana_class
-
-    try:
-        SRT_IP0 = v.ventana(FFlag=True, filename="")
-        SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
-        # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]#esta linea es para listbox_texto3.keys()
-
-    except Exception as errorh1:
-        print(errorh1)
-        quit()
-
-    Generacion_CSV(SRT_IP)
-
-    try:
-        SRT_IP0 = v.ventana(FFlag=False, filename=filew.name)
-        # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
-        # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]#esta linea es para listbox_texto3.keys()
-
-    except Exception as errorh1:
-        print(errorh1)
-        quit()
-
-    if SRT_IP0 == "Swagger":
-        API_swagger(CSV_file=filew.name)
-
-    #input("Press <ENTER> to end")
-
-    sg2.popup(f"finalizar\n ")
+    procesamiento_data(data_test)
 
 
-# **********************************************************************************************
-# ******************       FIN PROGRAMA        ********************************************
-# **********************************************************************************************
+
+
 
 if __name__ == "__main__":
     main()

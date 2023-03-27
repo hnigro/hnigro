@@ -82,6 +82,22 @@
 		<td>C3</td>
 		<td>D3</td>
 		<td>E3</td>
+		
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+		  <label class="form-check-label" for="flexCheckDefault">
+			Default checkbox
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+		  <label class="form-check-label" for="flexCheckChecked">
+			Checked checkbox
+		  </label>
+		</div>
+		
+		
+		
 	  </tr>
 	  <tr style="background-color: skyblue;">
 		<th></th>
@@ -108,8 +124,14 @@
 		<th></th>
 		<td align="center"></td>
 		<td></td>
-		<td></td>
-		<td></td>
+		<td>ante-ultima</td>
+		<td>		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+		  <label class="form-check-label" for="flexCheckDefault">
+			Default checkbox
+		  </label>
+		</div>
+</td>
 	  </tr>
 	</table>
 </body>

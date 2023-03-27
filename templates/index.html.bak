@@ -5,7 +5,7 @@
 </head>
 <body style="background-color: lightgray;">
 	<h1>Ejemplo para BW de los SRTs</h1>
-		<br>
+		<br><br>
 	
 	<button 
 		id="button1"
