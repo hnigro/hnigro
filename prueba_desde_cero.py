@@ -6,8 +6,112 @@ comienza desde cero y esta destinado a generar el bw desde el server hacia la we
 
 """
 
+# listado de todos los mgm de los SRTs
+SRT_ABC_01 = [".) SRT-ABC-01                   ", "10.177.58.101", "haiadmin", "tnstafl2420", "SRT-ABC-01"]
+SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
+SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
+SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
+SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
+SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
+SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
+SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
+SRT_LCF_01 = [".) SRT-LCF-01                   ", "172.22.90.1", "haiadmin", "tnstafl2420", "SRT-LCF-01"]
+SRT_ABC_OTT_01 = [".) SRT-ABC-OTT-01             ", "10.177.30.134", "haiadmin", "manager", "SRT-ABC-OTT-01"]
+SRT_ABC_OTT_02 = [".) SRT-ABC-OTT-02             ", "10.177.30.135", "haiadmin", "manager", "SRT-ABC-OTT-02"]
+SRT_ABC_OTT_03 = [".) SRT-ABC-OTT-03             ", "10.177.30.136", "haiadmin", "manager", "SRT-ABC-OTT-03"]
+SRT_ABC_OTT_04 = [".) SRT-ABC-OTT-04             ", "10.177.30.137", "haiadmin", "manager", "SRT-ABC-OTT-04"]
+SRT_ABC_OTT_05 = [".) SRT-ABC-OTT-05             ", "10.177.30.138", "haiadmin", "manager", "SRT-ABC-OTT-05"]
+SRT_CBC_OTT_06 = [".) SRT-CBC-OTT_06             ", "10.133.30.134", "haiadmin", "manager", "SRT-CBC-OTT-06"]
+SRT_CBC_OTT_07 = [".) SRT-CBC-OTT-07             ", "10.133.30.135", "haiadmin", "manager", "SRT-CBC-OTT-07"]
+SRT_CBC_OTT_08 = [".) SRT-CBC-OTT-08             ", "10.133.30.136", "haiadmin", "manager", "SRT-CBC-OTT-08"]
+SRT_BBC_OTT_09 = [".) SRT-BBC-OTT-09             ", "10.19.197.50", "haiadmin", "manager", "SRT-BBC-OTT-09"]
+SRT_BBC_OTT_10 = [".) SRT-BBC-OTT-10             ", "10.19.197.51", "haiadmin", "manager", "SRT-BBC-OTT-10"]
+SRT_BBC_OTT_11 = [".) SRT-BBC-OTT-11             ", "10.19.197.52", "haiadmin", "manager", "SRT-BBC-OTT-11"]
+SRT_JBC_OTT_12 = [".) SRT-JBC-OTT-12             ", "10.219.69.50", "haiadmin", "manager", "SRT-JBC-OTT-12"]
+SRT_JBC_OTT_13 = [".) SRT-JBC-OTT-13             ", "10.219.69.51", "haiadmin", "manager", "SRT-JBC-OTT-13"]
+SRT_JBC_OTT_14 = [".) SRT-JBC-OTT-14             ", "10.219.69.52", "haiadmin", "manager", "SRT-JBC-OTT-14"]
+SRT_JBC_OTT_15 = [".) SRT-JBC-OTT-15             ", "10.219.69.53", "haiadmin", "manager", "SRT-JBC-OTT-15"]
+SRT_JBC_OTT_16 = [".) SRT-JBC-OTT-16             ", "10.219.69.54", "haiadmin", "manager", "SRT-JBC-OTT-16"]
+SRT_JBC_OTT_17 = [".) SRT-JBC-OTT-17             ", "10.219.69.55", "haiadmin", "manager", "SRT-JBC-OTT-17"]
+SRT_JBC_OTT_18 = [".) SRT-JBC-OTT-18             ", "10.219.69.56", "haiadmin", "manager", "SRT-JBC-OTT-18"]
 
-# XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+# XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+listbox_texto = [
+    SRT_ABC_01
+    , SRT_ABC_02
+    , SRT_ABC_03
+    , SRT_ABC_04
+    , SRT_CBC_01
+    , SRT_CBC_02
+    , SRT_COBC_01
+    , SRT_COBC_02
+    # , SRT_LCF_01
+    , SRT_ABC_OTT_01
+    , SRT_ABC_OTT_02
+    , SRT_ABC_OTT_03
+    , SRT_ABC_OTT_04
+    , SRT_ABC_OTT_05
+    , SRT_CBC_OTT_06
+    , SRT_CBC_OTT_07
+    , SRT_CBC_OTT_08
+    , SRT_BBC_OTT_09
+    , SRT_BBC_OTT_10
+    , SRT_BBC_OTT_11
+    , SRT_JBC_OTT_12
+    , SRT_JBC_OTT_13
+    , SRT_JBC_OTT_14
+    , SRT_JBC_OTT_15
+    , SRT_JBC_OTT_16
+    # ,SRT_JBC_OTT_17
+    # ,SRT_JBC_OTT_18
+]
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+x = 1000000001
+bw_srt_abc_01 = 11111111
+bw_srt_abc_02 = 22222222
+bw_srt_abc_03 = 33333333
+bw_srt_abc_04 = 44444444
+bw = [bw_srt_abc_01,bw_srt_abc_02,bw_srt_abc_03,bw_srt_abc_04]
+
+@app.route("/")
+def home():
+    data = API_int(SRT_ABC_01, "FUNCION")["data"]
+    #proc = procesamiento_data(data_test)
+    proc = procesamiento_data(data)
+
+    return render_template("index.html",
+                           contenido= f"Testing {x}",
+                           x1= f"valor de x1 = {proc[0]}",
+                           x2= f"valor de x2 = {proc[1]}",
+                           x3= f"valor de x3 = {bw_srt_abc_03}",
+                           x4= f"valor de x4 = {bw_srt_abc_04}",
+                           xx= bw
+                           )
+
+@app.route("/hhh1/")
+def hh1():
+    return render_template("index.html",
+                           contenido=f"Testing {x}",
+                           x1=f"hhhhhxxxxxxxxxxxxxxxxx x1 = {bw_srt_abc_01}",
+                           x2=f"xxxxxxxxxxxxxxxxxx = {bw_srt_abc_02}",
+                           x3=f"valor de x3 = {bw_srt_abc_03}",
+                           x4=f"valor de x4 = {bw_srt_abc_04}",
+                           xx=[0,1,2]
+                           )
+
+
+#app.run(debug = True, host="0.0.0.0", port=16000)
+
+
+
+
+
+
+# XXXXXXXXXXXXXXXXXXX      comienzo API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
 def API_int(SRT_IP, FUNCION):
     #funcion: leer ruta, ver estadisticas, etc
@@ -61,21 +165,21 @@ def procesamiento_data(data_raw):
     data = data_raw["data"]
     #diccionario = dict(data)
     lista_tuplas = list(data_raw.items())
-    print(data_raw)
-    print(data)
-    print(data)
+    #print(data_raw)
+    #print(data)
+    #print(data)
     #print(len(data))
     s_bw2 = 0.0
     d_bw2 = 0.0
 
     for value in data:
-        print(value["name"],float(value["source"]["usedBandwidth"]))
+        #print(value["name"],float(value["source"]["usedBandwidth"]))
         s_bw = float(value["source"]["usedBandwidth"])
 
 
         DESTINATIONS = value["destinations"]
         for destination in DESTINATIONS:
-            print(destination["name"])
+            #print(destination["name"])
 
             try:
                 d_bw = destination["usedBandwidth"]
@@ -84,7 +188,7 @@ def procesamiento_data(data_raw):
             except KeyError:
                 d_bw = "0.0"
 
-            print(f"bw destino >>>>>>>>>>>>>>>>>>>>>>>>>>>> ====   {d_bw}")
+            #print(f"bw destino >>>>>>>>>>>>>>>>>>>>>>>>>>>> ====   {d_bw}")
             d_bw2 = d_bw2 + float(d_bw)
 
 
@@ -92,20 +196,32 @@ def procesamiento_data(data_raw):
 
 
 
-        print("____")
-        print(value["destinations"])
+        #print("____")
+        #print(value["destinations"])
         s_bw2 = s_bw2 + s_bw
 
-    print(f"bw total de la fuente = {s_bw2}")
-    print(f"bw total deadestino = {d_bw2}")
+    #print(f"bw total de la fuente = {s_bw2}")
+    #print(f"bw total deadestino = {d_bw2}")
 
-    return
+    return s_bw2, d_bw2
 
 
 
 
 def main():
-    procesamiento_data(data_test)
+    #proc = procesamiento_data(data_test)
+    #print(proc[0])
+    #print(proc[1])
+
+
+
+    #print(d_bw2)
+    #print(d_bw2)
+
+
+    app.run(debug=True, host="0.0.0.0", port=16000)
+
+
 
 
 

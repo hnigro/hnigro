@@ -37,7 +37,7 @@ def hh1():
                            x2=f"xxxxxxxxxxxxxxxxxx = {bw_srt_abc_02}",
                            x3=f"valor de x3 = {bw_srt_abc_03}",
                            x4=f"valor de x4 = {bw_srt_abc_04}",
-                           xx=[]
+                           xx=[0,1,2]
                            )
 
 

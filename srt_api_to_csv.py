@@ -147,7 +147,7 @@ def Generacion_CSV(SRT_IP):
 
             # esta variable me tira error si la fuente no está activada. por eso tratamiento de errores
             try:
-                sdest["usedBandwidth"]
+
                 D_BW = sdest["usedBandwidth"]
             except KeyError:
                 D_BW = ""
