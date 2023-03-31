@@ -6,7 +6,7 @@ también voy a hacer un scrap de una html para usarla
 
 """
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 x = 1000000001
@@ -31,7 +31,7 @@ def home():
 
 @app.route("/hhh1/")
 def hh1():
-    return render_template("index.html",
+    return render_template("index1.html",
                            contenido=f"Testing {x}",
                            x1=f"hhhhhxxxxxxxxxxxxxxxxx x1 = {bw_srt_abc_01}",
                            x2=f"xxxxxxxxxxxxxxxxxx = {bw_srt_abc_02}",
