@@ -79,9 +79,11 @@ bw = [bw_srt_abc_01,bw_srt_abc_02,bw_srt_abc_03,bw_srt_abc_04]
 
 @app.route("/")
 def home():
-    data = API_int(SRT_ABC_01, "FUNCION")["data"]
+    #data = API_int(SRT_ABC_01, "FUNCION")["data"]
     #proc = procesamiento_data(data_test)
-    proc = procesamiento_data(data)
+
+
+    proc = procesamiento_data(data_test)
 
     return render_template("index.html",
                            contenido= f"Testing {x}",
@@ -97,9 +99,9 @@ voy a hacer que la siguiente funcion agregue lineas según losvalores de la list
 """
 @app.route("/hhh1/")
 def hh1():
-    return render_template("index.html",
+    return render_template("index1.html",
                            contenido=f"Testing {x}",
-                           x1=f"hhhhhxxxxxxxxxxxxxxxxx x1 = {bw_srt_abc_01}",
+                           x1=f"hhhhhxxxxxxcambiado   xxxxxxxxxxx x1 = {bw_srt_abc_01}",
                            x2=f"xxxxxxxxxxxxxxxxxx = {bw_srt_abc_02}",
                            x3=f"valor de x3 = {bw_srt_abc_03}",
                            x4=f"valor de x4 = {bw_srt_abc_04}",
