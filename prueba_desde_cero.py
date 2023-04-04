@@ -167,7 +167,9 @@ data_test = {'numResults': 39, 'numPages': 1, 'data': [{'name': '01_ABC3_COBC1_T
 
 
 def procesamiento_data(data_raw):
+    #data = data_raw["data"]
     data = data_raw["data"]
+
     #diccionario = dict(data)
     lista_tuplas = list(data_raw.items())
     #print(data_raw)
