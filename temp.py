@@ -45,13 +45,12 @@ def BW_total(raw_data):
     for svalue in raw_data:
         S_BW = float(svalue["source"]["usedBandwidth"])
         S_BW_total = S_BW_total + S_BW
-        print(f"xxxxxxxxxxxxxxxxxxxxx   S_BW =  {S_BW}")
+        #print(f"xxxxxxxxxxxxxxxxxxxxx   S_BW =  {S_BW}")
 
         DESTINATIONS = svalue["destinations"]
         if DESTINATIONS == []:
             pass
             #filew.write(f"\n")
-
 
 
         for sdest in DESTINATIONS:
@@ -82,11 +81,11 @@ BW_total(data_test)
 
 app = Flask(__name__)
 x = 1000000001
-bw_srt_abc_01 = 11111111
+#bw_srt_abc_01 = 11111111
 bw_srt_abc_02 = 22222222
 bw_srt_abc_03 = 33333333
 bw_srt_abc_04 = 44444444
-bw = [bw_srt_abc_01,bw_srt_abc_02,bw_srt_abc_03,bw_srt_abc_04]
+bw = [bw_srt_abc_02,bw_srt_abc_03,bw_srt_abc_04]
 
 
 @app.route("/")
@@ -95,7 +94,7 @@ def home():
 
     return render_template("index3.html",
                            contenido= f"Testing {x}",
-                           x1= f"valor de x1 = {bw_srt_abc_01}",
+                           x1= f"valor de x1 = {bw_srt_abc_02}",
                            x2= f"valor de x2 = {bw_srt_abc_02}",
                            x3= f"valor de x3 = {bw_srt_abc_03}",
                            x4= f"valor de x4 = {bw_srt_abc_04}",
@@ -105,15 +104,31 @@ def home():
 
 @app.route("/hhh1/")
 def hh1():
-    bwx = BW_total(data_test)
+    bw_srt_abc_01 = BW_total(data_test)
+    bw_srt_abc_02 = BW_total(data_test)
+    bw_srt_abc_03 = BW_total(data_test)
+    bw_srt_abc_04 = BW_total(data_test)
+    last_update = "5/4/23"
 
     return render_template("index3.html",
-                           contenido=f"Testing {x}",
-                           x1=f"BW de la fuente = {bwx[0]}",
-                           x2=f"BW del destino = {bwx[1]}",
-                           x3=f"BW remanente = {500.00 - bwx[1]}",
-                           x4=f"valor de x4 = {bw_srt_abc_04}",
-                           xx=[0,1,2]
+                           bw_abc_01_in=f"BW de la fuente = {bw_srt_abc_01[0]}",
+                           bw_abc_01_out=f"BW del destino = {bw_srt_abc_01[1]}",
+                           bw_abc_01_rem=f"BW remanente = {500.00 - bw_srt_abc_01[1]}",
+
+                           bw_abc_02_in=f"BW de la fuente = {bw_srt_abc_02[0]}",
+                           bw_abc_02_out=f"BW del destino = {bw_srt_abc_02[1]}",
+                           bw_abc_02_rem=f"BW remanente = {500.00 - bw_srt_abc_02[1]}",
+
+                           bw_abc_03_in=f"BW de la fuente = {bw_srt_abc_03[0]}",
+                           bw_abc_03_out=f"BW del destino = {bw_srt_abc_03[1]}",
+                           bw_abc_03_rem=f"BW remanente = {500.00 - bw_srt_abc_03[1]}",
+
+                           bw_abc_04_in=f"BW de la fuente = {bw_srt_abc_04[0]}",
+                           bw_abc_04_out=f"BW del destino = {bw_srt_abc_04[1]}",
+                           bw_abc_04_rem=f"BW remanente = {500.00 - bw_srt_abc_04[1]}",
+
+                           lst_update = f"last update = {last_update}"
+
                            )
 
 #xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
