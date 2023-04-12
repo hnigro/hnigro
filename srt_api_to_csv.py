@@ -497,6 +497,8 @@ def API_int(SRT_IP, FUNCION):
     API_CMD = session.get(f"https://{SRTIP}/api/gateway/{ID}/routes?page=1&pageSize=300")
     apicmd2 = "GET/api/system/metric/snapshot"
     apicmd3 = session.get(f"https://{SRTIP}/api/system/{ID}/metric/snapshot")
+
+    print(f"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx {json.loads(apicmd3.text)}")
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
     return INFO
