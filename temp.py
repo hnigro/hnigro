@@ -29,27 +29,21 @@ fin_html ="""
 
 
 
-# esta función toma los datos crudos y recobra los flujos
+
 def srt_flujos_html(SRT_credential):
+    # esta función toma los datos crudos y recobra los flujos
     n = data_test_raw["numResults"]
 
     pass
 
-
-
-# Esta función crea el archivo htm con todos los flujos
 def crear_html_flujos():
     """
+    Esta función crea el archivo htm con todos los flujos
     toma todos los datos de los los SRTs ABC1, 2, 3 y 4 y los mete en el html
     también crea el archivo html
     """
 
     pass
-
-
-
-
-
 
 def BW_total(raw_data):
     #determinacion de BW en source
@@ -77,8 +71,6 @@ def BW_total(raw_data):
     #return print(f"ancho de banda de entrada = {S_BW_total}   ______ \n ancho de banda salida = {D_BW_total}")
     return S_BW_total,D_BW_total
 
-
-#BW_total(data_test)
 
 
 
