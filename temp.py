@@ -42,9 +42,8 @@ def crear_html_flujos():
     """
     toma todos los datos de los los SRTs ABC1, 2, 3 y 4 y los mete en el html
     también crea el archivo html
-
     """
-    #
+
     pass
 
 
