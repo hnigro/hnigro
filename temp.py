@@ -31,8 +31,11 @@ fin_html ="""
 
 
 def srt_flujos_html(SRT_credential):
-    # esta función toma los datos crudos y recobra los flujos
-    n = data_test_raw["numResults"]
+    # esta función toma los datos crudos y recobra los flujos. genera los strings para el archivo html
+    n_flows = data_test_raw["numResults"]
+
+    for x in data_test:
+        pass
 
     pass
 
