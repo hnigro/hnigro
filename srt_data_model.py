@@ -80,10 +80,6 @@ class SRT_DATA:
         ,"summaryStatusCode"
         ,"summaryStatusDetails"
         ,"hasPendingDelete"]
-
-
-
-
     POST_SOURCE_UDP_REQUEST = [
         "name"
         ,"id"
@@ -113,10 +109,6 @@ class SRT_DATA:
         ,"srtFecArq"
         ,"srtGroupMode"
         ,"srtNetworkBondingParams"]
-
-
-
-
     GET_SOURCE_UDP_RESPONSE = [
         "name"
         ,"id"
@@ -152,11 +144,6 @@ class SRT_DATA:
         ,"summaryStatusDetails"
         ,"srtGroupMode"
         ,"srtNetworkBondingParams"]
-
-
-
-
-
     POST_DEST_UDP_REQUEST = [
         "name"
         ,"id"
@@ -202,11 +189,6 @@ class SRT_DATA:
         ,"srtConnectionLimit"
         ,"srtGroupMode"
         ,"srtNetworkBondingParams"]
-
-
-
-
-
     GET_DEST_UDP_RESPONSE = [
         "name"
         ,"id"

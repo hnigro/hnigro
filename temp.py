@@ -33,8 +33,44 @@ fin_html ="""
 def srt_flujos_html(SRT_credential):
     # esta función toma los datos crudos y recobra los flujos. genera los strings para el archivo html
     n_flows = data_test_raw["numResults"]
+    tabla ="""
+    		<table>
+		    <caption>SRT-ABC-01</caption>
+			<thead>
+			
+				<tr>
+					<th>Route Name</th>
+					<th>Source Name</th>
+					<th>Source BW</th>
+					<th>Destination Name</th>
+					<th>Destination BW</th>
+
+				</tr>
+			</thead>
+			<tbody>
+			
+    """
+
+    """
+    #en la tabla tiene  que figurar:    Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
+    Route Name,Source Name,Source Protocol,Source BW,Last Update,
+    
+    
+    """
 
     for x in data_test:
+
+        x2="""
+        		<tr>
+					<td>Route Name</td>
+					<td>Source Name</td>
+					<td>Source BW</td>
+					<td>Destination Name</td>
+					<td>Destination BW</td>
+				</tr>
+        """
+
+
         pass
 
     pass
