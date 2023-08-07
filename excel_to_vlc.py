@@ -7,8 +7,17 @@ vlc-convertido-playlist.xspf
 
 import pandas as pd
 
-df = pd.read_excel("vlc_parsed_xls.xlsx")
 
+filepath = "VLC_FILES\\"
+
+"""
+global filew
+filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
+"""
+
+
+df = pd.read_excel(f"{filepath}vlc_parsed_xls.xlsx")
+#print (f"DF ============hh\nhh==================={df}\n\n")
 ttitulo = df["titulo"]
 tprotocolo = df["protocolo"]
 tip = df["ip"]
@@ -21,7 +30,7 @@ ncant_canales = len(df["ip"])
 
 # rutina para pasar de excel a VLC  >>   xspf
 
-playlist = open("vlc-convertido-playlist.xspf", "w",encoding="utf-8")
+playlist = open(f"{filepath}vlc-convertido-playlist.xspf", "w",encoding="utf-8")
 
 playlist.write(f"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 playlist.write(f"<playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">\n")

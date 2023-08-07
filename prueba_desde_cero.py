@@ -95,7 +95,7 @@ def home():
                            )
 
 """
-voy a hacer que la siguiente funcion agregue lineas según losvalores de la lista
+voy a hacer que la siguiente funcion agregue lineas según los valores de la lista
 """
 @app.route("/hhh1/")
 def hh1():

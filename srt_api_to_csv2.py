@@ -1,16 +1,11 @@
 """
-
-
-este archivo es el que está copiado de produccion 10/4/23
-le agrego instruccion generica para bw de la api
+este archivo es el que tiene agregado el timer- es el ultimo que hice 19/1/23
+le agrego el timer
 le agrego funcion de bw de source y destination
-
-
 
 
 aparte me tira con el nuevo comando el bw de entrada y salida total
 es un descubrimiento grande
-
 """
 
 
@@ -75,7 +70,7 @@ class data_model:
         , SRT_JBC_OTT_14
         , SRT_JBC_OTT_15
         , SRT_JBC_OTT_16
-        # ,SRT_JBC_OTT_17
+        #, SRT_JBC_OTT_17
         # ,SRT_JBC_OTT_18
     ]
 
@@ -357,8 +352,8 @@ class ventana_class:
             , SRT_JBC_OTT_14
             , SRT_JBC_OTT_15
             , SRT_JBC_OTT_16
-            # ,SRT_JBC_OTT_17
-            # ,SRT_JBC_OTT_18
+            , SRT_JBC_OTT_17
+            , SRT_JBC_OTT_18
         ]
 
         # print(listbox_texto.index(SRT_JBC_OTT_18))
@@ -368,8 +363,8 @@ class ventana_class:
             [sg.Text(text=texto, auto_size_text=True, key="nombre_de_archivo")],
             [sg.Listbox(disabled=not FFlag, values=listbox_texto, default_values=SRT_ABC_03, size=(22, 12),
                         key="listbox_01", enable_events=False)],
-            [sg.Button("Generate CSV", disabled=not FFlag), sg.Button("Upload_Swagger", disabled=FFlag)],
-            [sg.Button("Update SRTs in Production", disabled=False), sg.Check("Activate refresh", key="activar_r", enable_events=True)],
+            [sg.Button("Generate CSV", disabled=not FFlag), sg.Button("Upload_Arya", disabled=FFlag)],
+            [sg.Button("Update DTH SRTs", disabled=False), sg.Check("Activate refresh", key="activar_r", enable_events=True)],
             [sg.Button("Exit",)]
 
         ]
@@ -394,7 +389,7 @@ class ventana_class:
                     x = "no eligió ningún dispositivo"
                 break
 
-            elif event == "Upload_Swagger":
+            elif event == "Upload_Arya":
                 x = ["Swagger"]
 
 
@@ -405,7 +400,7 @@ class ventana_class:
                 break
 
 
-            elif event == "Update SRTs in Production":
+            elif event == "Update DTH SRTs":
                 # activar_cb = True
                 while True:
 
@@ -505,16 +500,29 @@ def API_int(SRT_IP, FUNCION):
     # me imprime el nro de rutas
     API_CMD = session.get(f"https://{SRTIP}/api/gateway/{ID}/routes?page=1&pageSize=300")
 
-
+    """
+    esta instruccion me da info del status de la interface, incluso el BW real de entrada y salida
+    """
     apicmd2 = "GET/api/system/metric/snapshot"
     apicmd3 = session.get(f"https://{SRTIP}/api/system/metric/snapshot")
     RTA_API_CMD = """{"system":{"uptime":41030403},"memory":{"usedPercent":"35.84"},"loadAvg":{"1m":"6.42","5m":"6.25","15m":"6.02"},"cpu":{"loadPercent":"34.36"},"network":{"receivedMbps":"485.44","sentMbps":"490.50"}}"""
 
+    #el siguiente es el BW de entrada y salida posta del sistema
+    apicmd3_json = apicmd3.text
+    BW_received_posta = json.loads(apicmd3.text)["network"]["receivedMbps"]
+    BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
 
-    print(apicmd3.text)
+    #print(apicmd3.text)
+
+    print(f"bw recibido posta =====           {BW_received_posta}")
+    print(f"bw de salida posta posta =====           {BW_sent_posta}")
+
+
     """
-    print(f"|||||||||||||||||||||||||||||||||||||||||||           {json.loads(apicmd3.text)}")
+    texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
+
     """
+
 
 
 
@@ -526,13 +534,18 @@ def API_int(SRT_IP, FUNCION):
 # XXXXXXXXXXXXXXXXXXX       COMIENZO LAST UPDATE    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def Last_Update():
     import datetime
-    now_minute = datetime.datetime.now().minute
-    now_hour = datetime.datetime.now().hour
-    now_day = datetime.datetime.now().day
-    now_month = datetime.datetime.now().month
-    now_year = datetime.datetime.now().year
+    #ahora = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
+    last_updated = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
 
-    last_updated = f"{now_month}/{now_day}/{now_year}"
+
+    #now_minute = datetime.datetime.now().minute
+    #now_hour = datetime.datetime.now().hour
+    #now_day = datetime.datetime.now().day
+    #now_month = datetime.datetime.now().month
+    #now_year = datetime.datetime.now().year
+
+    #last_updated = f"{now_month}/{now_day}/{now_year} {ahora}"
+    #last_updated = f"{ahora}"
 
     #print(f"XXXXXXXXXXXXXX hora ==== {now_hour}:{now_minute}")
     return last_updated
