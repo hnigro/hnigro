@@ -17,16 +17,15 @@ filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
 
 
 df = pd.read_excel(f"{filepath}vlc_parsed_xls.xlsx")
-#print (f"DF ============hh\nhh==================={df}\n\n")
+
 ttitulo = df["titulo"]
 tprotocolo = df["protocolo"]
 tip = df["ip"]
 tpuerto = df["puerto"]
 tfuente = df["fuente"]
 
-#print(ttitulo[0:])
-
 ncant_canales = len(df["ip"])
+
 
 # rutina para pasar de excel a VLC  >>   xspf
 
@@ -36,7 +35,6 @@ playlist.write(f"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
 playlist.write(f"<playlist xmlns=\"http://xspf.org/ns/0/\" xmlns:vlc=\"http://www.videolan.org/vlc/playlist/ns/0/\" version=\"1\">\n")
 playlist.write(f"	<title>Lista de reproducción</title>\n")
 playlist.write(f"	<trackList>\n")
-
 
 
 for n in range(ncant_canales):

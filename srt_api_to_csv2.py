@@ -1,16 +1,8 @@
 """
-este archivo es el que tiene agregado el timer- es el ultimo que hice 19/1/23
-le agrego el timer
-le agrego funcion de bw de source y destination
+09/08/23
 
 
-aparte me tira con el nuevo comando el bw de entrada y salida total
-es un descubrimiento grande
 """
-
-
-
-
 
 
 class data_model:
@@ -70,10 +62,9 @@ class data_model:
         , SRT_JBC_OTT_14
         , SRT_JBC_OTT_15
         , SRT_JBC_OTT_16
-        #, SRT_JBC_OTT_17
+        # , SRT_JBC_OTT_17
         # ,SRT_JBC_OTT_18
     ]
-
 
 
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX      comienzo interface swagger       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -94,7 +85,7 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     SRTIP       =   "http://10.133.96.78:8081/api/v1/login"      #SRT_IP[0]  # IP DEL DISPOSITIVO= /api/v1/login
     client_id="SRT"                                      #SRT_IP[1]  # USER
     client_secret="srtapi2022"                                #SRT_IP[2]  # PASS DEL DISPOSITIVO PARA LA PRIMER CONEXION
-
+     otras credenciales
     pabloapi
     pabloapi
 
@@ -109,18 +100,34 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
 
     swagger_cmd = "http://10.133.96.78:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
 
-    swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
-    cod_salida = swagger_response.status_code
+    """
+    nueva instruccion agregada 09/08/23 para el tratamiento de errores
 
-    print(f"linea 41 _____respuesta = {swagger_response.text}")
-    print(f"linea 42 _____código = {cod_salida}")
+                        try:
+                        Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
+                    except Exception:
+                        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion linea 426_________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
+
+
+    """
+
+    try:
+        swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
+        cod_salida = swagger_response.status_code
+    except Exception:
+        print(f"falla en la carga a ARYA linea 124 =  {cod_salida}")
+
+    print(f"linea 111 _____respuesta = {swagger_response.text}")
+    print(f"linea 112 _____código = {cod_salida}")
 
     return
 
 
 # XXXXXXXXXXXXXXXXXXXXX           FIN INTERFACE SWAGGER          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-
+"""
 def BW_total(sroutes):
     #determinacion de BW en source
     S_BW_total=0
@@ -147,9 +154,7 @@ def BW_total(sroutes):
 
     return print(f"ancho de banda de entrada = {S_BW_total}   ______ \n ancho de banda salida = {D_BW_total}")
 
-
-
-
+"""
 
 
 # **********************************************************************************************************************
@@ -170,11 +175,9 @@ def Generacion_CSV(SRT_IP):
         f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
 
     sroutes = API_int(SRT_IP, "FUNCION")["data"]
-    # print(sroutes)
+    print(sroutes)
 
-    BW_total(sroutes)
-
-
+    # BW_total(sroutes)
 
     # hace un listado de las rutas con sus fuentes
     for svalue in sroutes:
@@ -197,7 +200,7 @@ def Generacion_CSV(SRT_IP):
         LAST_UPDATE = Last_Update()
 
         try:
-            #svalue["source"]["sourceAddress"]
+            # svalue["source"]["sourceAddress"]
             S_SSM = svalue["source"]["sourceAddress"]
         except KeyError:
             S_SSM = "0.0.0.0"
@@ -255,7 +258,7 @@ def Generacion_CSV(SRT_IP):
 
             # esta variable me tira error si la fuente no está activada. por eso tratamiento de errores
             try:
-                #sdest["usedBandwidth"]
+                # sdest["usedBandwidth"]
                 D_BW = sdest["usedBandwidth"]
             except KeyError:
                 D_BW = 0
@@ -270,7 +273,6 @@ def Generacion_CSV(SRT_IP):
             filew.write(f"{DEST_FORMATTED_2}{DEST_FORMATTED}")
 
     filew.close()
-
 
 
 # **********************************************************************************************************************
@@ -364,12 +366,13 @@ class ventana_class:
             [sg.Listbox(disabled=not FFlag, values=listbox_texto, default_values=SRT_ABC_03, size=(22, 12),
                         key="listbox_01", enable_events=False)],
             [sg.Button("Generate CSV", disabled=not FFlag), sg.Button("Upload_Arya", disabled=FFlag)],
-            [sg.Button("Update DTH SRTs", disabled=False), sg.Check("Activate refresh", key="activar_r", enable_events=True)],
-            [sg.Button("Exit",)]
+            [sg.Button("Update DTH SRTs", disabled=False),
+             sg.Check("Activate refresh", key="activar_r", enable_events=True)],
+            [sg.Button("Exit", )]
 
         ]
 
-        window = sg.Window("SRT Process", layout, resizable = True,element_justification = "center")
+        window = sg.Window("SRT Process", layout, resizable=True, element_justification="center")
 
         """event, values = window.read()
         texto =  values["activar_r"]
@@ -404,41 +407,73 @@ class ventana_class:
                 # activar_cb = True
                 while True:
 
-                    #SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
-                    #abc01SRT_ABC_01
-                    Generacion_CSV([SRT_ABC_01[1], SRT_ABC_01[2], SRT_ABC_01[3], SRT_ABC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
+                    # SRT_IP = SRT_IP0[1], SRT_IP0[2], SRT_IP0[3], SRT_IP0[4]
+
+                    # abc01
+                    try:
+                        Generacion_CSV([SRT_ABC_01[1], SRT_ABC_01[2], SRT_ABC_01[3], SRT_ABC_01[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc02
-                    Generacion_CSV([SRT_ABC_02[1], SRT_ABC_02[2], SRT_ABC_02[3], SRT_ABC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_ABC_02[1], SRT_ABC_02[2], SRT_ABC_02[3], SRT_ABC_02[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc03
-                    Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc04
-                    Generacion_CSV([SRT_ABC_04[1], SRT_ABC_04[2], SRT_ABC_04[3], SRT_ABC_04[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_ABC_04[1], SRT_ABC_04[2], SRT_ABC_04[3], SRT_ABC_04[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-                    # cbc01
-                    Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
+                    # cbc01  hhhhhh
+                    try:
+                        Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc02
-                    Generacion_CSV([SRT_CBC_02[1], SRT_CBC_02[2], SRT_CBC_02[3], SRT_CBC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_CBC_02[1], SRT_CBC_02[2], SRT_CBC_02[3], SRT_CBC_02[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc01
-                    Generacion_CSV([SRT_COBC_01[1], SRT_COBC_01[2], SRT_COBC_01[3], SRT_COBC_01[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_COBC_01[1], SRT_COBC_01[2], SRT_COBC_01[3], SRT_COBC_01[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc02
-                    Generacion_CSV([SRT_COBC_02[1], SRT_COBC_02[2], SRT_COBC_02[3], SRT_COBC_02[4]])
-                    API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
+                    try:
+                        Generacion_CSV([SRT_COBC_02[1], SRT_COBC_02[2], SRT_COBC_02[3], SRT_COBC_02[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-
-                    print("linea 384 _____entra en el loop de refresco")
+                    print("linea 461 _____entra en el loop de refresco")
 
                     # window["activar_r"].update(values)  # show the event and values in the window
                     activar_cb = window["activar_r"].get()
@@ -466,7 +501,6 @@ class ventana_class:
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ventana fin     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-
 # XXXXXXXXXXXXXXXXXXX     comienzo API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 def API_int(SRT_IP, FUNCION):
     #  FUNCION es para crear el CSV teniendo como dato la ip de mgm del srt.
@@ -482,6 +516,7 @@ def API_int(SRT_IP, FUNCION):
     SRT_PASS = SRT_IP[2]  # PASS DEL DISPOSITIVO PARA LA PRIMER CONEXION
 
     # me loggeo
+
     srt_login = session.post(
         f"https://{SRTIP}/api/session",
         json={
@@ -507,48 +542,47 @@ def API_int(SRT_IP, FUNCION):
     apicmd3 = session.get(f"https://{SRTIP}/api/system/metric/snapshot")
     RTA_API_CMD = """{"system":{"uptime":41030403},"memory":{"usedPercent":"35.84"},"loadAvg":{"1m":"6.42","5m":"6.25","15m":"6.02"},"cpu":{"loadPercent":"34.36"},"network":{"receivedMbps":"485.44","sentMbps":"490.50"}}"""
 
-    #el siguiente es el BW de entrada y salida posta del sistema
+    # el siguiente es el BW de entrada y salida posta del sistema
     apicmd3_json = apicmd3.text
     BW_received_posta = json.loads(apicmd3.text)["network"]["receivedMbps"]
     BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
 
-    #print(apicmd3.text)
+    # print(apicmd3.text)
 
     print(f"bw recibido posta =====           {BW_received_posta}")
     print(f"bw de salida posta posta =====           {BW_sent_posta}")
-
 
     """
     texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
 
     """
 
-
-
-
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
     return INFO
+
+
 # XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
 # XXXXXXXXXXXXXXXXXXX       COMIENZO LAST UPDATE    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def Last_Update():
     import datetime
-    #ahora = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
+    # ahora = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
     last_updated = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
 
+    # now_minute = datetime.datetime.now().minute
+    # now_hour = datetime.datetime.now().hour
+    # now_day = datetime.datetime.now().day
+    # now_month = datetime.datetime.now().month
+    # now_year = datetime.datetime.now().year
 
-    #now_minute = datetime.datetime.now().minute
-    #now_hour = datetime.datetime.now().hour
-    #now_day = datetime.datetime.now().day
-    #now_month = datetime.datetime.now().month
-    #now_year = datetime.datetime.now().year
+    # last_updated = f"{now_month}/{now_day}/{now_year} {ahora}"
+    # last_updated = f"{ahora}"
 
-    #last_updated = f"{now_month}/{now_day}/{now_year} {ahora}"
-    #last_updated = f"{ahora}"
-
-    #print(f"XXXXXXXXXXXXXX hora ==== {now_hour}:{now_minute}")
+    # print(f"XXXXXXXXXXXXXX hora ==== {now_hour}:{now_minute}")
     return last_updated
+
+
 # XXXXXXXXXXXXXXXXXXX       FIN LAST UPDATE         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
@@ -560,6 +594,8 @@ def timer():
     x.sleep(1)
     print("linea 475 _____despues de time")
     return print("return linea 482")
+
+
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
@@ -599,7 +635,7 @@ def main():
     if SRT_IP0 == "Swagger":
         API_swagger(CSV_file=filew.name)
 
-    #input("Press <ENTER> to end")
+    # input("Press <ENTER> to end")
 
     sg2.popup(f"finalizar\n ")
 
