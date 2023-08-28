@@ -10,7 +10,7 @@ class data_model:
     SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
     SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
     SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
-    SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
+    SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
     SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
     SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
     SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
@@ -117,10 +117,10 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
         swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
         cod_salida = swagger_response.status_code
     except Exception:
-        print(f"falla en la carga a ARYA linea 124 =  {cod_salida}")
+        print(f"falla en la carga a ARYA len SRT= {csv_file}inea 124 =  {cod_salida}")
 
-    print(f"linea 111 _____respuesta = {swagger_response.text}")
-    print(f"linea 112 _____código = {cod_salida}")
+    # print(f"linea 111 _____respuesta = {swagger_response.text}")
+    # print(f"linea 112 _____código = {cod_salida}")
 
     return
 
@@ -168,14 +168,16 @@ def Generacion_CSV(SRT_IP):
     global filew
     filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
 
-    print(f"linea 62 _____nombre del archivo creado = {filew.name}")
+    # esta linea me imprime el nombre del archivo que creé
+    # print(f"linea 62 _____nombre del archivo creado = {filew.name}")
     # me imprime los títulos de las planillas
 
     filew.write(
         f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
 
     sroutes = API_int(SRT_IP, "FUNCION")["data"]
-    print(sroutes)
+    # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
+    # print(sroutes)
 
     # BW_total(sroutes)
 
@@ -215,7 +217,7 @@ def Generacion_CSV(SRT_IP):
             else:
                 DIGITS = ROUTE_NAME
         else:
-            print(f"linea 41 _____", len(ROUTE_NAME))
+            # print(f"linea 41 _____", len(ROUTE_NAME))
             DIGITS = ROUTE_NAME
 
         DESCRIPTION_SOURCE = f"{ASSET}-{DIGITS}-{n + 1}"
@@ -302,7 +304,7 @@ class ventana_class:
         SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
         SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
         SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
-        SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
+        SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
         SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
         SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
         SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
@@ -381,7 +383,7 @@ class ventana_class:
 
         while True:
             event, values = window.read()
-            print(event, values)
+            # print(event, values)
 
             # sg.popup("linea 322 _____este es un mensaje de popup")
             if event in ("Exit", None):
@@ -479,7 +481,7 @@ class ventana_class:
                     activar_cb = window["activar_r"].get()
                     print("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh", activar_cb)
                     window.refresh()  # make sure it's shown immediately
-                    print("VALUES", values)
+                    # print("VALUES", values)
 
                     # event, values = window.read()
                     # activar_cb = values["activar_r"]
@@ -532,9 +534,6 @@ def API_int(SRT_IP, FUNCION):
     # me imprime el nro de rutas
     API_CMD = session.get(f"https://{SRTIP}/api/gateway/{ID}/routes?page=1&pageSize=300")
 
-    # me imprime el nro de rutas
-    API_CMD = session.get(f"https://{SRTIP}/api/gateway/{ID}/routes?page=1&pageSize=300")
-
     """
     esta instruccion me da info del status de la interface, incluso el BW real de entrada y salida
     """
@@ -549,8 +548,8 @@ def API_int(SRT_IP, FUNCION):
 
     # print(apicmd3.text)
 
-    print(f"bw recibido posta =====           {BW_received_posta}")
-    print(f"bw de salida posta posta =====           {BW_sent_posta}")
+    print(f"bw recibido en el SRT: {SRT_IP[3]}  posta =====           {BW_received_posta}")
+    print(f"bw de salida en el SRT: {SRT_IP[3]}  posta posta =====           {BW_sent_posta}")
 
     """
     texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
