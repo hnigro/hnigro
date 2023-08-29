@@ -77,7 +77,7 @@ def API_int(SRT_ID):
 
 
 
-API_int()
+API_int("SRT_ID")
 
 
 

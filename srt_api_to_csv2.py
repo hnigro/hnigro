@@ -4,71 +4,9 @@
 
 """
 
-
-class data_model:
-    SRT_ABC_01 = [".) SRT-ABC-01                   ", "10.177.58.101", "haiadmin", "tnstafl2420", "SRT-ABC-01"]
-    SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
-    SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
-    SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
-    SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
-    SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
-    SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
-    SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]
-    SRT_LCF_01 = [".) SRT-LCF-01                   ", "172.22.90.1", "haiadmin", "tnstafl2420", "SRT-LCF-01"]
-    SRT_ABC_OTT_01 = [".) SRT-ABC-OTT-01             ", "10.177.30.134", "haiadmin", "manager", "SRT-ABC-OTT-01"]
-    SRT_ABC_OTT_02 = [".) SRT-ABC-OTT-02             ", "10.177.30.135", "haiadmin", "manager", "SRT-ABC-OTT-02"]
-    SRT_ABC_OTT_03 = [".) SRT-ABC-OTT-03             ", "10.177.30.136", "haiadmin", "manager", "SRT-ABC-OTT-03"]
-    SRT_ABC_OTT_04 = [".) SRT-ABC-OTT-04             ", "10.177.30.137", "haiadmin", "manager", "SRT-ABC-OTT-04"]
-    SRT_ABC_OTT_05 = [".) SRT-ABC-OTT-05             ", "10.177.30.138", "haiadmin", "manager", "SRT-ABC-OTT-05"]
-    SRT_CBC_OTT_06 = [".) SRT-CBC-OTT_06             ", "10.133.30.134", "haiadmin", "manager", "SRT-CBC-OTT-06"]
-    SRT_CBC_OTT_07 = [".) SRT-CBC-OTT-07             ", "10.133.30.135", "haiadmin", "manager", "SRT-CBC-OTT-07"]
-    SRT_CBC_OTT_08 = [".) SRT-CBC-OTT-08             ", "10.133.30.136", "haiadmin", "manager", "SRT-CBC-OTT-08"]
-    SRT_BBC_OTT_09 = [".) SRT-BBC-OTT-09             ", "10.19.197.50", "haiadmin", "manager", "SRT-BBC-OTT-09"]
-    SRT_BBC_OTT_10 = [".) SRT-BBC-OTT-10             ", "10.19.197.51", "haiadmin", "manager", "SRT-BBC-OTT-10"]
-    SRT_BBC_OTT_11 = [".) SRT-BBC-OTT-11             ", "10.19.197.52", "haiadmin", "manager", "SRT-BBC-OTT-11"]
-    SRT_JBC_OTT_12 = [".) SRT-JBC-OTT-12             ", "10.219.69.50", "haiadmin", "manager", "SRT-JBC-OTT-12"]
-    SRT_JBC_OTT_13 = [".) SRT-JBC-OTT-13             ", "10.219.69.51", "haiadmin", "manager", "SRT-JBC-OTT-13"]
-    SRT_JBC_OTT_14 = [".) SRT-JBC-OTT-14             ", "10.219.69.52", "haiadmin", "manager", "SRT-JBC-OTT-14"]
-    SRT_JBC_OTT_15 = [".) SRT-JBC-OTT-15             ", "10.219.69.53", "haiadmin", "manager", "SRT-JBC-OTT-15"]
-    SRT_JBC_OTT_16 = [".) SRT-JBC-OTT-16             ", "10.219.69.54", "haiadmin", "manager", "SRT-JBC-OTT-16"]
-    SRT_JBC_OTT_17 = [".) SRT-JBC-OTT-17             ", "10.219.69.55", "haiadmin", "manager", "SRT-JBC-OTT-17"]
-    SRT_JBC_OTT_18 = [".) SRT-JBC-OTT-18             ", "10.219.69.56", "haiadmin", "manager", "SRT-JBC-OTT-18"]
-
-    # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-    listbox_texto = [
-        SRT_ABC_01
-        , SRT_ABC_02
-        , SRT_ABC_03
-        , SRT_ABC_04
-        , SRT_CBC_01
-        , SRT_CBC_02
-        , SRT_COBC_01
-        , SRT_COBC_02
-        # , SRT_LCF_01
-        , SRT_ABC_OTT_01
-        , SRT_ABC_OTT_02
-        , SRT_ABC_OTT_03
-        , SRT_ABC_OTT_04
-        , SRT_ABC_OTT_05
-        , SRT_CBC_OTT_06
-        , SRT_CBC_OTT_07
-        , SRT_CBC_OTT_08
-        , SRT_BBC_OTT_09
-        , SRT_BBC_OTT_10
-        , SRT_BBC_OTT_11
-        , SRT_JBC_OTT_12
-        , SRT_JBC_OTT_13
-        , SRT_JBC_OTT_14
-        , SRT_JBC_OTT_15
-        , SRT_JBC_OTT_16
-        # , SRT_JBC_OTT_17
-        # ,SRT_JBC_OTT_18
-    ]
-
-
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX      comienzo interface swagger       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
+
     # MAIN SWAGGER INTERFACE
     """
     este programa pasa los archivos csv a swagger
@@ -108,9 +46,6 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
                     except Exception:
                         print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion linea 426_________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-
-
-
     """
 
     try:
@@ -119,42 +54,12 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     except Exception:
         print(f"falla en la carga a ARYA len SRT= {csv_file}inea 124 =  {cod_salida}")
 
-    # print(f"linea 111 _____respuesta = {swagger_response.text}")
-    # print(f"linea 112 _____código = {cod_salida}")
 
     return
 
 
 # XXXXXXXXXXXXXXXXXXXXX           FIN INTERFACE SWAGGER          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-"""
-def BW_total(sroutes):
-    #determinacion de BW en source
-    S_BW_total=0
-    D_BW_total=0
-    for svalue in sroutes:
-        S_BW = float(svalue["source"]["usedBandwidth"])
-        S_BW_total = S_BW_total + S_BW
-        #print(f"xxxxxxxxxxxxxxxxxxxxx   S_BW =  {S_BW}")
-
-        DESTINATIONS = svalue["destinations"]
-        if DESTINATIONS == []:
-            pass
-            #filew.write(f"\n")
-
-
-
-        for sdest in DESTINATIONS:
-            try:
-                #sdest["usedBandwidth"]
-                D_BW = float(sdest["usedBandwidth"])
-                D_BW_total = D_BW_total + D_BW
-            except KeyError:
-                D_BW = 0
-
-    return print(f"ancho de banda de entrada = {S_BW_total}   ______ \n ancho de banda salida = {D_BW_total}")
-
-"""
 
 
 # **********************************************************************************************************************
@@ -202,7 +107,6 @@ def Generacion_CSV(SRT_IP):
         LAST_UPDATE = Last_Update()
 
         try:
-            # svalue["source"]["sourceAddress"]
             S_SSM = svalue["source"]["sourceAddress"]
         except KeyError:
             S_SSM = "0.0.0.0"
@@ -217,7 +121,6 @@ def Generacion_CSV(SRT_IP):
             else:
                 DIGITS = ROUTE_NAME
         else:
-            # print(f"linea 41 _____", len(ROUTE_NAME))
             DIGITS = ROUTE_NAME
 
         DESCRIPTION_SOURCE = f"{ASSET}-{DIGITS}-{n + 1}"
@@ -286,6 +189,14 @@ def Generacion_CSV(SRT_IP):
 class ventana_class:
 
     def ventana(FFlag, filename):
+        """
+        este modulo se basa en la funcion ventana que usa el fflaf (file flag) y el filename
+        FFlag: en la primer pasada es True porque todavia no tomo el nombre del srt que voy a usar
+        en la segunda pasada lo pongo en false porque ya tengo el nombre del archivo y lo voy a pasar a ARYA por la interfaz de swagger
+
+
+        """
+
         import PySimpleGUI as sg
 
         # FFlag es el flag de generación de archivo
@@ -417,7 +328,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_01________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc02
                     try:
@@ -425,7 +336,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx____________SRT_ABC_02_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc03
                     try:
@@ -433,7 +344,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx______________SRT_ABC_03_____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc04
                     try:
@@ -441,7 +352,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_______________SRT_ABC_04____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc01  hhhhhh
                     try:
@@ -449,7 +360,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_______________SRT_CBC_01____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc02
                     try:
@@ -457,7 +368,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx________________SRT_CBC_02___________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc01
                     try:
@@ -465,7 +376,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_________________SRT_COBC_01__________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc02
                     try:
@@ -473,7 +384,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_________________SRT_COBC_02__________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     print("linea 461 _____entra en el loop de refresco")
 
@@ -536,24 +447,22 @@ def API_int(SRT_IP, FUNCION):
 
     """
     esta instruccion me da info del status de la interface, incluso el BW real de entrada y salida
+    apicmd2 = "GET/api/system/metric/snapshot"   
     """
-    apicmd2 = "GET/api/system/metric/snapshot"
+
     apicmd3 = session.get(f"https://{SRTIP}/api/system/metric/snapshot")
     RTA_API_CMD = """{"system":{"uptime":41030403},"memory":{"usedPercent":"35.84"},"loadAvg":{"1m":"6.42","5m":"6.25","15m":"6.02"},"cpu":{"loadPercent":"34.36"},"network":{"receivedMbps":"485.44","sentMbps":"490.50"}}"""
 
     # el siguiente es el BW de entrada y salida posta del sistema
-    apicmd3_json = apicmd3.text
+    # info_del_sistema = apicmd3.text
     BW_received_posta = json.loads(apicmd3.text)["network"]["receivedMbps"]
     BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
-
-    # print(apicmd3.text)
 
     print(f"bw recibido en el SRT: {SRT_IP[3]}  posta =====           {BW_received_posta}")
     print(f"bw de salida en el SRT: {SRT_IP[3]}  posta posta =====           {BW_sent_posta}")
 
     """
     texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
-
     """
 
     # me toma la info del llamado
@@ -566,22 +475,8 @@ def API_int(SRT_IP, FUNCION):
 # XXXXXXXXXXXXXXXXXXX       COMIENZO LAST UPDATE    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def Last_Update():
     import datetime
-    # ahora = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
     last_updated = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
-
-    # now_minute = datetime.datetime.now().minute
-    # now_hour = datetime.datetime.now().hour
-    # now_day = datetime.datetime.now().day
-    # now_month = datetime.datetime.now().month
-    # now_year = datetime.datetime.now().year
-
-    # last_updated = f"{now_month}/{now_day}/{now_year} {ahora}"
-    # last_updated = f"{ahora}"
-
-    # print(f"XXXXXXXXXXXXXX hora ==== {now_hour}:{now_minute}")
     return last_updated
-
-
 # XXXXXXXXXXXXXXXXXXX       FIN LAST UPDATE         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
@@ -593,13 +488,8 @@ def timer():
     x.sleep(1)
     print("linea 475 _____despues de time")
     return print("return linea 482")
-
-
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-
-# este es el device que elijo para trabajar
-# SRT_IP = SRT_ABC_01
 
 
 # **********************************************************************************************
