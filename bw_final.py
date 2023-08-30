@@ -68,7 +68,7 @@ def API_int(SRT_ID):
     texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
 
     """
-    return
+    return BW_received_posta,BW_sent_posta
 
 
 
