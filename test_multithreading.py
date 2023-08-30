@@ -2,11 +2,15 @@
 # of threading
 # importing the threading module
 import threading
+import time
 
 
 def print_cube(num):
 	# function to print cube of given num
+	time.sleep(10)
 	print("Cube: {}" .format(num * num * num))
+
+
 
 
 def print_square(num):

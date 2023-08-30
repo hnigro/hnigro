@@ -99,6 +99,7 @@ voy a hacer que la siguiente funcion agregue lineas según los valores de la lis
 """
 @app.route("/hhh1/")
 def hh1():
+
     return render_template("index1.html",
                            contenido=f"Testing {x}",
                            x1=f"hhhhhxxxxxxcambiado   xxxxxxxxxxx x1 = {bw_srt_abc_01}",
