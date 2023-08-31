@@ -1,15 +1,17 @@
 """
-09/08/23
+31/08/23
 
 
 """
 
+
 # XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX      comienzo interface swagger       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
-
     # MAIN SWAGGER INTERFACE
     """
     este programa pasa los archivos csv a swagger
+    toma como dato el argumento CSV_file que es un archivo .CSV
+    no devuelve argumentos, solo pasa los datos a ARYA
 
     """
 
@@ -38,15 +40,6 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
 
     swagger_cmd = "http://10.133.96.78:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
 
-    """
-    nueva instruccion agregada 09/08/23 para el tratamiento de errores
-
-                        try:
-                        Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
-                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
-                    except Exception:
-                        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________________________excepcion linea 426_________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-    """
 
     try:
         swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
@@ -54,12 +47,10 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     except Exception:
         print(f"falla en la carga a ARYA len SRT= {csv_file}inea 124 =  {cod_salida}")
 
-
     return
 
 
 # XXXXXXXXXXXXXXXXXXXXX           FIN INTERFACE SWAGGER          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
 
 
 # **********************************************************************************************************************
@@ -68,6 +59,11 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
 
 def Generacion_CSV(SRT_IP):
     # **********************************************************************************************************************
+    """
+    Esta función toma el argumento de los datos del SRT  SRT_IP
+    crea el archivo filew (variable global)
+
+    """
 
     filepath = "CSV_FILES\\"
     global filew
@@ -328,7 +324,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_01________________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_01_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc02
                     try:
@@ -336,7 +332,8 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx____________SRT_ABC_02_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_02_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
 
                     # abc03
                     try:
@@ -344,7 +341,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_03[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx______________SRT_ABC_03_____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_03_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # abc04
                     try:
@@ -352,7 +349,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_04[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_______________SRT_ABC_04____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_04_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc01  hhhhhh
                     try:
@@ -360,7 +357,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_______________SRT_CBC_01____________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_CBC_01_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc02
                     try:
@@ -368,7 +365,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx________________SRT_CBC_02___________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_CBC_02_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc01
                     try:
@@ -376,7 +373,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_01[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_________________SRT_COBC_01__________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_COBC_01______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cobc02
                     try:
@@ -384,7 +381,7 @@ class ventana_class:
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_COBC_02[4]}.csv")
                     except Exception:
                         print(
-                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx_________________SRT_COBC_02__________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_COBC_02______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     print("linea 461 _____entra en el loop de refresco")
 
@@ -451,6 +448,8 @@ def API_int(SRT_IP, FUNCION):
     """
 
     apicmd3 = session.get(f"https://{SRTIP}/api/system/metric/snapshot")
+
+
     RTA_API_CMD = """{"system":{"uptime":41030403},"memory":{"usedPercent":"35.84"},"loadAvg":{"1m":"6.42","5m":"6.25","15m":"6.02"},"cpu":{"loadPercent":"34.36"},"network":{"receivedMbps":"485.44","sentMbps":"490.50"}}"""
 
     # el siguiente es el BW de entrada y salida posta del sistema
@@ -462,7 +461,10 @@ def API_int(SRT_IP, FUNCION):
     print(f"bw de salida en el SRT: {SRT_IP[3]}  posta posta =====           {BW_sent_posta}")
 
     """
-    texto de la linea para leer: {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
+    lo siguiente es la info que me entrega la interface cuando le pido el BW del sistema 
+    texto de la linea para leer: = {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
+    BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
+
     """
 
     # me toma la info del llamado
@@ -489,7 +491,6 @@ def timer():
     print("linea 475 _____despues de time")
     return print("return linea 482")
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 
 
 # **********************************************************************************************
