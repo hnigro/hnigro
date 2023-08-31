@@ -212,8 +212,6 @@ voy a hacer que la siguiente funcion agregue lineas según los valores de la lis
 """
 @app.route("/hhh1/")
 def hh1():
-    bw = API_int("SRT_ID")
-    print(bw)
 
     return render_template("index1.html",
                            contenido=f"Testing {x}",
