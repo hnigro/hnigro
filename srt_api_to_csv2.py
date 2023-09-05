@@ -75,9 +75,11 @@ def Generacion_CSV(SRT_IP):
     # me imprime los títulos de las planillas
 
     filew.write(
-        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
+        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,BW_received_total,BW_sent_total,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
 
-    sroutes = API_int(SRT_IP, "FUNCION")["data"]
+    sroutes = API_int(SRT_IP, "FUNCION")[0]["data"]
+    BW_received_posta= API_int(SRT_IP, "FUNCION")[1]
+    BW_sent_posta= API_int(SRT_IP, "FUNCION")[2]
     # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
     # print(sroutes)
 
@@ -126,7 +128,7 @@ def Generacion_CSV(SRT_IP):
         # print(DESCRIPTION_SOURCE)
         # agrego asset y description
         filew.write(
-            f"{DESCRIPTION_SOURCE},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},{S_MODE},{S_INT},{S_ADDRESS},{S_PROT},{S_PORT},{S_SSM},{S_STATE},{S_BW},{LAST_UPDATE},")
+            f"{DESCRIPTION_SOURCE},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},{S_MODE},{S_INT},{S_ADDRESS},{S_PROT},{S_PORT},{S_SSM},{S_STATE},{S_BW},{BW_received_posta},{BW_sent_posta},{LAST_UPDATE},")
 
         #   inicializacion de variables de formateo del destino
 
@@ -170,7 +172,7 @@ def Generacion_CSV(SRT_IP):
 
             n2 += 1
 
-            DEST_FORMATTED_2 = f"{DESCRIPTION},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},,,,,,,,,{LAST_UPDATE},"
+            DEST_FORMATTED_2 = f"{DESCRIPTION},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},,,,,,,,,,,{LAST_UPDATE},"
             if n2 == 1: DEST_FORMATTED_2 = f""
             filew.write(f"{DEST_FORMATTED_2}{DEST_FORMATTED}")
 
@@ -470,7 +472,7 @@ def API_int(SRT_IP, FUNCION):
 
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
-    return INFO
+    return INFO, BW_received_posta, BW_sent_posta
 
 
 # XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
