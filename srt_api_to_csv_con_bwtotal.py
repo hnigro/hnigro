@@ -1,6 +1,6 @@
 """
 sincronizado en produccion
-31/08/23
+07/09/23
 
 
 """
@@ -46,7 +46,7 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
         swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
         cod_salida = swagger_response.status_code
     except Exception:
-        print(f"falla en la carga a ARYA len SRT= {csv_file}inea 124 =  {cod_salida}")
+        print(f"falla en la carga a ARYA len SRT= {csv_file}linea 124 =  {cod_salida}")
 
     return
 
@@ -75,11 +75,11 @@ def Generacion_CSV(SRT_IP):
     # me imprime los títulos de las planillas
 
     filew.write(
-        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,BW_received_total,BW_sent_total,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State\n")
+        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State,BW In Total,BW Out Total\n")
 
     sroutes = API_int(SRT_IP, "FUNCION")[0]["data"]
-    BW_received_posta= API_int(SRT_IP, "FUNCION")[1]
-    BW_sent_posta= API_int(SRT_IP, "FUNCION")[2]
+    BW_in_total= API_int(SRT_IP, "FUNCION")[1]
+    BW_out_total= API_int(SRT_IP, "FUNCION")[2]
     # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
     # print(sroutes)
 
@@ -128,7 +128,7 @@ def Generacion_CSV(SRT_IP):
         # print(DESCRIPTION_SOURCE)
         # agrego asset y description
         filew.write(
-            f"{DESCRIPTION_SOURCE},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},{S_MODE},{S_INT},{S_ADDRESS},{S_PROT},{S_PORT},{S_SSM},{S_STATE},{S_BW},{BW_received_posta},{BW_sent_posta},{LAST_UPDATE},")
+            f"{DESCRIPTION_SOURCE},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},{S_MODE},{S_INT},{S_ADDRESS},{S_PROT},{S_PORT},{S_SSM},{S_STATE},{S_BW},{LAST_UPDATE},")
 
         #   inicializacion de variables de formateo del destino
 
@@ -167,12 +167,12 @@ def Generacion_CSV(SRT_IP):
             except KeyError:
                 D_BW = 0
 
-            DEST_FORMATTED = f"{DEST_NAME},{D_PROT},{D_PORT},{D_MODE},{D_INT},{D_ADDRESS},{D_BW},{D_STATE}\n"
+            DEST_FORMATTED = f"{DEST_NAME},{D_PROT},{D_PORT},{D_MODE},{D_INT},{D_ADDRESS},{D_BW},{D_STATE},{BW_in_total},{BW_out_total}\n"
             # filew.write(f"{DEST_FORMATTED2_EXTRAS}{DEST_FORMATTED_EXTRAS}")
 
             n2 += 1
 
-            DEST_FORMATTED_2 = f"{DESCRIPTION},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},,,,,,,,,,,{LAST_UPDATE},"
+            DEST_FORMATTED_2 = f"{DESCRIPTION},{ASSET},{Asset_Type},{ROUTE_NAME},{SOURCE_NAME},,,,,,,,,{LAST_UPDATE},"
             if n2 == 1: DEST_FORMATTED_2 = f""
             filew.write(f"{DEST_FORMATTED_2}{DEST_FORMATTED}")
 
@@ -354,7 +354,7 @@ class ventana_class:
                         print(
                             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_04_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-                    # cbc01  hhhhhh
+                    # cbc01
                     try:
                         Generacion_CSV([SRT_CBC_01[1], SRT_CBC_01[2], SRT_CBC_01[3], SRT_CBC_01[4]])
                         API_swagger(CSV_file=f"CSV_FILES\\{SRT_CBC_01[4]}.csv")
@@ -457,22 +457,22 @@ def API_int(SRT_IP, FUNCION):
 
     # el siguiente es el BW de entrada y salida posta del sistema
     # info_del_sistema = apicmd3.text
-    BW_received_posta = json.loads(apicmd3.text)["network"]["receivedMbps"]
-    BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
+    BW_in_total = json.loads(apicmd3.text)["network"]["receivedMbps"]
+    BW_out_total = json.loads(apicmd3.text)["network"]["sentMbps"]
 
-    print(f"bw recibido en el SRT: {SRT_IP[3]}  posta =====           {BW_received_posta}")
-    print(f"bw de salida en el SRT: {SRT_IP[3]}  posta posta =====           {BW_sent_posta}")
+    print(f"bw recibido en el SRT: {SRT_IP[3]}  posta =====           {BW_in_total}")
+    print(f"bw de salida en el SRT: {SRT_IP[3]}  posta posta =====           {BW_out_total}")
 
     """
     lo siguiente es la info que me entrega la interface cuando le pido el BW del sistema 
     texto de la linea para leer: = {'system': {'uptime': 50703206}, 'memory': {'usedPercent': '25.21'}, 'loadAvg': {'1m': '4.81', '5m': '4.91', '15m': '4.87'}, 'cpu': {'loadPercent': '29.44'}, 'network': {'receivedMbps': '491.02', 'sentMbps': '496.22'}}
-    BW_sent_posta = json.loads(apicmd3.text)["network"]["sentMbps"]
+    BW_out_total = json.loads(apicmd3.text)["network"]["sentMbps"]
 
     """
 
     # me toma la info del llamado
     INFO = json.loads(API_CMD.text)
-    return INFO, BW_received_posta, BW_sent_posta
+    return INFO, BW_in_total, BW_out_total
 
 
 # XXXXXXXXXXXXXXXXXXX      FIN API INT     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
@@ -531,6 +531,7 @@ def main():
     # input("Press <ENTER> to end")
 
     sg2.popup(f"finalizar\n ")
+
 
 
 # **********************************************************************************************
