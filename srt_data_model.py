@@ -32,7 +32,6 @@ respuesta = [{'name': '01_ABC3_COBC1_TEST'
 , 'destinations': [{'name': 'COBC1', 'id': 'ab4b971b-f940-48a3-9cf6-43c02bdd7404', 'protocol': 'srt', 'port': 14056, 'started': False, 'mode': 'caller', 'networkAddress': None, 'networkInterface': 'ens33', 'address': '191.102.238.101', 'ttl': 64, 'mtu': 1496, 'tos': 104, 'state': 'disconnected', 'srtEncryption': 'None', 'srtLatency': 1002, 'srtOverhead': '25', 'srtPassPhrase': '', 'retainHeader': False, 'srtGroupMode': 'none', 'useFec': False, 'usedBandwidth': '0.0', 'summaryStatusCode': 'unknown', 'summaryStatusDetails': 'stopped'}]
 , 'summaryStatusCode': 'unknown'
 , 'summaryStatusDetails': 'idle'}
-
 , {'name': '02_Test Haivision Canada'
 , 'elapsedTime': '4919:25:47'
 , 'id': 'b253ec0c-7f61-408f-8dc9-3b509294ffbd'
