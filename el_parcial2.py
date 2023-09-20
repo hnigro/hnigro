@@ -30,19 +30,19 @@ while factura < 0:
     factura = int(input("La factura no puede ser menor a 0.Ingrese el numero de factura: "))
 
 while factura != 0:
-    producto = int(input("ingrese el producto: 1 para PINZA, 2 para TENAZA o 3 para MOTOSIERRA: "))
+    producto = str(input("ingrese el producto: pinza, tenaza o motosierra: "))
 
-    if producto > 3 or producto < 1:
-        producto = int(input("Ese no es un valor correcto. Ingrese el valor del producto: "))
+    if producto != "pinza" and producto != "tenaza" and producto != "motosierra":
+        producto = str(input("Ese no es un valor correcto. Ingrese el nombre del producto: "))
 
     cantidad = int(input("ingrese la cantidad vendida: "))
 
     while cantidad < 1:
         cantidad = int(input("la cantidad no puede ser menor a 1,ingrese un nuevo valor: "))
 
-    nombre = input("ingrese el nombre: ")
+    nombre = input("cuál es su nombre: ")
 
-    if producto == 1:
+    if producto == "pinza":
         cant1 = cant1 + cantidad
         fact1 = cantidad * precio1
         acum1 = acum1 + fact1
@@ -59,7 +59,7 @@ while factura != 0:
             minvta = cant1
             nummin = factura
 
-    elif producto == 2:
+    elif producto == "tenaza":
         cant2 = cant2 + cantidad
         fact2 = cantidad * precio2
         acum2 = acum2 + fact2
@@ -77,7 +77,7 @@ while factura != 0:
             nummin = factura
 
 
-    elif producto == 3:
+    elif producto == "motosierra":
         cant3 = cant3 + cantidad
         fact3 = cantidad * precio3
         acum3 = acum3 + fact3
