@@ -27,13 +27,13 @@ precio3 = 1360
 factura = int(input("Ingrese el numero de factura: "))
 
 while factura < 0:
-    factura = int(input("Error.Ingrese el numero de factura: "))
+    factura = int(input("La factura no puede ser menor a 0.Ingrese el numero de factura: "))
 
 while factura != 0:
-    producto = int(input("ingrese 1 para PINZA, 2 para TENAZA o 3 para MOTOSIERRA: "))
+    producto = int(input("ingrese el producto: 1 para PINZA, 2 para TENAZA o 3 para MOTOSIERRA: "))
 
-    while producto > 3 or producto < 1:
-        producto = int(input("ingrese un valor correspondiente a un producto: "))
+    if producto > 3 or producto < 1:
+        producto = int(input("Ese no es un valor correcto. Ingrese el valor del producto: "))
 
     cantidad = int(input("ingrese la cantidad vendida: "))
 
@@ -76,7 +76,8 @@ while factura != 0:
             minvta = cant2
             nummin = factura
 
-    else:
+
+    elif producto == 3:
         cant3 = cant3 + cantidad
         fact3 = cantidad * precio3
         acum3 = acum3 + fact3
@@ -93,6 +94,8 @@ while factura != 0:
             minvta = cant3
             nummin = factura
 
+
+
     total = acum1 + acum2 + acum3
 
     factura = int(input("Ingrese el numero de factura: "))
@@ -105,3 +108,5 @@ print("el porcentaje de ventas en pesos de tenazas es $ es de", acum2 * 100 / to
 print("el porcentaje de ventas en pesos de motosierras es $ es de", acum3 * 100 / total)
 print("el cliente de mayor facturacion individual es", mayornombre)
 print("el numero de factura con la menor cantidad es:", nummin)
+
+
