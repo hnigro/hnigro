@@ -1,7 +1,10 @@
 """se ingresa:
 -factura: no puede ser menor a 0
 -producto vendido: pinza 500, tenaza 752, motosierra 1360.
--cantidad vendida (no puede ser negativa) -nombre del cliente se pide:
+-cantidad vendida (no puede ser negativa)
+-nombre del cliente
+
+se pide:
 *total facturado
 *cantidad vendida por herramienta
 *porcentajes de ventas ($) por producto
