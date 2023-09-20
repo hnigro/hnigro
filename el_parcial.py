@@ -105,4 +105,10 @@ while factura !=0:
 
     factura = int(input("Ingrese el numero de factura: "))
 
-print("la cantidad vendida de pinzas es",cant1,"la cantidad de pinzas vendidas es",cant2,"la cantidad de motosierras vendidas es",cant3) print(" el total facturado es",total) print("el porcentaje de ventas en pesos de pinzas es $ es de",acum1 * 100 / total) print("el porcentaje de ventas en pesos de tenazas es $ es de",acum2 * 100 / total) print("el porcentaje de ventas en pesos de motosierras es $ es de",acum3 * 100 / total) print("el cliente de mayor facturacion individual es",mayornombre) print("el numero de factura con la menor cantidad es:",nummin)
+print("la cantidad vendida de pinzas es",cant1,"la cantidad de pinzas vendidas es",cant2,"la cantidad de motosierras vendidas es",cant3)
+print(" el total facturado es",total)
+print("el porcentaje de ventas en pesos de pinzas es $ es de",acum1 * 100 / total)
+print("el porcentaje de ventas en pesos de tenazas es $ es de",acum2 * 100 / total)
+print("el porcentaje de ventas en pesos de motosierras es $ es de",acum3 * 100 / total)
+print("el cliente de mayor facturacion individual es",mayornombre)
+print("el numero de factura con la menor cantidad es:",nummin)

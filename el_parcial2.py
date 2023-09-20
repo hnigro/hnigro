@@ -23,6 +23,7 @@ minvta = 0
 precio1 = 500
 precio2 = 752
 precio3 = 1360
+total = 0
 
 factura = int(input("Ingrese el numero de factura: "))
 
@@ -32,7 +33,7 @@ while factura < 0:
 while factura != 0:
     producto = str(input("ingrese el producto: pinza, tenaza o motosierra: "))
 
-    if producto != "pinza" and producto != "tenaza" and producto != "motosierra":
+    while producto != "pinza" and producto != "tenaza" and producto != "motosierra":
         producto = str(input("Ese no es un valor correcto. Ingrese el nombre del producto: "))
 
     cantidad = int(input("ingrese la cantidad vendida: "))
@@ -96,17 +97,25 @@ while factura != 0:
 
 
 
+
     total = acum1 + acum2 + acum3
+
 
     factura = int(input("Ingrese el numero de factura: "))
 
-print("la cantidad vendida de pinzas es", cant1, "la cantidad de tenazas vendidas es", cant2,
-      "la cantidad de motosierras vendidas es", cant3)
-print(" el total facturado es", total)
-print("el porcentaje de ventas en pesos de pinzas es $ es de", acum1 * 100 / total)
-print("el porcentaje de ventas en pesos de tenazas es $ es de", acum2 * 100 / total)
-print("el porcentaje de ventas en pesos de motosierras es $ es de", acum3 * 100 / total)
-print("el cliente de mayor facturacion individual es", mayornombre)
-print("el numero de factura con la menor cantidad es:", nummin)
+if total !=0:
+    print("la cantidad vendida de pinzas es", cant1, "la cantidad de tenazas vendidas es", cant2,
+          "la cantidad de motosierras vendidas es", cant3)
+    print(" el total facturado es", total)
+    print("el porcentaje de ventas en pesos de pinzas es $ es de", acum1 * 100 / total)
+    print("el porcentaje de ventas en pesos de tenazas es $ es de", acum2 * 100 / total)
+    print("el porcentaje de ventas en pesos de motosierras es $ es de", acum3 * 100 / total)
+    print("el cliente de mayor facturacion individual es", mayornombre)
+    print("el numero de factura con la menor cantidad es:", nummin)
+
+else:
+    print("no han habido ventas")
+
+
 
 
