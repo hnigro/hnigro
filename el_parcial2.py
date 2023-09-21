@@ -25,10 +25,10 @@ precio2 = 752
 precio3 = 1360
 total = 0
 
-factura = int(input("Ingrese el numero de factura: "))
+factura = (input("Ingrese el numero de factura: "))
 
 while factura < 0:
-    factura = int(input("La factura no puede ser menor a 0.Ingrese el numero de factura: "))
+    factura = int(input("La factura no puede ser menor a 0. \n Ingrese el numero de factura: "))
 
 while factura != 0:
     producto = str(input("ingrese el producto: pinza, tenaza o motosierra: "))
