@@ -9,8 +9,8 @@ import pyttsx3
 import time
 
 # Initialize OpenAI API
-openai.api_key = "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"
-# Initialize the text to speech engine
+openai.api_key = "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"
+# Initialize the text to speech engine___sk-gQ2DpHLoMzPnABj5pvXsT3BlbkFJREfguFAhc3J8ezSaM0FZ
 engine = pyttsx3.init()
 
 
