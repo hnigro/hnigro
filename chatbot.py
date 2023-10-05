@@ -9,8 +9,9 @@ import pyttsx3
 import time
 
 # Initialize OpenAI API
-openai.api_key = "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"
+openai.api_key = "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"
 # Initialize the text to speech engine___sk-gQ2DpHLoMzPnABj5pvXsT3BlbkFJREfguFAhc3J8ezSaM0FZ
+#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
 engine = pyttsx3.init()
 
 
@@ -21,7 +22,7 @@ def transcribe_audio_to_test(filename):
     try:
         return recogizer.recognize_google(audio, language="es")
     except:
-        print("No se que ha pasao")
+        print("No se qué pasó")
 
 
 def generate_response(prompt):
