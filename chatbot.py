@@ -54,8 +54,8 @@ def speak_text(text):
 
 def main():
     while True:
-        # Waith for user say "genius"
-        print("Di 'Hola' para empezar a grabar")
+        # Waith for user say "Hola"
+        print("Decí 'Hola' para empezar a grabar")
         with sr.Microphone() as source:
             recognizer = sr.Recognizer()
             audio = recognizer.listen(source)
