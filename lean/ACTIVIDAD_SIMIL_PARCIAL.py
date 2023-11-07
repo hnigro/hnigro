@@ -45,7 +45,21 @@ def hola(numero):
 
 """
 
+def existeelemento (arreglo ,elemento):
+    existe = False
+    for i in range(len(arreglo)):
+        if arreglo [i] == elemento:
+            existe = True
+    return existe
+
+elemento = int(input('decime que numero queres econtrar'))
+
 arreglo = [100,12,15,16,17,18]
-for i in range(2, len(arreglo)):
-    print(arreglo[i])
+
+print(arreglo)
+if existeelemento(arreglo,elemento) == True :
+    print('Existe en el arreglo el numero ', elemento )
+
+else:
+    print('El',elemento, 'no existe' )
 
