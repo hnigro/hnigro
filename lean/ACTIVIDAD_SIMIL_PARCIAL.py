@@ -22,44 +22,89 @@
 # 3) Calcular el promedio de los precios
 # 4) Eliminar los valores que superen al promedio y sus productos asociados.
 # 5) Ordenar ambos vectores, elegir el criterio por precio o producto.
-# Recuerden que luego de insertar, eliminar u ordenar se debe mostrar cómo quedan los vectores
+# Recuerden que luego de insertar, eliminar u ordenar se debe mostrar cómo quedan los vecto
+
+#vector producto (mayus o minusc) si se pone fin se termina
+#vector precio (no puede ser negaativo ni 0)
+
+#mostrar producto y precio en una sola funcion
+#mostrar el nombre de producto de mayor precio
+#aliminar los productos q salgan mas del promedio
+
+vectorprodu = []
+vectorprecio = []
+
+
+
+#mostrar (vectorprodu,vectorprecio)
+
+#mayorprecio(vectorprodu)
+
+#promedio(vectorprecio)
+
+#eliminarmayores (vectorprecio, promedio)
+
+#ordenar(vectorprecio,vectorprodu)
+
+def cargar (vectorprodu , vectorprecio):
+    producto = input("Decime el nombre del producto").upper()
+    while producto != 'FIN':
+        vectorprodu.append(producto)
+        precio = int(input("Decime el valor del producto"))
+        while precio < 0:
+            precio= int(input("El precio del producto debe ser positivo"))
+        vectorprecio.append(precio)
+        producto = input("Decime el nombre del producto").upper()
+
+def mostrar (vectorprodu,vectorprecio):
+    print("PRODUCTOS \t\t PRECIOS")
+    for i in range(0,len(vectorprodu)):
+        print(f"{vectorprodu[i]}\t\t      {vectorprecio[i]}")
+
+def mayorprecio (vectorprecio):
+    max = 0
+    model = 0
+    for i in range (0,len(vectorprecio)):
+        if vectorprecio[i] > max:
+            max = vectorprecio[i]
+            model = vectorprodu[i]
+    return model
+
+def calcpromedio (vectorprecio):
+    suma = 0
+    for i in range (0,len(vectorprecio)):
+        suma = suma + vectorprecio[i]
+    promedio = suma/len(vectorprecio)
+    return promedio
+
+def eliminarprodu(vectorprecio):
+    i = 0
+    while i < len(vectorprecio):
+        if vectorprecio[i] > calcpromedio(vectorprecio):
+            vectorprecio.pop(i)
+            vectorprodu.pop(i)
+        else:
+            i = i + 1
+    return vectorprecio
+
+def ordenar(vectorprecio):
+    vectorprecio.reverse()
 
 
 
 
 
-"""
-arreglo = []
 
-for i in range (5):
-    numero = int(input("Ingresa un numero"))
-    arreglo.append(numero)
+cargar(vectorprodu,vectorprecio)
 
-print("Datos cargados")
-for i in range (len(arreglo)):
-    print(arreglo[i],end="   ")
+mostrar(vectorprodu,vectorprecio)
 
+print("El mayor precio es ",mayorprecio(vectorprecio))
 
-def hola(numero):
-    print("el numero es:", numero)
+print("El promedio es:",calcpromedio(vectorprecio))
 
-"""
+print("Despues de eliminar")
 
-def existeelemento (arreglo ,elemento):
-    existe = False
-    for i in range(len(arreglo)):
-        if arreglo [i] == elemento:
-            existe = True
-    return existe
+print("eliminado",eliminarprodu(vectorprecio))
 
-elemento = int(input('decime que numero queres econtrar'))
-
-arreglo = [100,12,15,16,17,18]
-
-print(arreglo)
-if existeelemento(arreglo,elemento) == True :
-    print('Existe en el arreglo el numero ', elemento )
-
-else:
-    print('El',elemento, 'no existe' )
-
+mostrar(vectorprodu,vectorprecio)
