@@ -1,51 +1,5 @@
-# Ernesto Quintano, quedó a cargo de la empresa familiar "Quintano S.A".
- 
-# Toda la vida la empresa trabajó utilizando cuadernos y 2 empleados administrativos para registrar los productos fabricados y los precios.
- 
-# Ernesto, cree que es hora de empezar a informatizar.
- 
-# Por eso le solicita a Ud. Lo siguiente:
- 
-# Se leen y se cargan en vectores los siguientes datos:
- 
-# Modelo de producto, en letras
-# Precio unitario, no puede ser negativos ni 0
- 
-# Cabe destacar además, que el nombre del modelo puede ingresarse en mayúscula o minúscula.
-# En el caso de que se ingrese en minúscula, se debe convertir a mayúscula.
-# Si la carga es nula (no se ingresaron datos), mostrar una leyenda y finalizar la ejecución.
- 
-# La carga de productos finaliza cuando se coloca “FIN” en el nombre del producto.
- 
-# 1) Mostrar en forma de lista de productos y sus precios en una sola función.
-# 2) Mostrar el nombre del producto de mayor precio
-# 3) Calcular el promedio de los precios
-# 4) Eliminar los valores que superen al promedio y sus productos asociados.
-# 5) Ordenar ambos vectores, elegir el criterio por precio o producto.
-# Recuerden que luego de insertar, eliminar u ordenar se debe mostrar cómo quedan los vecto
-
-#vector producto (mayus o minusc) si se pone fin se termina
-#vector precio (no puede ser negaativo ni 0)
-
-#mostrar producto y precio en una sola funcion
-#mostrar el nombre de producto de mayor precio
-#aliminar los productos q salgan mas del promedio
-
 vectorprodu = []
 vectorprecio = []
-
-
-
-#mostrar (vectorprodu,vectorprecio)
-
-#mayorprecio(vectorprodu)
-
-#promedio(vectorprecio)
-
-#eliminarmayores (vectorprecio, promedio)
-
-#ordenar(vectorprecio,vectorprodu)
-
 def cargar (vectorprodu , vectorprecio):
     producto = input("Decime el nombre del producto").upper()
     while producto != 'FIN':
@@ -83,28 +37,43 @@ def eliminarprodu(vectorprecio):
         if vectorprecio[i] > calcpromedio(vectorprecio):
             vectorprecio.pop(i)
             vectorprodu.pop(i)
-        else:
-            i = i + 1
+        i = i + 1
+    return
+
+def ordenar(vectorprecio,vectorprodu):
+    x = 0
+    while x < len(vectorprecio):
+        for i in range(len(vectorprecio)-1):
+            if vectorprecio[i] < vectorprecio[i + 1]:
+                auxprecio = vectorprecio[i]
+                vectorprecio[i] = vectorprecio[i+1]
+                vectorprecio[i + 1] = auxprecio
+
+                auxprodu = vectorprodu[i]
+                vectorprodu[i] = vectorprodu[i + 1]
+                vectorprodu[i + 1] = auxprodu
+        x = x + 1
     return vectorprecio
-
-def ordenar(vectorprecio):
-    vectorprecio.reverse()
-
-
-
-
-
 
 cargar(vectorprodu,vectorprecio)
 
-mostrar(vectorprodu,vectorprecio)
+if len(vectorprodu) == 0:
+    print("No puede no ingresar nada")
 
-print("El mayor precio es ",mayorprecio(vectorprecio))
+else:
+    mostrar(vectorprodu,vectorprecio)
 
-print("El promedio es:",calcpromedio(vectorprecio))
+    print("El mayor precio es ",mayorprecio(vectorprecio))
 
-print("Despues de eliminar")
+    print("El promedio es:",calcpromedio(vectorprecio))
 
-print("eliminado",eliminarprodu(vectorprecio))
+    print("Despues de eliminar")
 
-mostrar(vectorprodu,vectorprecio)
+    eliminarprodu(vectorprecio)
+
+    mostrar(vectorprodu,vectorprecio)
+
+    print("Los vectores ordenados quedan asi")
+    ordenar(vectorprecio,vectorprodu)
+
+    mostrar(vectorprodu,vectorprecio)
