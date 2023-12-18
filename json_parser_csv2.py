@@ -1,6 +1,6 @@
 """
 sincronizado en produccion
-07/09/23
+31/08/23
 
 
 """
@@ -30,24 +30,26 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     pabloapi
     pabloapi
 
+
+    clave anterior: htoken = oauth.fetch_token(token_url="http://10.133.96.78:8081/api/v1/login", client_id="SRT",
+                               client_secret="srtapi2022")
+
     """
 
     client = BackendApplicationClient(client_id="SRT")
     oauth = OAuth2Session(client=client)
     htoken = oauth.fetch_token(token_url="http://10.133.96.78:8081/api/v1/login", client_id="SRT",
-                               client_secret="srtapi2022")
+                               client_secret="srtapi")
 
     csv_file = {"file": (CSV_file, open(CSV_file, "rb"), "application/vnd.ms-excel")}
 
     swagger_cmd = "http://10.133.96.78:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
-
 
     try:
         swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
         cod_salida = swagger_response.status_code
     except Exception:
         print(f"falla en la carga a ARYA len SRT= {csv_file}linea 124 =  {cod_salida}")
-
     return
 
 
@@ -68,7 +70,10 @@ def Generacion_CSV(SRT_IP):
 
     filepath = "CSV_FILES\\"
     global filew
+    global file_srt_conf
     filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
+    file_srt_conf = open(f"{filepath}{SRT_IP[3]}_CONFIG.txt", "w")
+
 
     # esta linea me imprime el nombre del archivo que creé
     # print(f"linea 62 _____nombre del archivo creado = {filew.name}")
@@ -78,10 +83,12 @@ def Generacion_CSV(SRT_IP):
         f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State,BW In Total,BW Out Total\n")
 
     sroutes = API_int(SRT_IP, "FUNCION")[0]["data"]
-    BW_in_total= API_int(SRT_IP, "FUNCION")[1]
-    BW_out_total= API_int(SRT_IP, "FUNCION")[2]
+    BW_in_total = API_int(SRT_IP, "FUNCION")[1]
+    BW_out_total = API_int(SRT_IP, "FUNCION")[2]
     # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
-    # print(sroutes)
+    print(sroutes)
+    file_srt_conf.write(str(sroutes))
+    file_srt_conf.close()
 
     # BW_total(sroutes)
 
@@ -337,7 +344,6 @@ class ventana_class:
                         print(
                             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_02_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-
                     # abc03
                     try:
                         Generacion_CSV([SRT_ABC_03[1], SRT_ABC_03[2], SRT_ABC_03[3], SRT_ABC_03[4]])
@@ -452,7 +458,6 @@ def API_int(SRT_IP, FUNCION):
 
     apicmd3 = session.get(f"https://{SRTIP}/api/system/metric/snapshot")
 
-
     RTA_API_CMD = """{"system":{"uptime":41030403},"memory":{"usedPercent":"35.84"},"loadAvg":{"1m":"6.42","5m":"6.25","15m":"6.02"},"cpu":{"loadPercent":"34.36"},"network":{"receivedMbps":"485.44","sentMbps":"490.50"}}"""
 
     # el siguiente es el BW de entrada y salida posta del sistema
@@ -481,7 +486,10 @@ def API_int(SRT_IP, FUNCION):
 def Last_Update():
     import datetime
     last_updated = datetime.datetime.now().strftime("%m/%d/%y %H:%M")
+
     return last_updated
+
+
 # XXXXXXXXXXXXXXXXXXX       FIN LAST UPDATE         XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
@@ -493,6 +501,8 @@ def timer():
     x.sleep(1)
     print("linea 475 _____despues de time")
     return print("return linea 482")
+
+
 # XXXXXXXXXXXXXXXXXXX       FIN TIMER        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
@@ -533,12 +543,9 @@ def main():
     sg2.popup(f"finalizar\n ")
 
 
-
 # **********************************************************************************************
 # ******************       FIN PROGRAMA        ********************************************
 # **********************************************************************************************
 
 if __name__ == "__main__":
     main()
-
-
