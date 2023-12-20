@@ -42,203 +42,184 @@ respuesta = [{'name': '01_ABC3_COBC1_TEST'
 
 
 
-class SRT_DATA:
-    def __init__(self):# es  una clase por default donde se inicializan las variables
-        self.POST_ROUTE_REQUEST = []
-        self.GET_ROUTE_RESPONSE = []
-
-        self.POST_SOURCE_UDP_REQUEST = []
-        self.POST_SOURCE_SRT_REQUEST = []
-
-        self.GET_SOURCE_UDP_RESPONSE = []
-        self.GET_SOURCE_SRT_RESPONSE = []
 
 
-        self.POST_DEST_UDP_REQUEST = []
-        self.POST_DEST_SRT_REQUEST = []
-
-        self.GET_DEST_UDP_RESPONSE = []
-        self.GET_DEST_SRT_RESPONSE = []
-
-
-
-
-    POST_ROUTE_REQUEST = [
-        "name"
-        , "id"
-        , "source"
-        , "destinations"]
-    GET_ROUTE_RESPONSE = [
-        "name"
-        , "id"
-        , "source"
-        , "destinations"
-        , "elapsedTime"
-        , "state"
-        ,"pendingUpdates"
-        ,"summaryStatusCode"
-        ,"summaryStatusDetails"
-        ,"hasPendingDelete"]
-    POST_SOURCE_UDP_REQUEST = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"sourceAddress"
-        ,"fec"]
-    POST_SOURCE_SRT_REQUEST = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"srtPassPhrase"
-        ,"srtLatency"
-        ,"srtMode"
-        ,"srtRcvBuf"
-        ,"srtStreamID"
-        ,"useFec"
-        ,"srtFecCols"
-        ,"srtFecRows"
-        ,"srtFecLayout"
-        ,"srtFecArq"
-        ,"srtGroupMode"
-        ,"srtNetworkBondingParams"]
-    GET_SOURCE_UDP_RESPONSE = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"sourceAddress"
-        ,"fec"
-        ,"state"
-        ,"summaryStatusCode"
-        ,"summaryStatusDetails"]
-    GET_SOURCE_SRT_RESPONSE = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"srtPassPhrase"
-        ,"srtLatency"
-        ,"srtRcvBuf"
-        ,"srtStreamID"
-        ,"useFec"
-        ,"srtFecCols"
-        ,"srtFecRows"
-        ,"srtFecLayout"
-        ,"srtFecArq"
-        ,"mode"
-        ,"state"
-        ,"summaryStatusCode"
-        ,"summaryStatusDetails"
-        ,"srtGroupMode"
-        ,"srtNetworkBondingParams"]
-    POST_DEST_UDP_REQUEST = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"action"
-        ,"mtu"
-        ,"ttl"
-        ,"tos"
-        ,"fec"
-        ,"prompegFecLevel"
-        ,"prompegFecIsBlockAligned"
-        ,"prompegFecColumns"
-        ,"prompegFecRows"
-        ,"shaping"
-        ,"maxBitrate"]
-    POST_DEST_SRT_REQUEST = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"action"
-        ,"mtu"
-        ,"ttl"
-        ,"tos"
-        ,"srtEncryption"
-        ,"srtPassPhrase"
-        ,"srtLatency"
-        ,"srtMode"
-        ,"srtOverhead"
-        ,"srtStreamID"
-        ,"useFec"
-        ,"srtFecCols"
-        ,"srtFecRows"
-        ,"srtFecLayout"
-        ,"srtFecArq"
-        ,"srtConnectionLimit"
-        ,"srtGroupMode"
-        ,"srtNetworkBondingParams"]
-    GET_DEST_UDP_RESPONSE = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"mtu"
-        ,"ttl"
-        ,"tos"
-        ,"fec"
-        ,"prompegFecLevel"
-        ,"prompegFecIsBlockAligned"
-        ,"prompegFecColumns"
-        ,"prompegFecRows"
-        ,"shaping"
-        ,"maxBitrate"
-        ,"state"
-        ,"summaryStatusCode"
-        ,"summaryStatusDetails"
-        ,"started"]
-    GET_DEST_SRT_RESPONSE = [
-        "name"
-        ,"id"
-        ,"address"
-        ,"protocol"
-        ,"port"
-        ,"networkInterface"
-        ,"retainHeader"
-        ,"mtu"
-        ,"ttl"
-        ,"tos"
-        ,"srtEncryption"
-        ,"srtPassPhrase"
-        ,"useFEC"
-        ,"srtFecCols"
-        ,"srtFecRows"
-        ,"srtFecLayout"
-        ,"srtFecArq"
-        ,"srtConnectionLimit"
-        ,"srtLatency"
-        ,"mode"
-        ,"srtOverhead"
-        ,"state"
-        ,"summaryStatusCode"
-        ,"summaryStatusDetails"
-        ,"started"
-        ,"srtStreamID"
-        ,"srtGroupMode"
-        ,"srtNetworkBondingParams"]
+POST_ROUTE_REQUEST = [
+    "name"
+    , "id"
+    , "source"
+    , "destinations"]
+GET_ROUTE_RESPONSE = [
+    "name"
+    , "id"
+    , "source"
+    , "destinations"
+    , "elapsedTime"
+    , "state"
+    ,"pendingUpdates"
+    ,"summaryStatusCode"
+    ,"summaryStatusDetails"
+    ,"hasPendingDelete"]
+POST_SOURCE_UDP_REQUEST = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"sourceAddress"
+    ,"fec"]
+POST_SOURCE_SRT_REQUEST = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"srtPassPhrase"
+    ,"srtLatency"
+    ,"srtMode"
+    ,"srtRcvBuf"
+    ,"srtStreamID"
+    ,"useFec"
+    ,"srtFecCols"
+    ,"srtFecRows"
+    ,"srtFecLayout"
+    ,"srtFecArq"
+    ,"srtGroupMode"
+    ,"srtNetworkBondingParams"]
+GET_SOURCE_UDP_RESPONSE = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"sourceAddress"
+    ,"fec"
+    ,"state"
+    ,"summaryStatusCode"
+    ,"summaryStatusDetails"]
+GET_SOURCE_SRT_RESPONSE = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"srtPassPhrase"
+    ,"srtLatency"
+    ,"srtRcvBuf"
+    ,"srtStreamID"
+    ,"useFec"
+    ,"srtFecCols"
+    ,"srtFecRows"
+    ,"srtFecLayout"
+    ,"srtFecArq"
+    ,"mode"
+    ,"state"
+    ,"summaryStatusCode"
+    ,"summaryStatusDetails"
+    ,"srtGroupMode"
+    ,"srtNetworkBondingParams"]
+POST_DEST_UDP_REQUEST = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"action"
+    ,"mtu"
+    ,"ttl"
+    ,"tos"
+    ,"fec"
+    ,"prompegFecLevel"
+    ,"prompegFecIsBlockAligned"
+    ,"prompegFecColumns"
+    ,"prompegFecRows"
+    ,"shaping"
+    ,"maxBitrate"]
+POST_DEST_SRT_REQUEST = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"action"
+    ,"mtu"
+    ,"ttl"
+    ,"tos"
+    ,"srtEncryption"
+    ,"srtPassPhrase"
+    ,"srtLatency"
+    ,"srtMode"
+    ,"srtOverhead"
+    ,"srtStreamID"
+    ,"useFec"
+    ,"srtFecCols"
+    ,"srtFecRows"
+    ,"srtFecLayout"
+    ,"srtFecArq"
+    ,"srtConnectionLimit"
+    ,"srtGroupMode"
+    ,"srtNetworkBondingParams"]
+GET_DEST_UDP_RESPONSE = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"mtu"
+    ,"ttl"
+    ,"tos"
+    ,"fec"
+    ,"prompegFecLevel"
+    ,"prompegFecIsBlockAligned"
+    ,"prompegFecColumns"
+    ,"prompegFecRows"
+    ,"shaping"
+    ,"maxBitrate"
+    ,"state"
+    ,"summaryStatusCode"
+    ,"summaryStatusDetails"
+    ,"started"]
+GET_DEST_SRT_RESPONSE = [
+    "name"
+    ,"id"
+    ,"address"
+    ,"protocol"
+    ,"port"
+    ,"networkInterface"
+    ,"retainHeader"
+    ,"mtu"
+    ,"ttl"
+    ,"tos"
+    ,"srtEncryption"
+    ,"srtPassPhrase"
+    ,"useFEC"
+    ,"srtFecCols"
+    ,"srtFecRows"
+    ,"srtFecLayout"
+    ,"srtFecArq"
+    ,"srtConnectionLimit"
+    ,"srtLatency"
+    ,"mode"
+    ,"srtOverhead"
+    ,"state"
+    ,"summaryStatusCode"
+    ,"summaryStatusDetails"
+    ,"started"
+    ,"srtStreamID"
+    ,"srtGroupMode"
+    ,"srtNetworkBondingParams"]
 
 
 
@@ -247,21 +228,21 @@ class SRT_DATA:
 
 
 
-p = SRT_DATA()
-#print(p.POST_ROUTE_REQUEST)
-print("fffffff=",p.GET_ROUTE_RESPONSE[])
-print(p.GET_SOURCE_UDP_RESPONSE)
+
+#print("fffffff=",GET_ROUTE_RESPONSE[1])
+#print(GET_SOURCE_UDP_RESPONSE)
 #print(p.POST_DEST_SRT_REQUEST)
-print(p.GET_SOURCE_SRT_RESPONSE)
-print(p.GET_DEST_UDP_RESPONSE)
-print(p.GET_DEST_SRT_RESPONSE)
-#print(p.POST_SOURCE_SRT_REQUEST)
+#print(GET_SOURCE_SRT_RESPONSE)
+#print(GET_DEST_UDP_RESPONSE)
+#print(GET_DEST_SRT_RESPONSE)
 
 
 
 
+lista_source_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'sourceAddress', 'fec', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtPassPhrase', 'srtLatency', 'srtRcvBuf', 'srtStreamID', 'useFec', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'mode', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtGroupMode', 'srtNetworkBondingParams']
+lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'mtu', 'ttl', 'tos', 'fec', 'prompegFecLevel', 'prompegFecIsBlockAligned', 'prompegFecColumns', 'prompegFecRows', 'shaping', 'maxBitrate', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtEncryption', 'srtPassPhrase', 'useFEC', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'srtConnectionLimit', 'srtLatency', 'mode', 'srtOverhead', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtStreamID', 'srtGroupMode', 'srtNetworkBondingParams']
 
-
+print(lista_dest_total)
 
 
 
