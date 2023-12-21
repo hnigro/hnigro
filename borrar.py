@@ -242,10 +242,10 @@ GET_DEST_SRT_RESPONSE = [
 lista_source_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'sourceAddress', 'fec', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtPassPhrase', 'srtLatency', 'srtRcvBuf', 'srtStreamID', 'useFec', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'mode', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtGroupMode', 'srtNetworkBondingParams']
 lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'mtu', 'ttl', 'tos', 'fec', 'prompegFecLevel', 'prompegFecIsBlockAligned', 'prompegFecColumns', 'prompegFecRows', 'shaping', 'maxBitrate', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtEncryption', 'srtPassPhrase', 'useFEC', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'srtConnectionLimit', 'srtLatency', 'mode', 'srtOverhead', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtStreamID', 'srtGroupMode', 'srtNetworkBondingParams']
 
-print(lista_dest_total)
+#print(lista_dest_total)
 
-
-
+lista2 = {lista_source_total[0]: respuesta[0]["name"]}
+print(lista2)
 
 
 
