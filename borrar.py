@@ -244,7 +244,7 @@ lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterfa
 
 #print(lista_dest_total)
 
-lista2 = {lista_source_total[0]: respuesta[0]["name"]}
+lista2 = {lista_source_total[0]: respuesta[0]["source"]["name"]}
 print(lista2)
 
 
