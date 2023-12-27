@@ -86,7 +86,7 @@ def Generacion_CSV(SRT_IP):
     BW_in_total = API_int(SRT_IP, "FUNCION")[1]
     BW_out_total = API_int(SRT_IP, "FUNCION")[2]
     # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
-    print(sroutes)
+    #print(sroutes)
     file_srt_conf.write(str(sroutes))
     file_srt_conf.close()
 
