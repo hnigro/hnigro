@@ -227,6 +227,8 @@ lista_source_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInter
 lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'mtu', 'ttl', 'tos', 'fec', 'prompegFecLevel', 'prompegFecIsBlockAligned', 'prompegFecColumns', 'prompegFecRows', 'shaping', 'maxBitrate', 'srtEncryption', 'srtPassPhrase', 'useFEC', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'srtConnectionLimit', 'srtLatency', 'mode', 'srtOverhead', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtStreamID', 'srtGroupMode', 'srtNetworkBondingParams']
 
 #print(lista_dest_total)
+
+
 dict2 = {}
 for i in range(len(lista_source_total)):
 
@@ -236,7 +238,7 @@ for i in range(len(lista_source_total)):
     except Exception:
         dict2[lista_source_total[i]] = "NADA"
 
-        print(f"error___ {lista_source_total[i]} :  nada" )
+        #print(f"error___ {lista_source_total[i]} :  nada" )
 
 print(f" {i}    diccionario total =====    \n\n   {dict2}      ")
 
