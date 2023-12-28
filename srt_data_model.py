@@ -248,7 +248,7 @@ class SRT_DATA:
 
 
 
-
+"""
 p = SRT_DATA()
 #print(p.POST_ROUTE_REQUEST)
 print("fffffff=",p.GET_ROUTE_RESPONSE[])
@@ -258,7 +258,28 @@ print(p.GET_SOURCE_SRT_RESPONSE)
 print(p.GET_DEST_UDP_RESPONSE)
 print(p.GET_DEST_SRT_RESPONSE)
 #print(p.POST_SOURCE_SRT_REQUEST)
+"""
 
+
+
+lista_source_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'sourceAddress', 'fec', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtPassPhrase', 'srtLatency', 'srtRcvBuf', 'srtStreamID', 'useFec', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'mode', 'srtGroupMode', 'srtNetworkBondingParams']
+lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'mtu', 'ttl', 'tos', 'fec', 'prompegFecLevel', 'prompegFecIsBlockAligned', 'prompegFecColumns', 'prompegFecRows', 'shaping', 'maxBitrate', 'srtEncryption', 'srtPassPhrase', 'useFEC', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'srtConnectionLimit', 'srtLatency', 'mode', 'srtOverhead', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtStreamID', 'srtGroupMode', 'srtNetworkBondingParams']
+
+#print(lista_dest_total)
+
+
+dict2 = {}
+for i in range(len(lista_source_total)):
+
+    try:
+        dict2[lista_source_total[i]] = respuesta[0]["source"][lista_source_total[i]]
+        #print(dict2)
+    except Exception:
+        dict2[lista_source_total[i]] = "NADA"
+
+        #print(f"error___ {lista_source_total[i]} :  nada" )
+
+print(f" {i}    diccionario total =====    \n\n   {dict2}      ")
 
 
 
