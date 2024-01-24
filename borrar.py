@@ -144,21 +144,14 @@ def lector_archivo_total_srt(rta_total):
                 for cant_dest in range(len(ruta["destinations"])):
 
                     try:
-                        print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD", ruta["destinations"][0] , cant_dest)
+                        for elem_de_dest2 in lista_dest_total:
+
+                            print(f"DDDDDDDDDDDDDDDDDDD elemento de dest2   {elem_de_dest2}  === {ruta[elemento_de_ruta][cant_dest][elem_de_dest2]} , {cant_dest}")
                     except Exception:
                         x = ""
 
-
-                    for elemento_de_destinations in lista_dest_total:
-
-                        try:
-                            print("elemento de ruta =====   destination", ruta[elemento_de_ruta][elemento_de_destinations])
-                        except Exception:
-                            x=""
-
-
             else:
-                print(f"*************************{elemento_de_ruta} >>>>> {ruta[elemento_de_ruta]}")
+                print(f"RRRRRRRRRRRRRRRRRRR--------{elemento_de_ruta} >>>>> {ruta[elemento_de_ruta]}")
                 """
                 for elemento_de_source in elemento_de_ruta:
                     try:
