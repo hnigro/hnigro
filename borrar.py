@@ -169,7 +169,7 @@ def imprimir_titulos(get_route_response_func,lista_source_total_func,lista_dest_
 def lector_archivo_total_srt(rta_total):
     """
     esta función me lee el
-    :param archivo_total: archivo generado en json_parser
+    :param archivo_total: archivo generado en json_parser es el txt
     :return: archivo csv con todos los datos ordenados
     """
 
