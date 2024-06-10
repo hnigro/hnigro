@@ -1,4 +1,4 @@
-# Importar el módulo subprocess para ejecutar comandos externos
+# Importar el módulo subprocess para ejecutar comandos externos con ffmpeg
 import subprocess
 
 # Definir el nombre del archivo de video
