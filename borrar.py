@@ -4,9 +4,6 @@ este programa  procesa el contenido del archivo extra que genera la interface js
 
 """
 
-
-
-
 csv_completo = []
 csv_titulo = []
 csv_contenido = []
@@ -137,7 +134,7 @@ def leer_archivo(archivo_ext):
         contenido_arch = arch.read()
         """
         lo que tengo ahora es un string que me lee del archivo. 
-        voy a pasar ese string a variavble con la intruccion eval
+        voy a pasar ese string a variable con la intruccion eval
         """
         contenido_arch = eval(contenido_arch)
         #print(contenido_arch)
@@ -172,6 +169,9 @@ def lector_archivo_total_srt(rta_total):
     :param archivo_total: archivo generado en json_parser es el txt
     :return: archivo csv con todos los datos ordenados
     """
+    #open(archivo_csv.csv, "w") as arch2:
+
+
 
     for ruta in rta_total:
 
@@ -203,9 +203,11 @@ def lector_archivo_total_srt(rta_total):
                 print(f"RRRRRRRRRRRRRRRRRRR--------{elemento_de_ruta} >>>>> {ruta[elemento_de_ruta]}")
                 #print(elemento_de_ruta)
                 #print(ruta[elemento_de_ruta])
-
+        '''
         if rta_total.index(ruta) == 95:
             break
+            
+        '''
 
 
     #print(csv_completo)
