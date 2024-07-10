@@ -4,9 +4,12 @@ este programa  procesa el contenido del archivo extra que genera la interface js
 
 """
 
-csv_completo = []
+csv_completo = [] # no es usado hasta ahora
 csv_titulo = []
-csv_contenido = []
+csv_contenido = [] # no es usado hasta ahora
+csv_titulo2 = ['name', 'elapsedTime', 'id', 'label', 'state', 'SRC_name', 'SRC_id', 'SRC_address', 'SRC_protocol', 'SRC_port', 'SRC_networkInterface', 'SRC_retainHeader', 'SRC_sourceAddress', 'SRC_fec', 'SRC_state', 'SRC_summaryStatusCode', 'SRC_summaryStatusDetails', 'SRC_srtPassPhrase', 'SRC_srtLatency', 'SRC_srtRcvBuf', 'SRC_srtStreamID', 'SRC_useFec', 'SRC_srtFecCols', 'SRC_srtFecRows', 'SRC_srtFecLayout', 'SRC_srtFecArq', 'SRC_mode', 'SRC_srtGroupMode', 'SRC_srtNetworkBondingParams', 'destinations', 'DEST_name', 'DEST_id', 'DEST_address', 'DEST_protocol', 'DEST_port', 'DEST_networkInterface', 'DEST_retainHeader', 'DEST_mtu', 'DEST_ttl', 'DEST_tos', 'DEST_fec', 'DEST_prompegFecLevel', 'DEST_prompegFecIsBlockAligned', 'DEST_prompegFecColumns', 'DEST_prompegFecRows', 'DEST_shaping', 'DEST_maxBitrate', 'DEST_srtEncryption', 'DEST_srtPassPhrase', 'DEST_useFEC', 'DEST_srtFecCols', 'DEST_srtFecRows', 'DEST_srtFecLayout', 'DEST_srtFecArq', 'DEST_srtConnectionLimit', 'DEST_srtLatency', 'DEST_mode', 'DEST_srtOverhead', 'DEST_state', 'DEST_summaryStatusCode', 'DEST_summaryStatusDetails', 'DEST_started', 'DEST_srtStreamID', 'DEST_srtGroupMode', 'DEST_srtNetworkBondingParams', 'summaryStatusCode', 'summaryStatusDetails']
+
+
 
 lista_source_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'sourceAddress', 'fec', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'srtPassPhrase', 'srtLatency', 'srtRcvBuf', 'srtStreamID', 'useFec', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'mode', 'srtGroupMode', 'srtNetworkBondingParams']
 lista_dest_total = ['name', 'id', 'address', 'protocol', 'port', 'networkInterface', 'retainHeader', 'mtu', 'ttl', 'tos', 'fec', 'prompegFecLevel', 'prompegFecIsBlockAligned', 'prompegFecColumns', 'prompegFecRows', 'shaping', 'maxBitrate', 'srtEncryption', 'srtPassPhrase', 'useFEC', 'srtFecCols', 'srtFecRows', 'srtFecLayout', 'srtFecArq', 'srtConnectionLimit', 'srtLatency', 'mode', 'srtOverhead', 'state', 'summaryStatusCode', 'summaryStatusDetails', 'started', 'srtStreamID', 'srtGroupMode', 'srtNetworkBondingParams']
@@ -176,17 +179,21 @@ def lector_archivo_total_srt(rta_total):
     for ruta in rta_total:
 
         for elemento_de_ruta in ruta:
-            #print(f"{elemento_de_ruta}")
+            #print(f"rrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh  =================    {elemento_de_ruta}")
+
             if elemento_de_ruta == "source":
+
 
                 for elemento_de_source in lista_source_total:
                     try:
                         print(f"SSSSSSSSSSSSSSSSSSS ELEMENTO DE source {elemento_de_source} ===  {ruta[elemento_de_ruta][elemento_de_source]}")
+                        csv_completo.append(f"{ruta[elemento_de_ruta][elemento_de_source]}")  # temp 270524
                     except Exception:
                         x=""
                         #print("")
 
-                        print(f"errrrorrr   {elemento_de_source}    no definido *************************")
+                        print(f"ssssssssss errrrorrr   {elemento_de_source}    no definido ***********")
+                        csv_completo.append(",")  # temp 270524
 
             elif elemento_de_ruta == "destinations":
 
@@ -196,25 +203,32 @@ def lector_archivo_total_srt(rta_total):
                         for elem_de_dest2 in lista_dest_total:
 
                             print(f"DDDDDDDDDDDDDDDDDDD elemento de dest2   {elem_de_dest2}  === {ruta[elemento_de_ruta][cant_dest][elem_de_dest2]} , {cant_dest}")
+                            csv_completo.append(f"{ruta[elemento_de_ruta][cant_dest][elem_de_dest2]}")  # temp 270524
                     except Exception:
                         x = ""
+                        csv_completo.append(",")  # temp 270524
+
+                csv_completo.append("termina la linea de destinos hhhhhhhhhhhhhhhhhhh \n")  # temp 270524
+
 
             else:
                 print(f"RRRRRRRRRRRRRRRRRRR--------{elemento_de_ruta} >>>>> {ruta[elemento_de_ruta]}")
+                csv_completo.append(f"{ruta[elemento_de_ruta]}") # temp 270524
+
                 #print(elemento_de_ruta)
                 #print(ruta[elemento_de_ruta])
         '''
-        if rta_total.index(ruta) == 95:
+        if rta_total.index(ruta) == 222:
             break
             
         '''
 
+    print("hhhhh      csv completo     hhhhhhh \n")
+    print(csv_completo)
 
-    #print(csv_completo)
-
-rta_total2 = leer_archivo("SRT-ABC-01_CONFIG.txt")
+rta_total2 = leer_archivo("SRT-COBC-01_CONFIG.txt")
 lector_archivo_total_srt(rta_total2)
 
-#imprimir_titulos(get_route_response_posta,lista_source_total,lista_dest_total)
+imprimir_titulos(get_route_response_posta,lista_source_total,lista_dest_total)
 
 
