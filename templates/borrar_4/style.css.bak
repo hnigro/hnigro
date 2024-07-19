@@ -1,0 +1,114 @@
+.body {
+	background-color: #c6c6e9;
+	
+	
+	
+}
+
+
+.sidebar {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 100px;
+	background-color: #a9aed9;
+	/* margin-top: 10px; */
+}
+
+.sidebar button {
+	display: block;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+
+.table-container-izq-arriba {
+	margin-left: 120px;
+	
+	overflow: scroll;
+	height: 400px; width: 30%;
+	border-bottom: 1px solid #ccc;
+	background-color: #d6dbdf;
+	float: left;
+	
+		
+}
+
+.tabla-der-arriba {
+	margin-left: 800px;
+	margin-top: 30px;
+	overflow: scroll;
+	height: 400px; width: 30%;
+	border-bottom: 1px solid #ccc;
+	background-color: #d6dbdf;
+	
+}
+
+
+
+.tabla-izq-abajo {
+	margin-left: 120px;
+	margin-top: 30px;
+	overflow: scroll;
+	height: 400px; width: 30%;
+	border-bottom: 1px solid #ccc;
+	background-color: #d6dbdf;
+	float: left;
+	
+}
+
+.tabla-der-abajo {
+	margin-left: 800px;
+	margin-top: 30px;
+	overflow: scroll;
+	height: 400px; width: 30%;
+	border-bottom: 1px solid #ccc;
+	background-color: #d6dbdf;
+	
+}
+
+
+
+
+.table-container-izq-abajo2 {
+	margin-left: 120px;
+	
+	overflow: scroll;
+	height: 400px; width: 30%;
+	border-bottom: 1px solid #ccc;
+	background-color: #d6dbdf;
+	float: left;
+	
+		
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-bottom: 2px solid #bebebe;
+	
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border: 2px solid #343333;
+}
+
+th {
+	background-color: #c5cacc;
+}
