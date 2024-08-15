@@ -80,7 +80,7 @@ def Generacion_CSV(SRT_IP):
     # me imprime los títulos de las planillas
 
     filew.write(
-        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source IP,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State,BW In Total,BW Out Total\n")
+        f"Description,Asset,Asset Type,Route Name,Source Name,Source Mode,Source Interface,Source Address,Source Protocol,Source Port,S_SSM,Source State,Source BW,Last Update,Destination Name,Destination Protocol,Destination Port,Destination Mode,Destination Interface,Destination IP,Destination BW,Destination State,BW In Total,BW Out Total\n")
 
     sroutes = API_int(SRT_IP, "FUNCION")[0]["data"]
     BW_in_total = API_int(SRT_IP, "FUNCION")[1]
@@ -221,6 +221,8 @@ class ventana_class:
         SRT_ABC_02 = [".) SRT-ABC-02                   ", "172.22.99.102", "haiadmin", "tnstafl2420", "SRT-ABC-02"]
         SRT_ABC_03 = [".) SRT-ABC-03                   ", "10.177.58.103", "haiadmin", "tnstafl2420", "SRT-ABC-03"]
         SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
+        SRT_ABC_05 = [".) SRT-ABC-05                   ", "10.177.58.105", "haiadmin", "tnstafl2420", "SRT-ABC-05"]
+
         SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
         SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
         SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
@@ -252,6 +254,7 @@ class ventana_class:
             , SRT_ABC_02
             , SRT_ABC_03
             , SRT_ABC_04
+            , SRT_ABC_05
             , SRT_CBC_01
             , SRT_CBC_02
             , SRT_COBC_01
@@ -359,6 +362,14 @@ class ventana_class:
                     except Exception:
                         print(
                             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_04_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
+                    # abc05
+                    try:
+                        Generacion_CSV([SRT_ABC_05[1], SRT_ABC_05[2], SRT_ABC_05[3], SRT_ABC_05[4]])
+                        API_swagger(CSV_file=f"CSV_FILES\\{SRT_ABC_05[4]}.csv")
+                    except Exception:
+                        print(
+                            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_ABC_05_______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
                     # cbc01
                     try:
