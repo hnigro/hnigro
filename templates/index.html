@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ejemplo de tabla</title>
+
+	<meta charset="UTF-8">
+  	<title>Ejemplo de tabla</title>
 </head>
+
 <body style="background-color: lightgray;">
 	<h1>Ejemplo para BW de los SRTs</h1>
 		<br>
@@ -15,7 +18,16 @@
 		onclick="window.location.href='http://127.0.0.1:16000/hhh1/'"
 		>Refrescar Info
 	</button>
-		
+
+
+	
+	<ul>
+
+		{% for item in xx2 %}
+		 <li>{{item}}</li>
+		{% endfor %}
+	</ul>
+
 	
 	
 		<br><br>
