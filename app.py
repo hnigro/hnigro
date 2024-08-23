@@ -34,6 +34,9 @@ def home():
 
 @app.route("/hhh1/")
 def hh1():
+
+
+
     return render_template("index1.html",
                            contenido=f"Testing {x}",
                            x1=f"hhhhhxxxxxxxxxxxxxxxxx x1 = {bw_srt_abc_01}",
@@ -41,6 +44,7 @@ def hh1():
                            x3=f"valor de x3 = {bw_srt_abc_03}",
                            x4=f"valor de x4 = {bw_srt_abc_04}",
                            xx=[0,1,2]
+
                            )
 
 
