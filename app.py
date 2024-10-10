@@ -3,7 +3,6 @@ este programa crea una html
 
 también voy a hacer un scrap de una html para usarla
 
-
 """
 
 from flask import Flask, render_template, request
