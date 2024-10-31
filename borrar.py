@@ -2,8 +2,7 @@
 este programa  procesa el contenido del archivo extra que genera la interface json_parser
 
 
-"""
-"""
+
 1. **Inicialización de Listas**:
    - Se crean varias listas vacías para almacenar datos futuros: `csv_completo`, `csv_titulo`, `csv_contenido`.
    - Se define una lista `csv_titulo2` con una serie de nombres de campos relacionados con fuentes y destinos.
@@ -164,6 +163,7 @@ def leer_archivo(archivo_ext):
     esta función me lee cualquier archivo y me retorna toda la info
     :param archivo_ext: es el archivo txt que tiene toda la info de los srts
     :return: el diccionario con todas las variables de configuracion
+    contenido_arch
     """
     filepath = "CSV_FILES\\"
     archivo_ext = filepath + archivo_ext
@@ -195,7 +195,7 @@ def imprimir_titulos(get_route_response_func,lista_source_total_func,lista_dest_
                 elemento_destination2 = "DEST_" + elemento_destination
                 csv_titulo.append(elemento_destination2)
 
-    print("********************************************************************************************************")
+    print("*****************************************linea 197*************************************************************")
     print("***********************************    csv_titulo    ***************************************************")
     print(csv_titulo)
     return csv_titulo
