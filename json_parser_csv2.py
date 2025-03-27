@@ -2,6 +2,12 @@
 sincronizado en produccion
 31/08/23
 
+27/3/25
+ver se le cambia la pass al srt-cbc-01 y se la deja igual al SRT-CBC-02
+antes la pass de CCBC01 =
+ SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
+
+
 
 """
 
@@ -223,7 +229,7 @@ class ventana_class:
         SRT_ABC_04 = [".) SRT-ABC-04                   ", "172.22.99.104", "haiadmin", "tnstafl2420", "SRT-ABC-04"]
         SRT_ABC_05 = [".) SRT-ABC-05                   ", "10.177.58.105", "haiadmin", "tnstafl2420", "SRT-ABC-05"]
 
-        SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
+        SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "tnstafl2420", "SRT-CBC-01"]
         SRT_CBC_02 = [".) SRT-CBC-02                   ", "172.23.241.150", "haiadmin", "tnstafl2420", "SRT-CBC-02"]
         SRT_COBC_01 = [".) SRT-COBC-01                  ", "10.177.242.101", "haiadmin", "tnstafl2420", "SRT-COBC-01"]
         SRT_COBC_02 = [".) SRT-COBC-02                  ", "10.177.231.220", "haiadmin", "tnstafl2420", "SRT-COBC-02"]

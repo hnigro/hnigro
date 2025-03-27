@@ -2037,8 +2037,7 @@ def lector_archivo_total_srt(rta_total):
     """
     # open(archivo_csv.csv, "w") as arch2:
 
-    for ruta in rta_total:
-
+     
         for elemento_de_ruta in ruta:
             # print(f"rrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh  =================    {elemento_de_ruta}")
 
