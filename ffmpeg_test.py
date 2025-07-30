@@ -13,6 +13,7 @@ video_file = "video.mp4"
 # El argumento - indica que el resultado se envía a la salida estándar
 ffmpeg_command = ["ffmpeg", "-i", video_file, "-f", "sdl", "-"]
 
+
 # Ejecutar el comando de ffmpeg usando subprocess
 # El argumento stdout=subprocess.PIPE indica que se captura la salida estándar
 # El argumento stderr=subprocess.STDOUT indica que se redirige la salida de error a la salida estándar

@@ -140,6 +140,27 @@ SRT-ABC-01-102-1,SRT-ABC-01,Broadcast,102_TEST_NATIVA,TEST_NATIVA,caller,eno1,18
 SRT-ABC-01-99920_COBC01-ADTEC1-MON-01_ABC01-1,SRT-ABC-01,Broadcast,99920_COBC01-ADTEC1-MON-01_ABC01,COBC-ADTEC1,caller,eno1,200.85.238.101,SRT,14001,0.0.0.0,connecting,0.0,01/22/24 09:27,LAN,UDP,10000,multicast,eno2,238.77.21.10,0.000,disconnected,449.12,361.42
 SRT-ABC-01-99936_GVG_ABC01_POC-RETURN-1,SRT-ABC-01,Broadcast,99936_GVG_ABC01_POC-RETURN,EC2 GV,caller,eno1,138.91.230.8,SRT,30572,0.0.0.0,disconnected,0.0,01/22/24 09:27,OCA 5,UDP,8000,multicast,eno2,237.77.1.5,0,,449.12,361.42
 """
+
+
+##################################################borrar###########################
+
+import csv
+
+def guardar_lista_en_csv(lista, nombre_archivo):
+    with open(nombre_archivo, 'w', newline='') as archivo_csv:
+        escritor = csv.writer(archivo_csv)
+        if any(isinstance(elemento, list) for elemento in lista):
+            escritor.writerows(lista)  # Para listas de listas
+        else:
+            escritor.writerow(lista)   # Para lista simple
+
+# Ejemplo de uso
+#mi_lista = ["manzana", "naranja", "plátano", "uva"]
+#guardar_lista_en_csv(mi_lista, "frutas.csv")
+
+
+######################### borrar fin ######################################3
+
 def leer_archivo(archivo_ext):
     """
     esta función me lee cualquier archivo y me retorna toda la info
@@ -156,8 +177,9 @@ def leer_archivo(archivo_ext):
         voy a pasar ese string a variable con la intruccion eval
         """
         contenido_arch = eval(contenido_arch)
-        #print(contenido_arch)
+        print(contenido_arch)
     return contenido_arch
+
 def imprimir_titulos(get_route_response_func,lista_source_total_func,lista_dest_total_func):
     """
     :param get_route_response_posta:
@@ -239,8 +261,8 @@ def lector_archivo_total_srt(rta_total):
 
     print("hhhhh      csv completo     hhhhhhh \n")
     print(csv_completo)
-rta_total2 = leer_archivo("SRT-COBC-01_CONFIG.txt")
-lector_archivo_total_srt(rta_total2)
-imprimir_titulos(get_route_response_posta,lista_source_total,lista_dest_total)
-
+rta_total2 = leer_archivo("SRT-COBC-01_CONFIG.txt") # este archivo es el archivo_ext
+#lector_archivo_total_srt(rta_total2)
+#imprimir_titulos(get_route_response_posta,lista_source_total,lista_dest_total)
+guardar_lista_en_csv(rta_total2, "hhh_listas_totales.csv")
 
