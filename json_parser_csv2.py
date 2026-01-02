@@ -1,7 +1,7 @@
 """
 sincronizado en produccion
-31/08/23
-  
+19/12/25
+
 27/3/25
 ver se le cambia la pass al srt-cbc-01 y se la deja igual al SRT-CBC-02
 antes la pass de CCBC01 =
@@ -29,7 +29,7 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
     """
-    SRTIP       =   "http://10.133.96.78:8081/api/v1/login"      #SRT_IP[0]  # IP DEL DISPOSITIVO= /api/v1/login
+    SRTIP       =   "http://10.233.225.241:8081/api/v1/login"      #SRT_IP[0]  # IP DEL DISPOSITIVO= /api/v1/login
     client_id="SRT"                                      #SRT_IP[1]  # USER
     client_secret="srtapi2022"                                #SRT_IP[2]  # PASS DEL DISPOSITIVO PARA LA PRIMER CONEXION
      otras credenciales
@@ -37,19 +37,19 @@ def API_swagger(CSV_file="SRT-ABC-OTT-05.csv"):
     pabloapi
 
 
-    clave anterior: htoken = oauth.fetch_token(token_url="http://10.133.96.78:8081/api/v1/login", client_id="SRT",
+    clave anterior: htoken = oauth.fetch_token(token_url="http://10.233.225.241:8081/api/v1/login", client_id="SRT",
                                client_secret="srtapi2022")
 
     """
 
     client = BackendApplicationClient(client_id="SRT")
     oauth = OAuth2Session(client=client)
-    htoken = oauth.fetch_token(token_url="http://10.133.96.78:8081/api/v1/login", client_id="SRT",
+    htoken = oauth.fetch_token(token_url="http://10.233.225.241:8081/api/v1/login", client_id="SRT",
                                client_secret="srtapi")
 
     csv_file = {"file": (CSV_file, open(CSV_file, "rb"), "application/vnd.ms-excel")}
 
-    swagger_cmd = "http://10.133.96.78:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
+    swagger_cmd = "http://10.233.225.241:8081/api/v1/ingest/classes/SRT/entry/csv?overrideValidation=true&hasHeaderRow=true&insertOnly=false&verbose=low&uniqueIdColumns=0"
 
     try:
         swagger_response = oauth.post(url=swagger_cmd, files=csv_file)
