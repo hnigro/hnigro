@@ -1,6 +1,6 @@
 """
 sincronizado en produccion
-19/12/25
+31/08/23
 
 27/3/25
 ver se le cambia la pass al srt-cbc-01 y se la deja igual al SRT-CBC-02
