@@ -1,6 +1,6 @@
 """
 sincronizado en produccion
-31/08/23
+31/08/26
 
 27/3/25
 ver se le cambia la pass al srt-cbc-01 y se la deja igual al SRT-CBC-02
@@ -566,3 +566,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
