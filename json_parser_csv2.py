@@ -9,6 +9,33 @@ antes la pass de CCBC01 =
 
 
 
+
+
+
+____________________
+
+import pandas as pd, glob
+
+pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('/mnt/user-data/uploads/SRT-ABC-0*.csv'))]).to_csv('/mnt/user-data/outputs/SRT_consolidados.csv', index=False)
+
+print("✅ Listo: SRT_consolidados.csv")
+
+
+_____________________________
+Son 3 líneas. Cada parte hace una cosa:
+
+glob.glob('...*.csv') → encuentra los archivos por patrón
+sorted() → los ordena del 01 al 05
+pd.read_csv(f, encoding='latin1') → lee cada archivo
+pd.concat([...]) → une todas las filas
+.to_csv(..., index=False) → guarda sin agregar columna de índice
+Sonnet 4.6 High
+
+
+
+
+
+
 """
 
 
@@ -408,6 +435,21 @@ class ventana_class:
                     except Exception:
                         print(
                             "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx___________SRT_COBC_02______________excepcion _________________________xxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                        """"
+                        aca comienza prueba
+                        import pandas as pd, glob
+
+                        pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('/mnt/user-data/uploads/SRT-ABC-0*.csv'))]).to_csv('/mnt/user-data/outputs/SRT_consolidados.csv', index=False)
+                        
+                        print("✅ Listo: SRT_consolidados.csv")
+                        
+                        
+                        """
+                        import pandas as pd, glob
+
+                        pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('SRT-ABC-0*.csv'))]).to_csv('SRT_consolidados.csv', index=False)
+
+                        print("✅ Listo: SRT_consolidados.csv")
 
                     print("linea 461 _____entra en el loop de refresco")
 
