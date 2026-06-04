@@ -459,7 +459,7 @@ class ventana_class:
                         aca comienza prueba
                         import pandas as pd, glob
 
-                        pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('/mnt/user-data/uploads/SRT-ABC-0*.csv'))]).to_csv('/mnt/user-data/outputs/SRT_consolidados.csv', index=False)
+                        pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob("CSV_FILES\\SRT-ABC-0*.csv"))]).to_csv("CSV_FILES\\SRT_consolidados.csv", index=False)
                         
                         print("✅ Listo: SRT_consolidados.csv")
                         
@@ -467,9 +467,11 @@ class ventana_class:
                         """
                         import pandas as pd, glob
 
-                        pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('SRT-ABC-0*.csv'))]).to_csv('SRT_consolidados.csv', index=False)
+                        pd.concat([pd.read_csv(f, encoding='latin1') for f in
+                                   sorted(glob.glob("CSV_FILES\\SRT-ABC-0*.csv"))]).to_csv(
+                            "CSV_FILES\\SRT_consolidados.csv", index=False)
 
-                        print("✅ Listo: SRT_consolidados.csv")
+                        print("Listo: SRT_consolidados.csv")
 
                     print("linea 461 _____entra en el loop de refresco")
 
