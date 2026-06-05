@@ -1,0 +1,40 @@
+Description,Asset,Source State,Source BW,Last Update,Destination BW,Destination State
+SRT-COBC-02-001-1,SRT-COBC-02,connected,15.324,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-002-1,SRT-COBC-02,connected,15.324,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-003-1,SRT-COBC-02,connection established,0.0,06/04/26 11:19,—,—
+SRT-COBC-02-004-1,SRT-COBC-02,connected,3.577,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-004-2,SRT-COBC-02,—,—,06/04/26 11:19,3.577,connected
+SRT-COBC-02-005-1,SRT-COBC-02,connected,3.575,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-006-1,SRT-COBC-02,connected,3.577,06/04/26 11:19,3.577,connected
+SRT-COBC-02-006-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-007-1,SRT-COBC-02,connection established,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-008-1,SRT-COBC-02,connected,3.576,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-009-1,SRT-COBC-02,connected,47.423,06/04/26 11:19,47.293,connected
+SRT-COBC-02-010-1,SRT-COBC-02,connected,41.233,06/04/26 11:19,41.129,connected
+SRT-COBC-02-011-1,SRT-COBC-02,connected,47.93,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-011-2,SRT-COBC-02,—,—,06/04/26 11:19,47.81,connected
+SRT-COBC-02-012-1,SRT-COBC-02,connected,41.23,06/04/26 11:19,41.127,connected
+SRT-COBC-02-013-1,SRT-COBC-02,connected,47.93,06/04/26 11:19,47.81,connected
+SRT-COBC-02-014-1,SRT-COBC-02,connecting,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-014-2,SRT-COBC-02,—,—,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-015-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-016-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-017-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-018-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-019-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-020-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-021-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-022-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-023-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-024-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-025-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-026-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,—
+SRT-COBC-02-027-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-071-1,SRT-COBC-02,connecting,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-101-1,SRT-COBC-02,connecting,0.0,06/04/26 11:19,—,—
+SRT-COBC-02-102-1,SRT-COBC-02,connecting,0.0,06/04/26 11:19,—,—
+SRT-COBC-02-103-1,SRT-COBC-02,connected,36.152,06/04/26 11:19,36.031,connected
+SRT-COBC-02-104-1,SRT-COBC-02,connected,10.757,06/04/26 11:19,—,—
+SRT-COBC-02-105-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,—,—
+SRT-COBC-02-95-1,SRT-COBC-02,connecting,0.0,06/04/26 11:19,0.0,disconnected
+SRT-COBC-02-Tx73-1,SRT-COBC-02,disconnected,0.0,06/04/26 11:19,—,—
