@@ -128,7 +128,6 @@ def Generacion_CSV(SRT_IP):
     filew = open(f"{filepath}{SRT_IP[3]}.csv", "w")
     file_srt_conf = open(f"{filepath}{SRT_IP[3]}_CONFIG.txt", "w")
 
-
     # esta linea me imprime el nombre del archivo que creé
     # print(f"linea 62 _____nombre del archivo creado = {filew.name}")
     # me imprime los títulos de las planillas
@@ -139,7 +138,7 @@ def Generacion_CSV(SRT_IP):
     _r = API_int(SRT_IP, "FUNCION")
     sroutes, BW_in_total, BW_out_total = _r[0]["data"], _r[1], _r[2]
     # esta linea me imprime toda la info sobre la respuesta de las rutas del srt
-    #print(sroutes)
+    # print(sroutes)
     file_srt_conf.write(str(sroutes))
     file_srt_conf.close()
 
@@ -243,6 +242,38 @@ def Generacion_CSV(SRT_IP):
 # *******************      def Generacion_CSV(SRT_IP):  fin    *****************************************************
 # **********************************************************************************************************************
 
+
+# ******************************************************************************************
+# **************************   def  concat   ***********************************************
+# ******************************************************************************************
+
+def Concat():
+    import pandas as pd
+
+    # 1. Listá acá los archivos que querés unir
+    archivos = [
+        'CSV_FILES\\SRT-ABC-01.csv',
+        'CSV_FILES\\SRT-ABC-02.csv',
+        'CSV_FILES\\SRT-ABC-03.csv',
+        'CSV_FILES\\SRT-ABC-04.csv',
+        'CSV_FILES\\SRT-ABC-05.csv',
+        'CSV_FILES\\SRT-CBC-01.csv',
+        'CSV_FILES\\SRT-CBC-02.csv',
+        'CSV_FILES\\SRT-COBC-01.csv',
+        'CSV_FILES\\SRT-COBC-02.csv',
+    ]
+
+    # 2. Une y guarda
+    df = pd.concat([pd.read_csv(f, encoding='latin1') for f in archivos], ignore_index=True)
+    df.to_csv('CSV_FILES\\SRT_consolidados.csv', index=False)
+
+    print(f'Archivos unidos : {len(archivos)}')
+    print(f'Filas totales   : {len(df)}')
+    print(f'Assets incluidos: {sorted(df["Asset"].unique())}')
+
+
+# ******************************************************************************************
+# ****************************   fin concat   **********************************************
 
 # xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ventana comienzo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 class ventana_class:
@@ -461,16 +492,13 @@ class ventana_class:
                             import pandas as pd, glob
 
                             pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('/mnt/user-data/uploads/SRT-ABC-0*.csv'))]).to_csv('/mnt/user-data/outputs/SRT_consolidados.csv', index=False)
-                        
+
                             print("✅ Listo: SRT_consolidados.csv")
-                        
-                        
+
+
                             """
-                            import pandas as pd, glob
 
-                            pd.concat([pd.read_csv(f, encoding='latin1') for f in sorted(glob.glob('SRT-ABC-0*.csv'))]).to_csv('SRT_consolidados.csv', index=False)
-
-                            print("✅ Listo: SRT_consolidados.csv")
+                        Concat()
 
                         print("linea 461 _____entra en el loop de refresco")
 
@@ -579,7 +607,7 @@ def timer():
     import time
     x = time
     print("linea 473 _____antes de time")
-    x.sleep(1)
+    x.sleep(600)
     print("linea 475 _____despues de time")
     return print("return linea 482")
 
