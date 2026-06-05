@@ -17,6 +17,6 @@ archivos = [
 df = pd.concat([pd.read_csv(f, encoding='latin1') for f in archivos], ignore_index=True)
 df.to_csv('CSV_FILES\\SRT_consolidadoshh.csv', index=False)
 
-print(f'✅ Archivos unidos : {len(archivos)}')
-print(f'✅ Filas totales   : {len(df)}')
-print(f'✅ Assets incluidos: {sorted(df["Asset"].unique())}')
+print(f'Archivos unidos : {len(archivos)}')
+print(f'Filas totales   : {len(df)}')
+print(f'Assets incluidos: {sorted(df["Asset"].unique())}')
