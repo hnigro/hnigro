@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import pandas as pd
 
-CSV      = 'SRT_consolidados.csv'
+CSV      = "CSV_FILES\\SRT_consolidados.csv"
 ALL_COLS = ['Description','Asset','Asset Type','Route Name','Source Name','Source Mode',
             'Source Interface','Source Address','Source Protocol','Source Port','S_SSM',
             'Source State','Source BW','Last Update','Destination Name','Destination Protocol',
