@@ -1,11 +1,7 @@
 """
 sincronizado en produccion
-31/08/26
+08/06/26
 
-27/3/25
-ver se le cambia la pass al srt-cbc-01 y se la deja igual al SRT-CBC-02
-antes la pass de CCBC01 =
- SRT_CBC_01 = [".) SRT-CBC-01                   ", "10.133.92.150", "haiadmin", "Vr109!", "SRT-CBC-01"]
 
 
 ____________________
@@ -266,6 +262,7 @@ def Concat():
     # 2. Une y guarda
     df = pd.concat([pd.read_csv(f, encoding='latin1') for f in archivos], ignore_index=True)
     df.to_csv('CSV_FILES\\SRT_consolidados.csv', index=False)
+    # df.to_excel('CSV_FILES\\SRT_consolidados.xlsx', index=False)
 
     print(f'Archivos unidos : {len(archivos)}')
     print(f'Filas totales   : {len(df)}')

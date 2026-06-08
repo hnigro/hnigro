@@ -1,8 +1,17 @@
+"""
+pasado a produccion 08/06/26
+
+
+"""
+
+
+
+
 import tkinter as tk
 from tkinter import ttk
 import pandas as pd
 
-CSV      = 'SRT_consolidados.csv'
+CSV      = "CSV_FILES\\SRT_consolidados.csv"
 ALL_COLS = ['Description','Asset','Asset Type','Route Name','Source Name','Source Mode',
             'Source Interface','Source Address','Source Protocol','Source Port','S_SSM',
             'Source State','Source BW','Last Update','Destination Name','Destination Protocol',
@@ -17,8 +26,8 @@ cur      = [None]
 # definida aquí: Python resuelve col_v/cnt al momento del CLICK, no al definir la función
 def save():
     cols = [c for c in ALL_COLS if col_v[c].get()] or ALL_COLS
-    cur[0][cols].to_csv('resultado.csv', index=False)
-    cnt.set(cnt.get() + '\n✔ guardado')
+    cur[0][cols].to_csv("CSV_FILES\\resultado_visualizador.csv", index=False)
+    cnt.set(cnt.get() + '\n guardado')
 
 root = tk.Tk(); root.title('SRT Monitor'); root.geometry('1300x720'); root.configure(bg='#1e1e2e')
 s = ttk.Style(); s.theme_use('clam')
@@ -29,12 +38,12 @@ s.configure('Treeview.Heading', background='#45475a', foreground='#cba6f7', font
 lf = tk.Frame(root, bg='#181825', width=185); lf.pack(side='left', fill='y', padx=8, pady=8); lf.pack_propagate(False)
 
 # 🔍 Buscador
-tk.Label(lf, text='🔍 BUSCAR', bg='#181825', fg='#cba6f7', font=('Consolas',10,'bold')).pack(pady=(10,4))
+tk.Label(lf, text='🔍 SEARCH', bg='#181825', fg='#cba6f7', font=('Consolas',10,'bold')).pack(pady=(10,4))
 q_var = tk.StringVar()
 q_var.trace('w', lambda *_: update())
 tk.Entry(lf, textvariable=q_var, bg='#313244', fg='#cdd6f4', insertbackground='#cdd6f4',
          relief='flat', font=('Consolas',9), bd=6).pack(fill='x', padx=8)
-tk.Button(lf, text='✕ limpiar', bg='#313244', fg='#f38ba8', relief='flat',
+tk.Button(lf, text='✕ CLEAN', bg='#313244', fg='#f38ba8', relief='flat',
           font=('Consolas',8), command=lambda: q_var.set('')).pack(pady=(2,4))
 
 tk.Frame(lf, bg='#45475a', height=1).pack(fill='x', padx=8, pady=4)
@@ -49,7 +58,7 @@ asset_v = {a: tk.BooleanVar(value=True) for a in sorted(df['Asset'].unique())}
 tk.Frame(lf, bg='#45475a', height=1).pack(fill='x', padx=8, pady=4)
 
 # 💾 Botón save — antes del expand=True de columnas para que siempre sea visible
-tk.Button(lf, text='save', bg='#45475a', fg='#a6e3a1', relief='flat',
+tk.Button(lf, text='SAVE', bg='#45475a', fg='#a6e3a1', relief='flat',
           font=('Consolas',9,'bold'), command=save).pack(pady=4, padx=8, fill='x')
 
 tk.Frame(lf, bg='#45475a', height=1).pack(fill='x', padx=8, pady=4)
