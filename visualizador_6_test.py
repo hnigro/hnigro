@@ -1,11 +1,7 @@
 """
 pasado a produccion 08/06/26
-
-
+v6: auto-refresh del CSV cada 10 minutos  # ← NUEVO
 """
-
-
-
 
 import tkinter as tk
 from tkinter import ttk
@@ -107,5 +103,14 @@ def update():
     ok = (fdf['Source State'].str.lower() == 'connected').sum()
     cnt.set(f'Rutas: {len(fdf)}\n✅ {ok}\n❌ {len(fdf)-ok}')
 
+# ── Auto-refresh ───────────────────────────────────────────────────────────────
+def auto_refresh():                                                              # ← NUEVO
+    global df, df_str                                                            # ← NUEVO
+    df     = pd.read_csv(CSV, encoding='latin1').fillna('—')                    # ← NUEVO
+    df_str = df[ALL_COLS].astype(str).apply(lambda r: ' '.join(r).lower(), axis=1)  # ← NUEVO
+    update()                                                                     # ← NUEVO
+    root.after(1000, auto_refresh)                                           # ← NUEVO (loop)
+
 update()
+root.after(1000, auto_refresh)                                               # ← NUEVO (primer ciclo)
 root.mainloop()
