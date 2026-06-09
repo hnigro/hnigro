@@ -1,11 +1,8 @@
 """
 pasado a produccion 08/06/26
-
-
+v6: auto-refresh del CSV cada 10 minutos
+v7: manejo de excepciones si el CSV no se encuentra  # ← NUEVO
 """
-
-
-
 
 import tkinter as tk
 from tkinter import ttk
@@ -19,7 +16,8 @@ ALL_COLS = ['Description','Asset','Asset Type','Route Name','Source Name','Sourc
             'Destination BW','Destination State','BW In Total','BW Out Total']
 DEFAULT  = {'Description','Asset','Source State','Source BW','Destination State','Destination BW','Last Update'}
 CLR      = {'connected':'#a6e3a1','disconnected':'#f38ba8','connecting':'#fab387','connection established':'#fab387'}
-df       = pd.read_csv(CSV, encoding='latin1').fillna('—')
+try:    df = pd.read_csv(CSV, encoding='latin1').fillna('—')    # ← NUEVO (era línea directa)
+except: df = pd.DataFrame(columns=ALL_COLS)                     # ← NUEVO: CSV ausente → df vacío
 df_str   = df[ALL_COLS].astype(str).apply(lambda r: ' '.join(r).lower(), axis=1)
 cur      = [None]
 
@@ -107,5 +105,17 @@ def update():
     ok = (fdf['Source State'].str.lower() == 'connected').sum()
     cnt.set(f'Rutas: {len(fdf)}\n✅ {ok}\n❌ {len(fdf)-ok}')
 
+# ── Auto-refresh ───────────────────────────────────────────────────────────────
+def auto_refresh():
+    global df, df_str
+    try:                                                            # ← NUEVO
+        df     = pd.read_csv(CSV, encoding='latin1').fillna('—')
+        df_str = df[ALL_COLS].astype(str).apply(lambda r: ' '.join(r).lower(), axis=1)
+        update()
+    except Exception as e: cnt.set(f'⚠ {e}')                      # ← NUEVO: muestra error, no detiene el loop
+    root.after(1000, auto_refresh)
+
 update()
+if df.empty: cnt.set(f'⚠ CSV no encontrado:\n{CSV}')              # ← NUEVO: aviso al inicio
+root.after(1000, auto_refresh)
 root.mainloop()
