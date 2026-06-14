@@ -86,4 +86,4 @@ def index():
         total   = len(df), ok=ok, ko=ko, other=len(df) - ok - ko)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=2420)  # accesible desde la red local
+    app.run(debug=True, host="0.0.0.0", port=52420)  # accesible desde la red local
