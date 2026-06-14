@@ -1,12 +1,14 @@
 """
 visualizador_v8.py
 v7: manejo de excepciones si el CSV no se encuentra
-v8: Flask web server — misma UI accesible por IP:Puerto   # ← NUEVO
+v8: Flask web server — misma UI accesible por IP:Puerto
+    fix: ruta relativa al script con Path(__file__) + error visible en browser  # ← NUEVO
 """
 from flask import Flask, jsonify
+from pathlib import Path                                               # ← NUEVO
 import pandas as pd
 
-CSV      = "CSV_FILE\\SRT_consolidados.csv"
+CSV      = Path(__file__).parent / "CSV_FILES" / "SRT_consolidados.csv"  # ← NUEVO: ruta al script, no al cwd
 ALL_COLS = ['Description','Asset','Asset Type','Route Name','Source Name','Source Mode',
             'Source Interface','Source Address','Source Protocol','Source Port','S_SSM',
             'Source State','Source BW','Last Update','Destination Name','Destination Protocol',
@@ -15,19 +17,20 @@ ALL_COLS = ['Description','Asset','Asset Type','Route Name','Source Name','Sourc
 
 app = Flask(__name__)
 
-def load():                                                        # igual que v7
-    try:    return pd.read_csv(CSV, encoding='latin1').fillna('—')
-    except: return pd.DataFrame(columns=ALL_COLS)
+def load():
+    try:    return pd.read_csv(CSV, encoding='latin1').fillna('—'), None
+    except Exception as e: return pd.DataFrame(columns=ALL_COLS), str(e)  # ← NUEVO: devuelve el error
 
-@app.route('/data')                                                # ← NUEVO: entrega JSON al browser
+@app.route('/data')
 def data():
-    df = load()
+    df, err = load()                                                   # ← NUEVO: desempaqueta error
     return jsonify({'cols'  : ALL_COLS,
                     'rows'  : df[ALL_COLS].values.tolist(),
-                    'assets': sorted(df['Asset'].dropna().unique().tolist())})
+                    'assets': sorted(df['Asset'].dropna().unique().tolist()),
+                    'error' : err})                                    # ← NUEVO: error viaja al browser
 
-@app.route('/')                                                    # ← NUEVO: página principal
-def index(): return HTML   # Flask devuelve text/html SIN pasar por Jinja2
+@app.route('/')
+def index(): return HTML
 
 HTML = """<!DOCTYPE html>
 <html><head>
@@ -83,7 +86,8 @@ function mkChk(pid,lbl,chk,fn){
 
 async function poll(){
   const d=await fetch('/data').then(r=>r.json()).catch(()=>null);
-  if(!d){document.getElementById('cnt').textContent='⚠ Sin datos';return;}
+  if(!d){document.getElementById('cnt').textContent='⚠ Sin conexión al servidor';return;}
+  if(d.error){document.getElementById('cnt').textContent='⚠ '+d.error;return;}  // ← NUEVO: muestra el error real
   cols=d.cols;
   rows=d.rows.map(r=>Object.fromEntries(cols.map((c,i)=>[c,r[i]])));
   if(!Object.keys(aV).length) d.assets.forEach(a=>{aV[a]=true;mkChk('ap',a,true,e=>{aV[a]=e.target.checked;render();});});
@@ -112,9 +116,9 @@ function save(){
   ).click();
 }
 
-poll(); setInterval(poll, 3000);  // ← intervalo de refresh en ms (3000 = 3 seg)
+poll(); setInterval(poll, 3000);
 </script>
 </body></html>"""
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)  # ← cambiar puerto aquí
+    app.run(host='0.0.0.0', port=5000, debug=False)
