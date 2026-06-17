@@ -3,7 +3,7 @@ from flask import Flask, render_template_string
 import pandas as pd, time
 
 app = Flask(__name__)
-CSV = "SRT_consolidados.csv"   # ← ruta al archivo CSV (relativa o absoluta)
+CSV = "CSV_FILES\\SRT_consolidados.csv"   # ← ruta al archivo CSV (relativa o absoluta)
 
 TMPL = """<!DOCTYPE html><html lang="es">
 <head>
@@ -62,7 +62,7 @@ TMPL = """<!DOCTYPE html><html lang="es">
 
   <script>
     // Countdown visual hasta el próximo refresh (no bloquea la recarga)
-    let s = 600;
+    let s = 3600;
     setInterval(() => {
       s--;
       document.getElementById('cd').textContent =

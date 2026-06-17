@@ -113,9 +113,9 @@ def auto_refresh():
         df_str = df[ALL_COLS].astype(str).apply(lambda r: ' '.join(r).lower(), axis=1)
         update()
     except Exception as e: cnt.set(f'⚠ {e}')                      # ← NUEVO: muestra error, no detiene el loop
-    root.after(1000, auto_refresh)
+    root.after(6000, auto_refresh)
 
 update()
 if df.empty: cnt.set(f'⚠ CSV no encontrado:\n{CSV}')              # ← NUEVO: aviso al inicio
-root.after(1000, auto_refresh)
+root.after(6000, auto_refresh)
 root.mainloop()
