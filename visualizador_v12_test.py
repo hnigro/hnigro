@@ -8,7 +8,7 @@ CSV  = "CSV_FILES\\SRT_consolidados.csv"  # ← ruta al archivo CSV
 COLS = [               # ← comentar cualquier línea para ocultar esa columna (header + datos)
     "Description",
     "Asset",
-    "Asset Type",
+    #"Asset Type",
     "Route Name",
     "Source Name",
     "Source Mode",
@@ -28,8 +28,8 @@ COLS = [               # ← comentar cualquier línea para ocultar esa columna 
     "Destination IP",
     "Destination BW",
     "Destination State",
-    "BW In Total",
-    "BW Out Total",
+    #"BW In Total",
+    #"BW Out Total",
 ]
 
 TMPL = """<!DOCTYPE html><html lang="es">
